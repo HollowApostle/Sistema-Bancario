@@ -1,89 +1,83 @@
-#include <conio.h>
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <conio.h>
+#include <locale.h>
+#include <windows.h>
 
-#include "tela1.c"
+#include "YaTela.c"
 
 typedef struct
 {
     int codigo;
-    char nome[50];
-    char endereco[50];
+    char nom[50];
+    char ende[50];
     char cargo[50];
-    char dt_adimissao[11];
-    char telefone[15];
-    float salario;
+    char dt_admissao[11];
+    char numTelefone[15];
+    float salar;
 
-} reg_funcionario;
+} reg_funci;
 
-typedef struct Tipoitem *tipoapontador;
+typedef struct tipoItem *tipoApontador;
 
-typedef struct Tipoitem
+typedef struct tipoItem
 {
 
-    reg_funcionario conteudo;
-    tipoapontador prox;
-} Tipoitem;
+    reg_funci conte;
+    tipoApontador proxi;
+
+} tipoItem;
 
 typedef struct
 {
-    tipoapontador primeiro;
-    tipoapontador ultimo;
 
-} tipolista;
+    tipoApontador prime;
+    tipoApontador ult;
 
-tipoapontador pesquisa(tipolista *l, int cod)
+} tipoLista;
+
+// Função para pesquisar um funcionário na lista pelo código
+tipoApontador pesquisa(tipoLista *l, int cod)
 {
 
-    tipoapontador aux;
-
-    // Inicia a pesquisa a partir do primeiro elemento da lista
-
-    aux = l->primeiro;
-
-    // Percorre a lista até encontrar o código ou chegar ao fim (NULL)
+    tipoApontador aux = l->prime;
 
     while (aux != NULL)
     {
-        if (aux->conteudo.codigo == cod)
+        if (aux->conte.codigo == cod)
         {
             return aux;
         }
-
-        aux = aux->prox;
+        aux = aux->proxi;
     }
-
     return NULL;
 }
 
-// fucao que realiza a contagem
-int contador(tipolista *l)
+int Contad(tipoLista *l)
 {
 
-    tipoapontador aux;
+    tipoApontador aux;
 
-    int cont = 0;
+    int conta = 0;
 
-    aux = l->primeiro;
+    aux = l->prime;
 
-    // percorre a lista contando
     while (aux != NULL)
     {
-        cont++;
+        conta++;
 
-        aux = aux->prox;
+        aux = aux->proxi;
     }
 
-    return cont;
+    return conta;
 }
 
-// Monta os campos da tela
-void tela_func()
+// Função que imprime o layout da tela de cadastro de funcionários
+void TelaFunci()
 {
-    tela();
-    gotoxy(29, 3);
 
-    printf("CADASTRO DE CLIENTES");
+    YaTela();
 
     gotoxy(30, 7);
     printf("codigo............: ");
@@ -107,82 +101,78 @@ void tela_func()
     printf("6.salario.........: ");
 }
 
-// funcao que mostra os valores da lista
-void amostra(tipoapontador p)
+// Função que exibe os dados de um funcionário na tela
+void Mostrar_Tel(tipoApontador P)
 {
-    tela_func();
-    gotoxy(50, 7);
-    printf("%d", p->conteudo.codigo);
+    TelaFunci();
 
-    gotoxy(50, 9);
-    printf("%s", p->conteudo.nome);
+    gotoxy(54, 7);
+    printf("%d", P->conte.codigo);
 
-    gotoxy(50, 11);
-    printf("%s", p->conteudo.endereco);
+    gotoxy(54, 9);
+    printf("%s", P->conte.nom);
 
-    gotoxy(50, 13);
-    printf("%s", p->conteudo.cargo);
+    gotoxy(54, 11);
+    printf("%s", P->conte.ende);
 
-    gotoxy(50, 15);
-    printf("%s", p->conteudo.dt_adimissao);
+    gotoxy(54, 13);
+    printf("%s", P->conte.cargo);
 
-    gotoxy(50, 17);
-    printf("%s", p->conteudo.telefone);
+    gotoxy(54, 15);
+    printf("%s", P->conte.dt_admissao);
 
-    gotoxy(50, 19);
-    printf("%.2f", p->conteudo.salario);
+    gotoxy(54, 17);
+    printf("%s", P->conte.numTelefone);
+
+    gotoxy(54, 19);
+    printf("%.2f", P->conte.salar);
 }
 
-// funcao que cadastra nas posicoes
-int cadastro(tipolista *l, int opc)
+// Função para cadastrar um novo funcionário na lista
+int Cadast(tipoLista *l, int opc)
 {
+    reg_funci conte;
+    tipoApontador P;
+    tipoApontador aux;
+    tipoApontador aux2;
+    int test;
+    int posi;
+    int quant;
 
-    int teste;
-    int pos;
-    int qtd;
-    reg_funcionario cont;
-    tipoapontador p;
-    tipoapontador aux;
-    tipoapontador aux2;
-
-    // validacao de cadastrar novamente
     do
     {
+        YaTela();
+        TelaFunci();
 
-        tela();
-        tela_func();
-
-        // validacao para sair com o 0
+        // Laço para garantir que o código inserido seja único
         do
         {
-
             gotoxy(8, 23);
             printf("Digite \"0\" para sair");
-            gotoxy(50, 7);
+            gotoxy(54, 7);
             printf("                 ");
-            gotoxy(50, 7);
-            scanf("%d", &cont.codigo);
+            gotoxy(54, 7);
+            scanf("%d", &conte.codigo);
 
-            if (cont.codigo == 0)
+            if (conte.codigo == 0)
             {
-
                 gotoxy(8, 23);
                 printf("Deseja realmente sair (Sim = 1/Nao = 0): ");
-                scanf("%d", &teste);
+                scanf("%d", &test);
                 gotoxy(8, 23);
                 printf("                                            ");
                 gotoxy(8, 23);
 
-                if (teste == 1)
+                if (test == 1)
                 {
-                    return 0;
+
+                    return 0;  // Sai da função se a resposta for sim
                 }
             }
 
-            aux = pesquisa(l, cont.codigo); // chama funcao para ver se tem um codigo com aql valor
+            aux = pesquisa(l, conte.codigo);  // Pesquisa se o código já existe
 
-            // caso nao tenha, ele ira retornar null e pedira entrada de dados novamente
-            if (aux != NULL)
+            if (aux != NULL) // Se o código já existir, exibe mensagem
             {
 
                 gotoxy(8, 23);
@@ -192,85 +182,76 @@ int cadastro(tipolista *l, int opc)
                 printf("                                            ");
             }
 
-        } while (aux != NULL || cont.codigo == 0);
+        } while (aux != NULL || conte.codigo == 0);
 
-        // entrada de dados
+        getchar(); // Limpa o buffer de entrada
 
+        // Lê os dados do funcionário e armazena na estrutura 'conte'
+        gotoxy(54, 9);
+        fflush(stdin);
+        fgets(conte.nom, 50, stdin);
+
+        gotoxy(54, 11);
+        fflush(stdin);
+        fgets(conte.ende, 50, stdin);
+
+        gotoxy(54, 13);
+        fflush(stdin);
+        fgets(conte.cargo, 50, stdin);
+
+        gotoxy(54, 15);
+        fflush(stdin);
+        fgets(conte.dt_admissao, 11, stdin);
+
+        gotoxy(54, 17);
+        fflush(stdin);
+        fgets(conte.numTelefone, 15, stdin);
+
+        gotoxy(54, 19);
+        scanf("%f", &conte.salar);
+
+        // Pergunta se deseja gravar as informações
         gotoxy(8, 23);
-        printf("                                                   ");
+        printf("Deseja gravar as informacoes? (Sim = 1/Nao = 0): ");
+        scanf("%d", &test);
 
-        gotoxy(50, 9);
-        fflush(stdin);
-        fgets(cont.nome, 50, stdin);
-
-        gotoxy(50, 11);
-        fflush(stdin);
-        fgets(cont.endereco, 50, stdin);
-
-        gotoxy(50, 13);
-        fflush(stdin);
-        fgets(cont.cargo, 50, stdin);
-
-        gotoxy(50, 15);
-        fflush(stdin);
-        fgets(cont.dt_adimissao, 11, stdin);
-
-        gotoxy(50, 17);
-        fflush(stdin);
-        fgets(cont.telefone, 15, stdin);
-
-        gotoxy(50, 19);
-        scanf("%f", &cont.salario);
-
-        gotoxy(8, 23);
-        printf("                                        ");
-        gotoxy(8, 23);
-        printf("Deseja gravar (Sim = 1/Nao = 0): ");
-        scanf("%d", &teste);
-        gotoxy(8, 23);
-        printf("                               ");
-
-        // verifica se deseja cadastrar outro funcionario
-        if (teste == 1)
+        if (test == 1)
         {
+            P = (tipoApontador)malloc(sizeof(tipoItem));
+            P->conte = conte;
+            P->proxi = NULL;
 
-            // cria o no p
-
-            p = (tipoapontador)malloc(sizeof(Tipoitem));
-
-            p->prox = NULL;
-
-            p->conteudo = cont;
-
-            // adiciona no final
+            // Insere o novo item no final da lista (opção 1)
             if (opc == 1)
             {
-
-                if (l->primeiro == NULL)
+                if (l->prime == NULL)
                 {
-                    l->primeiro = p;
-                    l->ultimo = p;
+                    l->prime = P;
+                    l->ult = P;
                 }
                 else
                 {
-                    l->ultimo->prox = p;
-                    l->ultimo = p;
+                    l->ult->proxi = P;
+                    l->ult = P;
                 }
-            } // adiciona no inicio
+            }
+
+            // Insere o novo item no início da lista (opção 2)
             else if (opc == 2)
             {
-
-                if (l->primeiro == NULL)
+                if (l->prime == NULL)
                 {
-                    l->primeiro = p;
-                    l->ultimo = p;
+                    l->prime = P;
+                    l->ult = P;
                 }
                 else
                 {
-                    p->prox = l->primeiro;
-                    l->primeiro = p;
+                    P->proxi = l->prime;
+                    l->prime = P;
                 }
-            } //insere na posicao desejada
+            }
+
+            // Insere o novo item em uma posição específica (opção 3)
             else if (opc == 3)
             {
                 do
@@ -278,112 +259,116 @@ int cadastro(tipolista *l, int opc)
                     gotoxy(8, 23);
                     printf("                                                       ");
                     gotoxy(8, 23);
-                    printf("Digite a posicao a ser inserida: ");
-                    scanf("%d", &pos);
-                    gotoxy(8, 23);
-                    printf("                                                       ");
+                    printf("Digite qual posicao deseja inserir: ");
+                    scanf("%d", &posi);
 
-                    qtd = contador(l);
+                    quant = Contad(l);
 
-                    if (pos == 1)
+                    if (posi == 1) // Insere na primeira posição
                     {
-                        qtd = 1;
 
-                        if (l->primeiro == NULL)
+                        if (l->prime == NULL)
                         {
-                            l->primeiro = p;
-                            l->ultimo = p;
+
+                            l->prime = P;
+                            l->ult = P;
+                            P->proxi = NULL;
                         }
+
                         else
                         {
-                            p->prox = l->primeiro;
-                            l->primeiro = p;
+
+                            P->proxi = l->prime; // Insere no início da lista
+                            l->prime = P;
                         }
+
+                        break;
                     }
-                    else if (pos > qtd || pos < 1)
+                    else if (posi > quant || posi < 1) // Validação da posição
                     {
+
                         gotoxy(8, 23);
-                        printf("                                                       ");
-                        gotoxy(8, 23);
-                        printf("Posicao invalida");
+                        printf("Opcao de posicao invalida. Tente outra posicao");
                         getch();
-                        gotoxy(8, 23);
-                        printf("                                                       ");
                     }
 
-                } while (pos > qtd || pos < 1);
+                } while (posi > quant || posi < 1);
 
-                if (pos != 1)
+                if (posi != 1)
                 {
-                    aux2 = l->primeiro;
 
-                    for (int x = 1; x <= pos - 2; x++)
+                    // Percorre até a posição anterior à desejada
+                    aux2 = l->prime;
+
+                    for (int x = 1; x <= posi - 2; x++)
                     {
-                        aux2 = aux2->prox;
+                        aux2 = aux2->proxi;
                     }
 
-                    p->prox = aux2->prox;
-
-                    aux2->prox = p;
+                    P->proxi = aux2->proxi;
+                    aux2->proxi = P;
                 }
             }
 
+            // Pergunta se deseja cadastrar outro funcionário
             gotoxy(8, 23);
             printf("                                                       ");
             gotoxy(8, 23);
             printf("Deseja cadastrar outro funcionario? (Sim = 1/Nao = 0): ");
-            scanf("%d", &teste);
+            scanf("%d", &test);
             gotoxy(8, 23);
             printf("                                                       ");
         }
-    } while (teste == 1);
+
+    } while (test == 1);
 
     return 0;
 }
 
-//funcao para alterar um cadastro especifico
-int alterar(tipolista *l)
+int Alterar_Dad(tipoLista *l)
 {
-    int pos;
-    int campo;
-    reg_funcionario cont;
-    tipoapontador p;
-    tipoapontador aux;
 
+    reg_funci conte;
+    tipoApontador P;
+    tipoApontador aux;
+    int posi;
+    int camp;
 
-    //verifica se tem algum valor 
-    if (l->primeiro == NULL)
+    // Verifica se a lista está vazia
+    if (l->prime == NULL)
     {
         gotoxy(8, 23);
         printf("                                                       ");
         gotoxy(8, 23);
-        printf("Nao ha nenhum valor para alterar");
+        printf("Nao ha nenhum funcionario para alterar");
         getch();
         gotoxy(8, 23);
         printf("                                                       ");
 
-        return 0;
+        return 0; // Sai da função se não houver funcionários na lista
     }
-    tela();
-    tela_func();
+
+    YaTela();
+    TelaFunci();
     do
-    {//faz a entrada de qual codigo do funcionario sera alterado
+    {
         gotoxy(8, 23);
         printf("                                                       ");
         gotoxy(8, 23);
         printf("Digite o codigo do funcionario a ser alterado: ");
-        scanf("%d", &pos);
+        scanf("%d", &posi);
         gotoxy(8, 23);
         printf("                                                       ");
 
-        aux = pesquisa(l, pos);
+        aux = pesquisa(l, posi);
 
+        // Se o código for inválido (funcionário não encontrado)
         if (aux == NULL)
         {
             gotoxy(8, 23);
             printf("                                                       ");
             gotoxy(8, 23);
-            printf("Posicao invalida");
+            printf("Posicao invalida. Tente novamente");
             getch();
             gotoxy(8, 23);
             printf("                                                       ");
@@ -391,127 +376,113 @@ int alterar(tipolista *l)
 
     } while (aux == NULL);
 
-    amostra(aux);
+    Mostrar_Tel(aux);
+
+    // Pergunta ao usuário qual campo deseja alterar
     do
-    {//faz a entrada de dado de qual campo sera alterado 
+    {
+
         gotoxy(8, 23);
-        printf("                                        ");
-        gotoxy(8, 23);
-        printf("Deseja alterar qual campo ?(0 para sair)");
-        scanf("%d", &campo);
+        printf("Deseja alterar que campo? (0 para sair): ");
+        scanf("%d", &camp);
         gotoxy(8, 23);
         printf("                                         ");
 
-        if (campo < 0 || campo > 6)
+        if (camp < 0 || camp > 6)
         {
-            gotoxy(8, 23);
-            printf("                                        ");
+
             gotoxy(8, 23);
             printf("Campo invalido!");
             getch();
-            gotoxy(8, 23);
-            printf("                                         ");
         }
 
-    } while (campo < 0 || campo > 6);
+    } while (camp < 0 || camp > 6);
 
-
-    //valida se a entrada eh diferente de 0, caso for ele faz a entrada de dados no campo escolhido
-    if (campo != 0)
+    if (camp != 0)
     {
-        cont = aux->conteudo;
+        conte = aux->conte;
 
-        switch (campo)
+        // Switch-case para selecionar qual campo será alterado
+        switch (camp)
         {
         case 1:
 
+            getchar();
             gotoxy(50, 9);
-            printf("                            ");
+            printf("                          ");
             gotoxy(50, 9);
             fflush(stdin);
-            fgets(cont.nome, 50, stdin);
-
+            fgets(conte.nom, 50, stdin);
             break;
-
         case 2:
 
+            getchar();
             gotoxy(50, 11);
-            printf("                            ");
+            printf("                          ");
             gotoxy(50, 11);
             fflush(stdin);
-            fgets(cont.endereco, 50, stdin);
-
+            fgets(conte.ende, 50, stdin);
             break;
         case 3:
 
+            getchar();
             gotoxy(50, 13);
-            printf("                            ");
+            printf("                          ");
             gotoxy(50, 13);
             fflush(stdin);
-            fgets(cont.cargo, 50, stdin);
+            fgets(conte.cargo, 50, stdin);
             break;
-
         case 4:
 
+            getchar();
             gotoxy(50, 15);
-            printf("                            ");
+            printf("                          ");
             gotoxy(50, 15);
             fflush(stdin);
-            fgets(cont.dt_adimissao, 11, stdin);
-
+            fgets(conte.dt_admissao, 11, stdin);
             break;
         case 5:
 
+            getchar();
             gotoxy(50, 17);
-            printf("                            ");
+            printf("                          ");
             gotoxy(50, 17);
             fflush(stdin);
-            fgets(cont.telefone, 15, stdin);
-
+            fgets(conte.numTelefone, 15, stdin);
             break;
         case 6:
 
+            getchar();
             gotoxy(50, 19);
             printf("                            ");
             gotoxy(50, 19);
-            scanf("%f", &cont.salario);
-
+            scanf("%f", &conte.salar);
             break;
 
         default:
             break;
         }
 
-        //realiza a alteracao
+        // Aloca um novo item na memória e atualiza os dados alterados
+        P = (tipoApontador)malloc(sizeof(tipoItem));
 
-        p = (tipoapontador)malloc(sizeof(Tipoitem));
-
-        p->conteudo = cont;
-
-        if (pos == 1)
-        {
-
-            p->prox = l->primeiro->prox;
-            l->primeiro = p;
-        }
-
-        aux->conteudo = p->conteudo;
+        P->conte = conte;
+        aux->conte = P->conte;
     }
 
     return 0;
 }
 
-// comentar as funcoes:  estou comentando neste exato momento
-
-//Funcao pra mostrar os valores armazenados 
-int listarFun(tipolista *l)
+int Consult(tipoLista *l)
 {
-    if (l->primeiro == NULL)
+    tipoApontador P = l->prime;
+
+    if (l->prime == NULL)
     {
         gotoxy(8, 23);
         printf("                                                       ");
         gotoxy(8, 23);
-        printf("Nao ha nenhum valor para ler");
+        printf("Nao ha nenhum funcionario cadastrado.");
         getch();
         gotoxy(8, 23);
         printf("                                                       ");
@@ -519,268 +490,245 @@ int listarFun(tipolista *l)
         return 0;
     }
 
-    tipoapontador p;
-
-    p = l->primeiro;
-
-    while (p != NULL)
+    while (P != NULL)
     {
-        amostra(p);
+        Mostrar_Tel(P);
 
-        p = p->prox;
+        P = P->proxi;
         getch();
     }
 
     return 0;
 }
 
-//Funcao que realiza as remocoes
-int remover(tipolista *l, int opc)
+int Remov(tipoLista *l, int opc)
 {
-    tipoapontador p;
-    tipoapontador aux;
-    int teste;
-    int cont;
-    int pos;
-    int qtd;
+    tipoApontador P;
+    tipoApontador aux;
+    int test;
+    int posi;
+    int quant;
+    int conta;
 
-    //verifica se ha valor pra remover
-    if (l->primeiro == NULL)
+    // Verifica se a lista está vazia
+    if (l->prime == NULL)
     {
         gotoxy(8, 23);
         printf("                                                       ");
         gotoxy(8, 23);
-        printf("Nao ha nenhum valor para remover");
+        printf("Nenhum funcionario cadastrado!");
         getch();
         gotoxy(8, 23);
         printf("                                                       ");
-
         return 0;
     }
 
-    //remover no inicio
+    // Remoção do primeiro funcionário
     if (opc == 4)
     {
-
-        amostra(l->primeiro);
-
-
-        //verifica se realmente ira excluir
+        Mostrar_Tel(l->prime);
         gotoxy(8, 23);
-        printf("                                        ");
-        gotoxy(8, 23);
-        printf("Deseja realmente apagar os dados(Sim = 1/Nao = 0): ");
-        scanf("%d", &teste);
-        gotoxy(8, 23);
-        printf("                               ");
+        printf("Deseja realmente apagar os dados (Sim = 1/Nao = 0): ");
+        scanf("%d", &test);
 
-        //verifica se o dado escolhido e o primeiro, pois o tratamento sera diferente
-        if (teste == 1)
+        if (test == 1)
         {
-
-            if (l->primeiro->prox == NULL)
+            if (l->prime->proxi == NULL)
             {
-
-                free(l->primeiro);
-                l->primeiro = NULL;
-                l->ultimo = NULL;
+                free(l->prime);
+                l->prime = NULL;
+                l->ult = NULL;
             }
             else
             {
-                p = l->primeiro;
-                l->primeiro = p->prox;
-                free(p);
+                P = l->prime;
+                l->prime = P->proxi;
+                free(P);
             }
         }
-        else
-        {
-
-            return 0;
-        }
+        return 0;
     }
-    else if (opc == 5)//exclui no final
+
+    // Remoção do último funcionário
+    else if (opc == 5)
     {
-
-        if (l->primeiro->prox == NULL)
+        if (l->prime->proxi == NULL)
         {
-
-            free(l->primeiro);
-            l->primeiro = NULL;
-            l->ultimo = NULL;
+            free(l->prime);
+            l->prime = NULL;
+            l->ult = NULL;
         }
         else
         {
-            aux = l->primeiro;
-            p = aux->prox;
+            aux = l->prime;
+            P = aux->proxi;
 
-            while (p->prox != NULL)
+            // Percorre a lista até encontrar o penúltimo funcionário
+            while (P->proxi != NULL)
             {
-                p = p->prox;
-                aux = aux->prox;
+                aux = P;
+                P = P->proxi;
+            }
+
+            Mostrar_Tel(l->prime);
+            gotoxy(8, 23);
+            printf("Deseja realmente apagar os dados (Sim = 1/Nao = 0): ");
+            scanf("%d", &test);
+
+            if (test == 1) // Confirmação de exclusão
+            {
+                free(P);
+                aux->proxi = NULL;
+                l->ult = aux;
+            }
+
+            else
+            {
+
+                return 0;  // Caso o usuário opte por não excluir, a função termina
             }
         }
-
-        amostra(p);
-
-        gotoxy(8, 23);
-        printf("                                        ");
-        gotoxy(8, 23);
-        printf("Deseja realmente apagar os dados(Sim = 1/Nao = 0): ");
-        scanf("%d", &teste);
-        gotoxy(8, 23);
-        printf("                               ");
-
-        if (teste == 1)
-        {
-
-            free(p);
-            aux->prox = NULL;
-            l->ultimo = aux;
-        }
-        else
-        {
-            return 0;
-        }
+        return 0;  // Finaliza a função
     }
-    else if (opc == 6)//exclui na posicao desejada
+
+    // Remoção de um funcionário em uma posição específica
+    else if (opc == 6)
     {
         do
         {
             gotoxy(8, 23);
             printf("                                                       ");
             gotoxy(8, 23);
-            printf("Digite a posicao a ser apagada: ");
-            scanf("%d", &pos);
+            printf("Digite a posicao que deseja apagar: ");
+            scanf("%d", &posi);
             gotoxy(8, 23);
             printf("                                                       ");
 
-            qtd = contador(l);
+            quant = Contad(l); // Conta quantos funcionários existem na lista
 
-            if (pos > qtd || pos < 1)
+            // Verifica se a posição é válida
+            if (posi < 1 || posi > quant)
             {
                 gotoxy(8, 23);
                 printf("                                                       ");
                 gotoxy(8, 23);
-                printf("Posicao invalida");
+                printf("Posicao invalida. Tente novamente!");
                 getch();
                 gotoxy(8, 23);
                 printf("                                                       ");
             }
 
-        } while (pos > qtd || pos < 1);
+        } while (posi < 1 || posi > quant); // Repete até que uma posição válida seja fornecida
 
-        if (pos == 1)
+        // Se a posição for a primeira
+        if (posi == 1)
         {
-            amostra(l->primeiro);
+            Mostrar_Tel(l->prime); // Exibe os dados do primeiro funcionário
+            gotoxy(8, 23);
+            printf("Deseja realmente apagar os dados (Sim = 1/Nao = 0): ");
+            scanf("%d", &test);
 
-            gotoxy(8, 23);
-            printf("                                        ");
-            gotoxy(8, 23);
-            printf("Deseja realmente apagar os dados(Sim = 1/Nao = 0): ");
-            scanf("%d", &teste);
-            gotoxy(8, 23);
-            printf("                               ");
-
-            if (teste == 1)
+            if (test == 1) // Confirmação de exclusão
             {
-                p = l->primeiro;
-                l->primeiro = l->primeiro->prox;
-                free(p);
+                aux = l->prime;
+                l->prime = l->prime->proxi;
+                free(aux);
 
-                if (l->primeiro == NULL)
+                // Se a lista ficar vazia, ajusta o ponteiro do último
+                if (l->prime == NULL)
                 {
-                    l->ultimo = NULL;
+                    l->ult = NULL;
                 }
+
+                return 0;
             }
             else
             {
                 return 0;
             }
         }
+
+         // Se a posição for intermediária ou a última
         else
         {
-            aux = l->primeiro;
-            p = aux->prox;
-            cont = 1;
+            aux = l->prime;
+            P = aux->proxi;
+            conta = 1;
 
-            while (cont < pos - 1 && p != NULL)
+            // Avança até a posição desejada
+            while (conta < posi - 1 && P != NULL)
             {
-                cont++;
-                aux = p;
-                p = p->prox;
+                conta++;
+                aux = P;
+                P = P->proxi;
             }
 
-            if (p != NULL)
+            // Se encontrar a posição, remove o funcionário
+            if (P != NULL)
             {
-                amostra(p);
+                Mostrar_Tel(P);
+                gotoxy(8, 23);
+                printf("Deseja realmente apagar os dados (Sim = 1/Nao = 0): ");
+                scanf("%d", &test);
 
-                gotoxy(8, 23);
-                printf("                                        ");
-                gotoxy(8, 23);
-                printf("Deseja realmente apagar os dados(Sim = 1/Nao = 0): ");
-                scanf("%d", &teste);
-                gotoxy(8, 23);
-                printf("                               ");
-
-                if (teste == 1)
+                if (test == 1)
                 {
-                    aux->prox = p->prox;
-                    free(p);
+                    aux->proxi = P->proxi;
+                    free(P);
 
-                    if (aux->prox == NULL)
+                     // Se o último funcionário for removido, ajusta o ponteiro do último
+                    if (aux->proxi == NULL)
                     {
-                        l->ultimo = aux;
+                        l->ult = aux;
                     }
-                }
-                else
-                {
-                    return 0;
                 }
             }
         }
     }
+
+    // Finaliza a função
     return 0;
 }
 
-//funcao pra gravar o arquivo no folha.dat
-void gravarArquivo(tipolista *l)
+void gravArqui(tipoLista *l)
 {
-    FILE *arquivo = fopen("folha.dat", "wb"); // Abre o arquivo para escrita binária
+    FILE *arquivo = fopen("folha.dat", "wb"); // Abre ou cria um arquivo para escrita em modo binário
     if (arquivo == NULL)
     {
         gotoxy(8, 23);
-        printf("Erro ao abrir o arquivo!");
+        printf("Não foi possivel abrir o arquivo!");
         getch();
         return;
     }
 
-    tipoapontador p = l->primeiro;
-    while (p != NULL)
+    tipoApontador P = l->prime; // Inicia o ponteiro P no primeiro elemento da lista
+    while (P != NULL)
     {
-        fwrite(&(p->conteudo), sizeof(reg_funcionario), 1, arquivo);
-        p = p->prox;
+        fwrite(&(P->conte), sizeof(reg_funci), 1, arquivo); // Escreve os dados do funcionário no arquivo
+        P = P->proxi;
     }
 
-    fclose(arquivo);
+    fclose(arquivo); // Fecha o arquivo
 }
-//funcao para ler o arquivo folha.dat
-void lerArquivo(tipolista *l)
+
+void lerArqui(tipoLista *l)
 {
-    FILE *arquivo = fopen("folha.dat", "rb"); // Tenta abrir o arquivo para leitura binária
+    // Tenta criar o arquivo se não existir
+    FILE *arquivo = fopen("folha.dat", "rb");
     if (arquivo == NULL)
     {
-        // Se o arquivo não existir, cria um novo arquivo vazio
+
         arquivo = fopen("folha.dat", "wb");
         if (arquivo == NULL)
         {
             gotoxy(8, 23);
-            printf("Erro ao criar o arquivo!");
+            printf("Erro ao criar o arquivo!"); // Mensagem de erro se não for possível criar o arquivo
+            getch();
             getch();
             return;
         }
         fclose(arquivo); // Fecha o arquivo criado
 
-        // Reabre o arquivo agora no modo de leitura
         arquivo = fopen("folha.dat", "rb");
         if (arquivo == NULL)
         {
@@ -791,22 +739,22 @@ void lerArquivo(tipolista *l)
         }
     }
 
-    reg_funcionario cont;
-    while (fread(&cont, sizeof(reg_funcionario), 1, arquivo))
+    reg_funci conte;
+    while (fread(&conte, sizeof(reg_funci), 1, arquivo)) // Lê os dados do arquivo
     {
-        tipoapontador novo = (tipoapontador)malloc(sizeof(Tipoitem));
-        novo->conteudo = cont;
-        novo->prox = NULL;
+        tipoApontador novo = (tipoApontador)malloc(sizeof(tipoItem));
+        novo->conte = conte;
+        novo->proxi = NULL;
 
-        if (l->primeiro == NULL)
+        if (l->prime == NULL)
         {
-            l->primeiro = novo;
-            l->ultimo = novo;
+            l->prime = novo;
+            l->ult = novo;
         }
         else
         {
-            l->ultimo->prox = novo;
-            l->ultimo = novo;
+            l->ult->proxi = novo;
+            l->ult = novo;
         }
     }
 
@@ -816,129 +764,109 @@ void lerArquivo(tipolista *l)
 int main()
 {
 
-    int opcao;
+    int opc;
+    tipoLista lista;
+    lista.prime = NULL;
+    lista.ult = NULL;
 
-    tipolista l;
-
-    l.primeiro = NULL;
-    l.ultimo = NULL;
-
-    lerArquivo(&l);
+    lerArqui(&lista); // Lê os dados do arquivo e carrega na lista
 
     do
     {
-        // Construção da tela
-
-        tela();
-
+        // Exibe as opções disponíveis para o usuário
+        YaTela();
         gotoxy(29, 3);
-        printf("CADASTRO DE CLIENTES");
+        printf("CADASTRO DE FUNCIONARIOS");
 
         gotoxy(29, 5);
-        printf("1-Cadastrar no final da lista ");
+        printf("1 - Cadastrar no final da lista");
 
         gotoxy(29, 7);
-        printf("2-Cadastrar no comeco da lista ");
+        printf("2 - Cadastrar no inicio da lista");
 
         gotoxy(29, 9);
-        printf("3-Cadastrar em uma posicao da lista ");
+        printf("3 - Cadastrar em alguma posicao da lista ");
 
         gotoxy(29, 11);
-        printf("4-Remover no inicio da lista");
+        printf("4 - Remover do inicio da lista");
 
         gotoxy(29, 13);
-        printf("5-Remover no final da lista");
+        printf("5 - Remover do final da lista");
 
         gotoxy(29, 15);
-        printf("6-Remover em uma posicao da lista ");
+        printf("6 - Remover de alguma posicao da lista");
 
         gotoxy(29, 17);
-        printf("7-Alteracao do Cadastro de Funcionario");
+        printf("7 - Alterar dados");
 
         gotoxy(29, 19);
-        printf("8-Consultar");
+        printf("8 - Consultar funcionarios");
 
         gotoxy(29, 21);
-        printf("9-Sair");
+        printf("9 - Sair");
 
         gotoxy(8, 23);
-        printf("Digite o numero da opcao desejada: ");
+        printf("Digite a opcao desejada: ");
+        scanf("%d", &opc);
 
-        // Leitura de dados
-        gotoxy(43, 23);
-        scanf("%d", &opcao);
-
-        // Verificando se a opcao escolhida eh valida
-        if (opcao > 9 || opcao <= 0)
+        // Verifica se a opção está dentro dos limites válidos
+        if (opc > 9 || opc <= 0)
         {
+
             gotoxy(8, 23);
-            printf("                                        ");
+            printf("                                                              ");
             gotoxy(8, 23);
-            printf("Digite um valor valido (1 a 8)");
+            printf("Entrada invalida! Digite um numero entre 1 e 9.");
             getch();
             gotoxy(8, 23);
-            printf("                               ");
+            printf("                                                              ");
         }
-
-        // Trabalhando a opcao escolhida
-        switch (opcao)
+        else
         {
-        case 1:
-            cadastro(&l, opcao);
-            gravarArquivo(&l);
 
-            break;
-
-        case 2:
-            cadastro(&l, opcao);
-            gravarArquivo(&l);
-
-            break;
-
-        case 3:
-            cadastro(&l, opcao);
-            gravarArquivo(&l);
-
-            break;
-
-        case 4:
-            remover(&l, opcao);
-            gravarArquivo(&l);
-
-            break;
-
-        case 5:
-            remover(&l, opcao);
-            gravarArquivo(&l);
-
-            break;
-
-        case 6:
-            remover(&l, opcao);
-            gravarArquivo(&l);
-
-            break;
-
-        case 7:
-            alterar(&l);
-            gravarArquivo(&l);
-
-            break;
-
-        case 8:
-            listarFun(&l);
-            break;
-
-        case 9:
-            gravarArquivo(&l);
-
-        default:
-            break;
+            switch (opc)
+            {
+            case 1:
+                Cadast(&lista, opc); // Cadastra no final da lista
+                gravArqui(&lista); // Grava no arquivo
+                break;
+            case 2:
+                Cadast(&lista, opc); // Cadastra no início da lista
+                gravArqui(&lista); // Grava no arquivo
+                break;
+            case 3:
+                Cadast(&lista, opc); // Cadastra em uma posição específica
+                gravArqui(&lista); // Grava no arquivo
+                break;
+            case 4:
+                Remov(&lista, opc); // Remove do início da lista
+                gravArqui(&lista); // Grava no arquivo
+                break;
+            case 5:
+                Remov(&lista, opc); // Remove do final da lista
+                gravArqui(&lista); // Grava no arquivo
+                break;
+            case 6:
+                Remov(&lista, opc); // Remove de uma posição específica
+                gravArqui(&lista); // Grava no arquivo
+                break;
+            case 7:
+                Alterar_Dad(&lista); // Altera dados de um funcionário
+                gravArqui(&lista); // Grava no arquivo
+                break;
+            case 8:
+                Consult(&lista); // Consulta funcionários
+                break;
+            case 9:
+                gotoxy(8, 23);
+                printf("                                          ");
+                gotoxy(8, 23);
+                printf("Saindo...\n\n");
+                break;
+            }
         }
 
-    } while (opcao != 9);
+    } while (opc != 9); // Continua até que o usuário escolha sair
 
-    gotoxy(37, 25);
-
-    return 0;
+    return 0; // Finaliza o programa
 }
