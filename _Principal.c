@@ -1,4 +1,8 @@
+#include <conio.h>
+#include <stdio.h>
+#include <stdlib.h>
 
+#include "tela1.c"
 #include "Listas.c"
 
 int main()
