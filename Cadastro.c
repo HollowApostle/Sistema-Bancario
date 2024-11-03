@@ -203,7 +203,7 @@ int cadastro(tipolista *l, int opc)
             gotoxy(8, 23);
             printf("                                                       ");
             gotoxy(8, 23);
-            printf("Deseja cadastrar outro funcionario? (Sim = 1/Nao = 0): ");
+            printf("Deseja cadastrar outra conta? (Sim = 1/Nao = 0): ");
             scanf("%d", &teste);
             gotoxy(8, 23);
             printf("                                                       ");
