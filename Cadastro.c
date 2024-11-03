@@ -1,1 +1,214 @@
-bbbbbbbbbbbbbbbbbbbbb
+
+#include <conio.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "tela1.c"
+#include "Listas.c"
+
+int cadastro(tipolista *l, int opc)
+{
+
+    int teste;
+    int pos;
+    int qtd;
+    reg_funcionario cont;
+    tipoapontador p;
+    tipoapontador aux;
+    tipoapontador aux2;
+
+    // validacao de cadastrar novamente
+    do
+    {
+
+        tela();
+        tela_func();
+
+        // validacao para sair com o 0
+        do
+        {
+
+            gotoxy(8, 23);
+            printf("Digite \"0\" para sair");
+            gotoxy(50, 7);
+            printf("                 ");
+            gotoxy(50, 7);
+            scanf("%d", &cont.codigo);
+
+            if (cont.codigo == 0)
+            {
+
+                gotoxy(8, 23);
+                printf("Deseja realmente sair (Sim = 1/Nao = 0): ");
+                scanf("%d", &teste);
+                gotoxy(8, 23);
+                printf("                                            ");
+                gotoxy(8, 23);
+
+                if (teste == 1)
+                {
+                    return 0;
+                }
+            }
+
+            aux = pesquisa(l, cont.codigo); // chama funcao para ver se tem um codigo com aql valor
+
+            // caso nao tenha, ele ira retornar null e pedira entrada de dados novamente
+            if (aux != NULL)
+            {
+
+                gotoxy(8, 23);
+                printf("Digite um codigo nao digitado anteriormente");
+                getch();
+                gotoxy(8, 23);
+                printf("                                            ");
+            }
+
+        } while (aux != NULL || cont.codigo == 0);
+
+        // entrada de dados
+
+        gotoxy(8, 23);
+        printf("                                                   ");
+
+        gotoxy(50, 9);
+        fflush(stdin);
+        fgets(cont.banco, 50, stdin);
+
+        gotoxy(50, 11);
+        fflush(stdin);
+        fgets(cont.agencia, 10, stdin);
+
+        gotoxy(50, 13);
+        fflush(stdin);
+        fgets(cont.numero_conta, 20, stdin);
+
+        gotoxy(50, 15);
+        fflush(stdin);
+        fgets(cont.tipo_conta, 11, stdin);
+
+        gotoxy(50, 17);
+        fflush(stdin);
+        scanf("%f", &cont.vl_saldo);
+
+        gotoxy(50, 19);
+        scanf("%f", &cont.vl_limite);
+
+        gotoxy(8, 23);
+        printf("                                        ");
+        gotoxy(8, 23);
+        printf("Deseja gravar (Sim = 1/Nao = 0): ");
+        scanf("%d", &teste);
+        gotoxy(8, 23);
+        printf("                               ");
+
+        // verifica se deseja cadastrar outro funcionario
+        if (teste == 1)
+        {
+
+            // cria o no p
+
+            p = (tipoapontador)malloc(sizeof(Tipoitem));
+
+            p->prox = NULL;
+
+            p->conteudo = cont;
+
+            // adiciona no final
+            if (opc == 1)
+            {
+
+                if (l->primeiro == NULL)
+                {
+                    l->primeiro = p;
+                    l->ultimo = p;
+                }
+                else
+                {
+                    l->ultimo->prox = p;
+                    l->ultimo = p;
+                }
+            } // adiciona no inicio
+            else if (opc == 2)
+            {
+
+                if (l->primeiro == NULL)
+                {
+                    l->primeiro = p;
+                    l->ultimo = p;
+                }
+                else
+                {
+                    p->prox = l->primeiro;
+                    l->primeiro = p;
+                }
+            } // insere na posicao desejada
+            else if (opc == 3)
+            {
+                do
+                {
+                    gotoxy(8, 23);
+                    printf("                                                       ");
+                    gotoxy(8, 23);
+                    printf("Digite a posicao a ser inserida: ");
+                    scanf("%d", &pos);
+                    gotoxy(8, 23);
+                    printf("                                                       ");
+
+                    qtd = contador(l);
+
+                    if (pos == 1)
+                    {
+                        qtd = 1;
+
+                        if (l->primeiro == NULL)
+                        {
+                            l->primeiro = p;
+                            l->ultimo = p;
+                        }
+                        else
+                        {
+                            p->prox = l->primeiro;
+                            l->primeiro = p;
+                        }
+                    }
+                    else if (pos > qtd || pos < 1)
+                    {
+                        gotoxy(8, 23);
+                        printf("                                                       ");
+                        gotoxy(8, 23);
+                        printf("Posicao invalida");
+                        getch();
+                        gotoxy(8, 23);
+                        printf("                                                       ");
+                    }
+
+                } while (pos > qtd || pos < 1);
+
+                if (pos != 1)
+                {
+                    aux2 = l->primeiro;
+
+                    for (int x = 1; x <= pos - 2; x++)
+                    {
+                        aux2 = aux2->prox;
+                    }
+
+                    p->prox = aux2->prox;
+
+                    aux2->prox = p;
+                }
+            }
+
+            gotoxy(8, 23);
+            printf("                                                       ");
+            gotoxy(8, 23);
+            printf("Deseja cadastrar outro funcionario? (Sim = 1/Nao = 0): ");
+            scanf("%d", &teste);
+            gotoxy(8, 23);
+            printf("                                                       ");
+        }
+    } while (teste == 1);
+
+    return 0;
+}
