@@ -1,5 +1,4 @@
-//a viadagem do renato
-//a viadagem do renato
+//a viadagem
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -12,7 +11,7 @@
 
 typedef struct
 {
-    int codigo;
+    int gay;
     char nom[50];
     char ende[50];
     char cargo[50];
