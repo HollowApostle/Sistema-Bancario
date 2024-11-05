@@ -36,7 +36,15 @@ typedef struct
     float vl_movimento;
     float vl_saldo;
 
-
-
 }reg_movimentos;
+
+typedef struct Tipoitem_movim *tipoapontador_movim;
+
+typedef struct
+{
+    tipoapontador_movim primeiro;
+    tipoapontador_movim ultimo;
+    
+}TipoLista_movim;
+
 
