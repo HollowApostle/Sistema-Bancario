@@ -4,9 +4,7 @@ Data.....: 26/09/24
 Objetivo.: código base para criar telas
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <windows.h>
+#include "Funcoes.h"
 
 // Função para posicionar o cursor na tela em uma posição (x, y)
 void gotoxy(int x, int y) {
@@ -175,4 +173,30 @@ void tela_fim() {
 
     // Imprime a última linha da tela com borda
     imprimir_ultm_linha(24);
+}
+
+void tela_conta()
+{
+    tela();
+
+    gotoxy(30, 7);
+    printf("codigo..............: ");
+
+    gotoxy(30, 9);
+    printf("1.Banco.............: ");
+
+    gotoxy(30, 11);
+    printf("2.Agencia...........: ");
+
+    gotoxy(30, 13);
+    printf("3.Numero da conta...: ");
+
+    gotoxy(30, 15);
+    printf("4.Tipo da conta.....: ");
+
+    gotoxy(30, 17);
+    printf("5.Saldo na conta....: ");
+
+    gotoxy(30, 19);
+    printf("6.Limite de credito.: ");
 }

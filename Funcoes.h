@@ -4,7 +4,7 @@
 #include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <windows.h>
 
 typedef struct
 {
@@ -15,6 +15,7 @@ typedef struct
     char tipo_conta[20];
     double vl_saldo;
     double vl_limite;
+    char status[10];
 
 } reg_funcionario;
 
@@ -25,6 +26,7 @@ typedef struct Tipoitem
 
     reg_funcionario conteudo;
     tipoapontador prox;
+
 } Tipoitem;
 
 typedef struct
@@ -55,7 +57,23 @@ typedef struct
 
 }TipoLista_movim;
 
+void gotoxy(int x, int y);
 
+void tela();
+
+void tela_fim();
+
+void tela_conta();
+
+void telaCadastro();
+
+void gravarArquivo(tipolista *l);
+
+void lerArquivo(tipolista *l);
+
+int cadastro(tipolista *l, int opc);
+
+void telaCadastro();
 
 #endif
 
