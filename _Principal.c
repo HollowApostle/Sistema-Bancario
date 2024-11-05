@@ -1,6 +1,5 @@
 
-#include "tela1.c"
-#include "Listas.c"
+#include "Funcoes.h"
 
 int main()
 {
@@ -20,35 +19,23 @@ int main()
 
         tela();
 
-        gotoxy(29, 3);
-        printf("CADASTRO DE CLIENTES");
+        gotoxy(32, 3);
+        printf("SISTEMA BANCARIO");
 
         gotoxy(29, 5);
-        printf("1-Cadastrar no final da lista ");
-
-        gotoxy(29, 7);
-        printf("2-Cadastrar no comeco da lista ");
-
-        gotoxy(29, 9);
-        printf("3-Cadastrar em uma posicao da lista ");
+        printf("1-Cadastrar conta");
 
         gotoxy(29, 11);
-        printf("4-Remover no inicio da lista");
-
-        gotoxy(29, 13);
-        printf("5-Remover no final da lista");
-
-        gotoxy(29, 15);
-        printf("6-Remover em uma posicao da lista ");
+        printf("2-Remover conta");
 
         gotoxy(29, 17);
-        printf("7-Alteracao do Cadastro de Funcionario");
+        printf("3-Alteracao do Cadastro de conta");
 
         gotoxy(29, 19);
-        printf("8-Consultar");
+        printf("4-Consultar");
 
         gotoxy(29, 21);
-        printf("9-Sair");
+        printf("5-Sair");
 
         gotoxy(8, 23);
         printf("Digite o numero da opcao desejada: ");
@@ -73,52 +60,13 @@ int main()
         switch (opcao)
         {
         case 1:
-            cadastro(&l, opcao);
+            telaCadastro();
             gravarArquivo(&l);
 
             break;
 
-        case 2:
-            cadastro(&l, opcao);
-            gravarArquivo(&l);
-
-            break;
-
-        case 3:
-            cadastro(&l, opcao);
-            gravarArquivo(&l);
-
-            break;
-
-        case 4:
-            remover(&l, opcao);
-            gravarArquivo(&l);
-
-            break;
 
         case 5:
-            remover(&l, opcao);
-            gravarArquivo(&l);
-
-            break;
-
-        case 6:
-            remover(&l, opcao);
-            gravarArquivo(&l);
-
-            break;
-
-        case 7:
-            alterar(&l);
-            gravarArquivo(&l);
-
-            break;
-
-        case 8:
-            listarFun(&l);
-            break;
-
-        case 9:
             gravarArquivo(&l);
 
         default:

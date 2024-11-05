@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "tela1.c"
+#include "tela.c"
 
 typedef struct
 {
