@@ -1,3 +1,8 @@
+#include <conio.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+
 typedef struct
 {
     int codigo;
@@ -44,7 +49,7 @@ typedef struct
 {
     tipoapontador_movim primeiro;
     tipoapontador_movim ultimo;
-    
+
 }TipoLista_movim;
 
 
