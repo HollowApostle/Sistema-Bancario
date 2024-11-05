@@ -1,6 +1,4 @@
-
-#include "tela1.c"
-#include "Listas.c"
+#include "Funcoes.h"
 
 int main()
 {

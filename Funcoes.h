@@ -1,3 +1,6 @@
+#ifndef FUNCOES_H
+#define FUNCOES_H
+
 #include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -52,4 +55,7 @@ typedef struct
 
 }TipoLista_movim;
 
+
+
+#endif
 
