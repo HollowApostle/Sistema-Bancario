@@ -7,7 +7,7 @@ typedef struct
     char tipo_conta[20];
     double vl_saldo;
     double vl_limite;
-
+    char status[10];
 } reg_funcionario;
 
 typedef struct Tipoitem *tipoapontador;

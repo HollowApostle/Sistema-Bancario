@@ -27,7 +27,7 @@ int main()
         printf("CADASTRO DE CLIENTES");
 
         gotoxy(29, 5);
-        printf("1-Cadastrar no final da lista ");
+        printf("1-Cadastrar conta");
 
         gotoxy(29, 7);
         printf("2-Cadastrar no comeco da lista ");
