@@ -60,11 +60,15 @@ int main()
         switch (opcao)
         {
         case 1:
-            telaCadastro();
+            telaCadastro(&l);
             gravarArquivo(&l);
 
             break;
 
+        case 2:
+
+            TelaRemover(&l);
+            break;
 
         case 5:
             gravarArquivo(&l);

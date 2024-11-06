@@ -73,7 +73,15 @@ void lerArquivo(tipolista *l);
 
 int cadastro(tipolista *l, int opc);
 
-void telaCadastro();
+int remover(tipolista *l, int opc);
+
+void TelaRemover(tipolista *l);
+
+int contador(tipolista *l);
+
+void amostra(tipoapontador p);
+
+tipoapontador pesquisa(tipolista *l, int cod);
 
 #endif
 

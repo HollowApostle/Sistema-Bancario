@@ -17,7 +17,7 @@ int cadastro(tipolista *l, int opc)
     {
 
         tela();
-        tela_func();
+        tela_conta();
 
         // validacao para sair com o 0
         do
