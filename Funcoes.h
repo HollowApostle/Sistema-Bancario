@@ -1,10 +1,10 @@
 #ifndef FUNCOES_H
 #define FUNCOES_H
 
-#include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
+#include <conio.h>
 
 typedef struct
 {
@@ -73,7 +73,15 @@ void lerArquivo(tipolista *l);
 
 int cadastro(tipolista *l, int opc);
 
-void telaCadastro();
+int remover(tipolista *l, int opc);
+
+void TelaRemover(tipolista *l);
+
+int contador(tipolista *l);
+
+void amostra(tipoapontador p);
+
+tipoapontador pesquisa(tipolista *l, int cod);
 
 #endif
 

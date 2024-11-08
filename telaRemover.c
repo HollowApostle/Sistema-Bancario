@@ -1,60 +1,62 @@
 #include "Funcoes.h"
 
-void telaCadastro(tipolista *l)
+void TelaRemover(tipolista *l)
 {
+
     int opcao;
 
     lerArquivo(l);
 
     do
     {
-        // Construção da tela
 
         tela();
 
         gotoxy(29, 3);
-        printf("CADASTRO DE CLIENTES");
+        printf("REMOVER CONTAS");
 
         gotoxy(29, 5);
-        printf("1-Cadastrar no final da lista ");
+        printf("1 - Remover do final da lista ");
 
         gotoxy(29, 7);
-        printf("2-Cadastrar no comeco da lista ");
+        printf("2 - Remover do inicio da lista ");
 
         gotoxy(29, 9);
-        printf("3-Cadastrar em uma posicao da lista ");
-        // Leitura de dados
+        printf("3 - Remover de alguma posicao da lista ");
+
+        gotoxy(29, 11);
+        printf("4 - Sair ");
+
         gotoxy(43, 23);
         scanf("%d", &opcao);
 
-        // Verificando se a opcao escolhida eh valida
-        if (opcao > 9 || opcao <= 0)
+        if (opcao > 4 || opcao <= 0)
         {
             gotoxy(8, 23);
             printf("                                        ");
             gotoxy(8, 23);
-            printf("Digite um valor valido (1 a 8)");
+            printf("Digite um valor valido (1 a 4)");
             getch();
             gotoxy(8, 23);
             printf("                               ");
         }
-        // Trabalhando a opcao escolhida
+
         switch (opcao)
         {
         case 1:
-            cadastro(l, opcao);
+            remover(l, opcao);
             gravarArquivo(l);
 
             break;
 
         case 2:
-            cadastro(l, opcao);
+            remover(l, opcao);
             gravarArquivo(l);
 
             break;
 
         case 3:
-            cadastro(l, opcao);
+            remover(l, opcao);
             gravarArquivo(l);
 
             break;
