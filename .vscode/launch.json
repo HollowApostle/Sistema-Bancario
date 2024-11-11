@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/artur/Sistema-Bancario/Sistema-Bancario",
-      "program": "c:/Users/artur/Sistema-Bancario/Sistema-Bancario/build/Debug/outDebug",
+      "cwd": "c:/Users/Laboratorio/Sistema_Bancario/Sistema-Bancario",
+      "program": "c:/Users/Laboratorio/Sistema_Bancario/Sistema-Bancario/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
