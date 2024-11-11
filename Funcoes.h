@@ -1,10 +1,10 @@
 #ifndef FUNCOES_H
 #define FUNCOES_H
 
-#include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
+#include <conio.h>
 
 typedef struct
 {

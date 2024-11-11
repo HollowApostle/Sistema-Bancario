@@ -15,13 +15,13 @@ void telaCadastro(tipolista *l)
         gotoxy(29, 3);
         printf("CADASTRO DE CLIENTES");
 
-        gotoxy(29, 5);
+        gotoxy(29, 11);
         printf("1-Cadastrar no final da lista ");
 
-        gotoxy(29, 7);
+        gotoxy(29, 13);
         printf("2-Cadastrar no comeco da lista ");
 
-        gotoxy(29, 9);
+        gotoxy(29, 15);
         printf("3-Cadastrar em uma posicao da lista ");
         // Leitura de dados
         gotoxy(43, 23);
