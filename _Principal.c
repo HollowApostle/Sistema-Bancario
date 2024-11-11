@@ -22,19 +22,19 @@ int main()
         gotoxy(32, 3);
         printf("SISTEMA BANCARIO");
 
-        gotoxy(29, 5);
+        gotoxy(29, 9);
         printf("1-Cadastrar conta");
 
         gotoxy(29, 11);
         printf("2-Remover conta");
 
-        gotoxy(29, 17);
+        gotoxy(29, 13);
         printf("3-Alteracao do Cadastro de conta");
 
-        gotoxy(29, 19);
+        gotoxy(29, 15);
         printf("4-Consultar");
 
-        gotoxy(29, 21);
+        gotoxy(29, 17);
         printf("5-Sair");
 
         gotoxy(8, 23);
