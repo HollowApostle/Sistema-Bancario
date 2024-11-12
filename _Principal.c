@@ -70,8 +70,9 @@ int main()
             TelaRemover(&l);
             break;
 
-        case 5:
-            gravarArquivo(&l);
+        case 4:
+
+           consultar(&l);
 
         default:
             break;
