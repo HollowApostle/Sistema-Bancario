@@ -15,16 +15,16 @@ void TelaRemover(tipolista *l)
         gotoxy(29, 3);
         printf("REMOVER CONTAS");
 
-        gotoxy(29, 5);
+        gotoxy(29, 8);
         printf("1 - Remover do final da lista ");
 
-        gotoxy(29, 7);
+        gotoxy(29, 10);
         printf("2 - Remover do inicio da lista ");
 
-        gotoxy(29, 9);
+        gotoxy(29, 12);
         printf("3 - Remover de alguma posicao da lista ");
 
-        gotoxy(29, 11);
+        gotoxy(29, 14);
         printf("4 - Sair ");
 
         gotoxy(43, 23);
