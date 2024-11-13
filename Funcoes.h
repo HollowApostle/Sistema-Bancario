@@ -81,6 +81,8 @@ int contador(tipolista *l);
 
 void amostra(tipoapontador p);
 
+int consultar(tipolista *l);
+
 tipoapontador pesquisa(tipolista *l, int cod);
 
 #endif
