@@ -72,13 +72,17 @@ int main()
 
         case 4:
 
-           consultar(&l);
+            consultar(&l);
+
+        case 5:
+
+            break;
 
         default:
             break;
         }
 
-    } while (opcao != 9);
+    } while (opcao != 5);
 
     gotoxy(37, 25);
 

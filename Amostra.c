@@ -19,8 +19,8 @@ void amostra(tipoapontador p)
     printf("%s", p->conteudo.tipo_conta);
 
     gotoxy(50, 17);
-    printf("%.2f", p->conteudo.vl_saldo);
+    printf("%.2lf", p->conteudo.vl_saldo);
 
     gotoxy(50, 19);
-    printf("%.2f", p->conteudo.vl_limite);
+    printf("%.2lf", p->conteudo.vl_limite);
 }

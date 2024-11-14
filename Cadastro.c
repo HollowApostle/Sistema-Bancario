@@ -25,9 +25,9 @@ int cadastro(tipolista *l, int opc)
 
             gotoxy(8, 23);
             printf("Digite \"0\" para sair");
-            gotoxy(50, 7);
+            gotoxy(51, 7);
             printf("                 ");
-            gotoxy(50, 7);
+            gotoxy(51, 7);
             scanf("%d", &cont.codigo);
 
             if (cont.codigo == 0)
@@ -63,31 +63,32 @@ int cadastro(tipolista *l, int opc)
 
         // entrada de dados
 
+        getchar();
         gotoxy(8, 23);
         printf("                                                   ");
 
-        gotoxy(50, 9);
+        gotoxy(51, 9);
         fflush(stdin);
         fgets(cont.banco, 50, stdin);
 
-        gotoxy(50, 11);
+        gotoxy(51, 11);
         fflush(stdin);
         fgets(cont.agencia, 10, stdin);
 
-        gotoxy(50, 13);
+        gotoxy(51, 13);
         fflush(stdin);
         fgets(cont.numero_conta, 20, stdin);
 
-        gotoxy(50, 15);
+        gotoxy(51, 15);
         fflush(stdin);
         fgets(cont.tipo_conta, 11, stdin);
 
-        gotoxy(50, 17);
+        gotoxy(51, 17);
         fflush(stdin);
-        scanf("%f", &cont.vl_saldo);
+        scanf("%lf", &cont.vl_saldo);
 
-        gotoxy(50, 19);
-        scanf("%f", &cont.vl_limite);
+        gotoxy(51, 19);
+        scanf("%lf", &cont.vl_limite);
 
         gotoxy(8, 23);
         printf("                                        ");
