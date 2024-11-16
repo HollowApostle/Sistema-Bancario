@@ -50,6 +50,15 @@ typedef struct
 
 typedef struct Tipoitem_movim *tipoapontador_movim;
 
+typedef struct Tipoitem_movim
+{
+
+    reg_movimentos conteudo;
+    tipoapontador_movim prox;
+    tipoapontador_movim ant;
+
+} Tipoitem_movim;
+
 typedef struct
 {
     tipoapontador_movim primeiro;
@@ -82,6 +91,8 @@ int contador(tipolista *l);
 void amostra(tipoapontador p);
 
 int consultar(tipolista *l);
+
+float validarNum(char *mensagem, int x, int y);
 
 tipoapontador pesquisa(tipolista *l, int cod);
 

@@ -23,17 +23,20 @@ void telaCadastro(tipolista *l)
 
         gotoxy(29, 15);
         printf("3-Cadastrar em uma posicao da lista ");
+
+        gotoxy(29, 15);
+        printf("4-sair ");
         // Leitura de dados
-        gotoxy(43, 23);
-        scanf("%d", &opcao);
+
+        opcao = validarNum("Digite o numero da opcao desejada: ", 8, 23);
 
         // Verificando se a opcao escolhida eh valida
-        if (opcao > 9 || opcao <= 0)
+        if (opcao > 4 || opcao <= 0)
         {
             gotoxy(8, 23);
             printf("                                        ");
             gotoxy(8, 23);
-            printf("Digite um valor valido (1 a 8)");
+            printf("Digite um valor valido (1 a 4)");
             getch();
             gotoxy(8, 23);
             printf("                               ");

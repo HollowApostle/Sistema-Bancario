@@ -7,6 +7,10 @@ int main()
     int opcao;
 
     tipolista l;
+    TipoLista_movim m;
+
+    m.primeiro = NULL;
+    m.ultimo = NULL;
 
     l.primeiro = NULL;
     l.ultimo = NULL;
@@ -16,6 +20,8 @@ int main()
     do
     {
         // Construção da tela
+
+        opcao = 0;
 
         tela();
 
@@ -37,12 +43,9 @@ int main()
         gotoxy(29, 17);
         printf("5-Sair");
 
-        gotoxy(8, 23);
-        printf("Digite o numero da opcao desejada: ");
 
         // Leitura de dados
-        gotoxy(43, 23);
-        scanf("%d", &opcao);
+        opcao = validarNum("Digite o numero da opcao desejada: ", 8, 23);
 
         // Verificando se a opcao escolhida eh valida
         if (opcao > 9 || opcao <= 0)
