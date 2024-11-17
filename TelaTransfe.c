@@ -45,7 +45,7 @@ void tela_transferencia() {
     gotoxy(50, 10);
     printf("Tipo da conta..: ");
     gotoxy(50, 11);
-    printf("Saldo.........: ");
+    printf("Saldo..........: ");
     gotoxy(50, 12);
     printf("Limite.........: ");
     gotoxy(50, 13);
