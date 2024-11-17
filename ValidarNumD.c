@@ -1,6 +1,6 @@
 #include "Funcoes.h"
 
-float validarNum(char *mensagem, int x, int y)
+double validarNumD(char *mensagem, int x, int y)
 {
     char buffer[50];
     float valor;
@@ -9,7 +9,7 @@ float validarNum(char *mensagem, int x, int y)
     do
     {
         gotoxy(x, y);
-        printf("                                      ");
+        printf("                                                    ");
         gotoxy(x, y);
         printf("%s", mensagem);
 
@@ -17,7 +17,7 @@ float validarNum(char *mensagem, int x, int y)
 
         fgets(buffer, sizeof(buffer), stdin);
 
-        resultado = sscanf(buffer, "%f", &valor); // Converte a string para float
+        resultado = sscanf(buffer, "%lf", &valor); // Converte a string para double
 
         size_t length = strlen(buffer);
 

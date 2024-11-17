@@ -5,14 +5,37 @@ void movimCreDeb(TipoLista_movim *m, tipolista *l)
     int codigo;
     tipoapontador aux;
     reg_movimentos cont;
+    int tp_movim;
+    double saldo;
+    double restante;
     int resultado;
+    int confirmacao;
 
     TelaCadMovim(m);
+    do
+    {
+        gotoxy(54, 7);
+        printf("              ");
+        gotoxy(54, 7);
+        scanf("%d", &codigo);
 
-    gotoxy(54, 7);
-    scanf("%d", &codigo);
+        cont.codigo_conta = codigo;
 
-    aux = pesquisa(l, codigo);
+        aux = pesquisa(l, codigo);
+
+        if (aux == NULL)
+        {
+
+            gotoxy(8, 23);
+            printf("                                                     ");
+            gotoxy(8, 23);
+            printf("Conta nao encontrada ou inexistente");
+            getch();
+            gotoxy(8, 23);
+            printf("                                                     ");
+        }
+
+    } while (aux == NULL);
 
     gotoxy(54, 8);
     printf("%s", aux->conteudo.agencia);
@@ -24,19 +47,21 @@ void movimCreDeb(TipoLista_movim *m, tipolista *l)
     printf("%s", aux->conteudo.tipo_conta);
 
     gotoxy(54, 11);
-    printf("%lf", aux->conteudo.vl_saldo);
+    printf("%.2lf", aux->conteudo.vl_saldo);
 
     gotoxy(54, 12);
-    printf("%lf", aux->conteudo.vl_limite);
+    printf("%.2lf", aux->conteudo.vl_limite);
 
     gotoxy(54, 13);
-    printf("%lf", aux->conteudo.vl_limite + aux->conteudo.vl_saldo);
-
-    gotoxy(8, 23);
-    printf("Data da Movimentacao (DD/MM/YYYY)");
+    printf("%.2lf", aux->conteudo.vl_limite + aux->conteudo.vl_saldo);
 
     do
     {
+
+        gotoxy(8, 23);
+        printf("Data da Movimentacao (DD/MM/YYYY)");
+        gotoxy(54, 15);
+        printf("                      ");
         gotoxy(54, 15);
         getchar();
         fflush(stdin);
@@ -48,7 +73,7 @@ void movimCreDeb(TipoLista_movim *m, tipolista *l)
         {
 
             gotoxy(8, 23);
-            printf("                                   ");
+            printf("                                                     ");
 
             gotoxy(8, 23);
             printf("Data da Movimentacao Invalida. Formato: DD/MM/YYYY");
@@ -58,7 +83,111 @@ void movimCreDeb(TipoLista_movim *m, tipolista *l)
         }
 
     } while (resultado != 1);
+    do
+    {
+        gotoxy(8, 23);
+        printf("                                   ");
+        gotoxy(8, 23);
+        printf("Utilizar.: 1=Debito / 2=Credito");
 
-    gotoxy(8, 23);
-    printf("                                   ");
+        gotoxy(54, 16);
+        printf("                       ");
+        gotoxy(54, 16);
+        scanf("%d", &tp_movim);
+
+        gotoxy(8, 23);
+        printf("                                   ");
+        gotoxy(8, 23);
+
+        if (tp_movim != 1 && tp_movim != 2)
+        {
+            gotoxy(8, 23);
+            printf("                                   ");
+            gotoxy(8, 23);
+            printf("Tipo de movimentacao Invalido");
+            getch();
+            gotoxy(8, 23);
+            printf("                                   ");
+        }
+
+        if (tp_movim == 1)
+        {
+            strcpy(cont.tp_movimento, "Debito");
+        }
+
+        if (tp_movim == 2)
+        {
+            strcpy(cont.tp_movimento, "Credito");
+        }
+
+        gotoxy(8, 23);
+        printf("                    ");
+
+    } while (tp_movim != 1 && tp_movim != 2);
+
+    gotoxy(54, 17);
+    printf("                        ");
+    gotoxy(54, 17);
+    getchar();
+    fflush(stdin);
+    fgets(cont.ds_favorecido, 50, stdin);
+
+    saldo = aux->conteudo.vl_limite + aux->conteudo.vl_saldo;
+
+    do
+    {
+        cont.vl_movimento = validarNum("4-Valor movimentacao...: ", 29, 18);
+
+        if (tp_movim == 1 && cont.vl_movimento > saldo)
+        {
+            gotoxy(8, 23);
+            printf("                                                  ");
+            gotoxy(8, 23);
+            printf("Valor Movimentacao Invalido ou Saldo Insuficiente");
+            getch();
+            gotoxy(8, 23);
+            printf("                                                  ");
+            gotoxy(8, 23);
+        }
+    } while (tp_movim == 1 && cont.vl_movimento > saldo);
+
+    if (tp_movim == 1)
+    { // Débito
+
+        if (cont.vl_movimento <= saldo)
+        {
+
+            aux->conteudo.vl_saldo -= cont.vl_movimento;
+        }
+        else
+        {
+
+            restante = cont.vl_movimento - saldo;
+            aux->conteudo.vl_saldo = 0;
+            aux->conteudo.vl_limite -= restante;
+        }
+    }
+    else
+    { // Crédito
+
+        aux->conteudo.vl_saldo += cont.vl_movimento;
+    }
+
+    cont.vl_saldo = aux->conteudo.vl_limite + aux->conteudo.vl_saldo;
+
+    gotoxy(54, 19);
+    printf("%.2f", cont.vl_saldo);
+
+    getch();
+
+    if (m->ultimo == NULL)
+    {
+        cont.sequencial = 1;
+    }
+    else
+    {
+        cont.sequencial = m->ultimo->conteudo.sequencial + 1;
+    }
+
+    inserirMovim(m, cont);
 }

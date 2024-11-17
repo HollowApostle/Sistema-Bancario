@@ -110,5 +110,7 @@ void movimCreDeb(TipoLista_movim *m, tipolista *l);
 
 int validar_data(const char* data);
 
+double validarNumD(char *mensagem, int x, int y);
+
 #endif
 
