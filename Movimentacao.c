@@ -5,6 +5,7 @@ void movimCreDeb(TipoLista_movim *m, tipolista *l)
     int codigo;
     tipoapontador aux;
     reg_movimentos cont;
+    int resultado;
 
     TelaCadMovim(m);
 
@@ -34,22 +35,29 @@ void movimCreDeb(TipoLista_movim *m, tipolista *l)
     gotoxy(8, 23);
     printf("Data da Movimentacao (DD/MM/YYYY)");
 
-    gotoxy(54, 15);
-    getchar();
-    fflush(stdin);
-    fgets(cont.dt_movimento, 11, stdin);
-
-    if (validar_data(cont.dt_movimento) != 1)
+    do
     {
+        gotoxy(54, 15);
+        getchar();
+        fflush(stdin);
+        fgets(cont.dt_movimento, 11, stdin);
 
-        gotoxy(8, 23);
-        printf("                                   ");
+        resultado = validar_data(cont.dt_movimento);
 
-        gotoxy(8, 23);
-        printf("pobrema grave");
+        if (resultado != 1)
+        {
 
-        getch();
-    }
+            gotoxy(8, 23);
+            printf("                                   ");
+
+            gotoxy(8, 23);
+            printf("Data da Movimentacao Invalida. Formato: DD/MM/YYYY");
+            getch();
+            gotoxy(8, 23);
+            printf("                                                               ");
+        }
+
+    } while (resultado != 1);
 
     gotoxy(8, 23);
     printf("                                   ");
