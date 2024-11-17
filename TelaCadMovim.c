@@ -1,9 +1,7 @@
 #include "Funcoes.h"
 
-void TelaCadMovim(TipoLista_movim *l, tipolista *k)
+void TelaCadMovim(TipoLista_movim *l)
 {
-    int codigo;
-    tipoapontador aux;
 
     tela();
 
@@ -40,28 +38,30 @@ void TelaCadMovim(TipoLista_movim *l, tipolista *k)
     gotoxy(29, 13);
     printf("Total Saldo + Limite...: ");
 
-    gotoxy(54, 7);
-    scanf("%d", &codigo);
 
-    aux = pesquisa(k, codigo);
 
-    gotoxy(54, 8);
-    printf("%s", aux->conteudo.agencia);
 
-    gotoxy(54, 9);
-    printf("%s", aux->conteudo.numero_conta);
+    gotoxy(29, 16);
+    printf("1-Data da movimentacao.:  ");
 
-    gotoxy(54, 10);
-    printf("%s", aux->conteudo.tipo_conta);
+    gotoxy(29, 17);
+    printf("2-Tipo de movimentacao.: ");
 
-    gotoxy(54, 11);
-    printf("%lf", aux->conteudo.vl_saldo);
+    gotoxy(29, 18);
+    printf("3-Favorecido...........: ");
 
-    gotoxy(54, 12);
-    printf("%lf", aux->conteudo.vl_limite);
+    gotoxy(29, 19);
+    printf("4-Valor movimentacao...: ");
 
-    gotoxy(54, 13);
-    printf("%lf", aux->conteudo.vl_limite + aux->conteudo.vl_saldo);
+    gotoxy(29, 20);
+    printf("5-Novo saldo...........: ");
 
-    getch();
+
+
+
+   
+
+
+
+    
 }

@@ -100,13 +100,15 @@ void inserirMovim(TipoLista_movim *l, reg_movimentos cont);
 
 tipoapontador pesquisa(tipolista *l, int cod);
 
-void TelaCadMovim(TipoLista_movim *l, tipolista *k);
+void TelaCadMovim(TipoLista_movim *l);
 
 void TelaContas(tipolista *l);
 
 void TelaMovim(TipoLista_movim *m, tipolista *l);
 
 void movimCreDeb(TipoLista_movim *m, tipolista *l);
+
+int validar_data(const char* data);
 
 #endif
 
