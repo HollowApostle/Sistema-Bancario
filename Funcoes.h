@@ -72,9 +72,11 @@ void tela();
 
 void tela_fim();
 
+void imprimir_linha(int linha);
+
 void tela_conta();
 
-void telaCadastro();
+void telaCadastro(tipolista *l);
 
 void gravarArquivo(tipolista *l);
 
@@ -94,7 +96,17 @@ int consultar(tipolista *l);
 
 float validarNum(char *mensagem, int x, int y);
 
+void inserirMovim(TipoLista_movim *l, reg_movimentos cont);
+
 tipoapontador pesquisa(tipolista *l, int cod);
+
+void TelaCadMovim(TipoLista_movim *l, tipolista *k);
+
+void TelaContas(tipolista *l);
+
+void TelaMovim(TipoLista_movim *m, tipolista *l);
+
+void movimCreDeb(TipoLista_movim *m, tipolista *l);
 
 #endif
 

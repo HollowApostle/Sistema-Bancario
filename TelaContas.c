@@ -1,55 +1,44 @@
-
 #include "Funcoes.h"
 
-int main()
-{
 
-    int opcao;
+void TelaContas(tipolista *l){
 
-    tipolista l;
-    TipoLista_movim m;
-
-    m.primeiro = NULL;
-    m.ultimo = NULL;
-
-    l.primeiro = NULL;
-    l.ultimo = NULL;
-
-    lerArquivo(&l);
-
-    do
-    {
-        // Construção da tela
-
-        opcao = 0;
+    int opcao = 0;
+    
+    do{       
+        
 
         tela();
 
         gotoxy(32, 3);
         printf("SISTEMA BANCARIO");
 
+        gotoxy(29, 9);
+        printf("1-Cadastrar conta");
 
         gotoxy(29, 11);
-        printf("1-Contas bancarias");
+        printf("2-Remover conta");
 
         gotoxy(29, 13);
-        printf("2-Movimentacao bancaria");
+        printf("3-Alteracao do Cadastro de conta");
 
         gotoxy(29, 15);
-        printf("4-Sair do programa");
+        printf("4-Consultar contas");
 
+        gotoxy(29, 17);
+        printf("5-Retornar ao menu anterior");
 
 
         // Leitura de dados
         opcao = validarNum("Digite o numero da opcao desejada: ", 8, 23);
 
         // Verificando se a opcao escolhida eh valida
-        if (opcao > 3 || opcao <= 0)
+        if (opcao > 5 || opcao <= 0)
         {
             gotoxy(8, 23);
             printf("                                        ");
             gotoxy(8, 23);
-            printf("Digite um valor valido (1 a 3)");
+            printf("Digite um valor valido (1 a 5)");
             getch();
             gotoxy(8, 23);
             printf("                               ");
@@ -59,19 +48,19 @@ int main()
         switch (opcao)
         {
         case 1:
-            TelaContas(&l);
-            gravarArquivo(&l);
+            telaCadastro(l);
+            gravarArquivo(l);
 
             break;
 
         case 2:
 
-            TelaMovim(&m, &l);
+            TelaRemover(l);
             break;
 
         case 4:
 
-            consultar(&l);
+            consultar(l);
 
         case 5:
 
@@ -85,5 +74,4 @@ int main()
 
     gotoxy(37, 25);
 
-    return 0;
 }
