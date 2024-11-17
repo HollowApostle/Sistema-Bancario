@@ -41,19 +41,19 @@ void TelaCadMovim(TipoLista_movim *l)
 
 
 
-    gotoxy(29, 16);
+    gotoxy(29, 15);
     printf("1-Data da movimentacao.:  ");
 
-    gotoxy(29, 17);
+    gotoxy(29, 16);
     printf("2-Tipo de movimentacao.: ");
 
-    gotoxy(29, 18);
+    gotoxy(29, 17);
     printf("3-Favorecido...........: ");
 
-    gotoxy(29, 19);
+    gotoxy(29, 18);
     printf("4-Valor movimentacao...: ");
 
-    gotoxy(29, 20);
+    gotoxy(29, 19);
     printf("5-Novo saldo...........: ");
 
 
