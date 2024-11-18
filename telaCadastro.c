@@ -24,7 +24,7 @@ void telaCadastro(tipolista *l)
         gotoxy(29, 15);
         printf("3-Cadastrar em uma posicao da lista ");
 
-        gotoxy(29, 15);
+        gotoxy(29, 17);
         printf("4-sair ");
         // Leitura de dados
 
