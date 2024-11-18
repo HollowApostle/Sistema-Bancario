@@ -112,5 +112,7 @@ int validar_data(const char* data);
 
 double validarNumD(char *mensagem, int x, int y);
 
+void tela_transferencia(tipolista *l);
+
 #endif
 
