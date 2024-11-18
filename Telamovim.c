@@ -51,6 +51,9 @@ void TelaMovim(TipoLista_movim *m, tipolista *l){
             break;
 
         case 2:
+
+            TransConta(m,l);
+            
             break;
 
         case 4:

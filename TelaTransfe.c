@@ -1,18 +1,20 @@
 #include "Funcoes.h"
 
-void tela_transferencia(tipolista *l) {
+void tela_transferencia()
+{
     int i;
 
     tela();
 
-    for (i = 5; i < 16; i++) { 
-    gotoxy(40, i);
-    printf("%c", 186); 
+    for (i = 5; i < 16; i++)
+    {
+        gotoxy(40, i);
+        printf("%c", 186);
     }
 
     gotoxy(40, 4);
     printf("%c", 203);
-    
+
     imprimir_linha(16);
 
     gotoxy(40, 16);
@@ -24,7 +26,6 @@ void tela_transferencia(tipolista *l) {
     gotoxy(51, 5);
     printf("Conta Destino");
 
-    
     gotoxy(10, 7);
     printf("Numero da conta: ");
     gotoxy(10, 8);
@@ -41,7 +42,7 @@ void tela_transferencia(tipolista *l) {
     printf("Saldo + Limite.: ");
     gotoxy(10, 14);
     printf("Novo Saldo.....: ");
-    
+
     gotoxy(50, 7);
     printf("Numero da conta: ");
     gotoxy(50, 8);
@@ -59,12 +60,10 @@ void tela_transferencia(tipolista *l) {
     gotoxy(50, 14);
     printf("Novo Saldo.....: ");
 
-
-
     gotoxy(27, 18);
     printf("Valor a ser transferido: ");
     gotoxy(27, 19);
     printf("Data da transferencia..: ");
-    
+
     getch();
 }
