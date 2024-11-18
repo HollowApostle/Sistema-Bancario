@@ -23,4 +23,10 @@ void amostra(tipoapontador p)
 
     gotoxy(51, 19);
     printf("%.2lf", p->conteudo.vl_limite);
+
+    gotoxy(30, 21);
+    printf("7-Status da conta...: ");
+    
+    gotoxy(51, 21);
+    printf("%s", p->conteudo.status);
 }

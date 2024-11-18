@@ -90,6 +90,8 @@ int cadastro(tipolista *l, int opc)
         gotoxy(51, 19);
         scanf("%lf", &cont.vl_limite);
 
+        strcpy(cont.status, "Ativada");
+
         gotoxy(8, 23);
         printf("                                        ");
         gotoxy(8, 23);
