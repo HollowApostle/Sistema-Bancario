@@ -39,7 +39,6 @@ int main()
         printf("3-Sair do programa");
 
 
-
         // Leitura de dados
         opcao = validarNum("Digite o numero da opcao desejada: ", 8, 23);
 
