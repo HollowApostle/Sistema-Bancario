@@ -36,7 +36,7 @@ int main()
         printf("2-Movimentacao bancaria");
 
         gotoxy(29, 15);
-        printf("4-Sair do programa");
+        printf("3-Sair do programa");
 
 
 
@@ -69,11 +69,7 @@ int main()
             TelaMovim(&m, &l);
             break;
 
-        case 4:
-
-            consultar(&l);
-
-        case 5:
+        case 3:
 
             break;
 
