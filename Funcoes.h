@@ -85,9 +85,9 @@ void lerArquivo(tipolista *l);
 
 int cadastro(tipolista *l, int opc);
 
-int remover(tipolista *l, int opc);
+int remover(TipoLista_movim *m, tipolista *l, int opc);
 
-void TelaRemover(tipolista *l);
+void TelaRemover(TipoLista_movim *m, tipolista *l);
 
 int contador(tipolista *l);
 
@@ -103,7 +103,7 @@ tipoapontador pesquisa(tipolista *l, int cod);
 
 void TelaCadMovim(TipoLista_movim *l);
 
-void TelaContas(tipolista *l);
+void TelaContas(TipoLista_movim *m,tipolista *l);
 
 void TelaMovim(TipoLista_movim *m, tipolista *l);
 
@@ -116,6 +116,8 @@ double validarNumD(char *mensagem, int x, int y);
 void tela_transferencia();
 
 void TransConta(TipoLista_movim *m, tipolista *l);
+
+tipoapontador_movim pesquisaMovim(TipoLista_movim *l, int cod);
 
 #endif
 

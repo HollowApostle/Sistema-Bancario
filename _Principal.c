@@ -58,7 +58,7 @@ int main()
         switch (opcao)
         {
         case 1:
-            TelaContas(&l);
+            TelaContas(&m, &l);
             gravarArquivo(&l);
 
             break;
