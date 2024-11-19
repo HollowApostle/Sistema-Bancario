@@ -34,13 +34,13 @@ void movimCreDeb(TipoLista_movim *m, tipolista *l)
             gotoxy(8, 23);
             printf("                                                     ");
         }
-        else if (aux->conteudo.status == "Desativada")
+        else if (aux->conteudo.status == "Inativo")
         {
 
             gotoxy(8, 23);
             printf("                                                     ");
             gotoxy(8, 23);
-            printf("Conta desativada");
+            printf("Conta inativa");
             getch();
             gotoxy(8, 23);
             printf("                                                     ");

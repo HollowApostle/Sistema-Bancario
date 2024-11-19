@@ -1,0 +1,59 @@
+#include "Funcoes.h"
+
+// Funcao pra mostrar os valores armazenados
+int consultar(tipolista *l)
+{
+
+    int codigo;
+    int teste;
+
+    if (l->primeiro == NULL)
+    {
+        gotoxy(8, 23);
+        printf("                                                       ");
+        gotoxy(8, 23);
+        printf("Nao ha nenhum valor para ler");
+        getch();
+        gotoxy(8, 23);
+        printf("                                                       ");
+
+        return 0;
+    }
+
+    do
+    {
+        tipoapontador p;
+
+        tela_conta();
+
+        gotoxy(30, 21);
+        printf("7-Status da conta...: ");
+
+        gotoxy(51, 7);
+        scanf("%d", &codigo);
+
+        p = pesquisa(l, codigo);
+
+        if (p == NULL)
+        {
+            gotoxy(8, 23);
+            printf("Conta inexistente");
+            getch();
+            printf("                                               ");
+        }
+        else
+        {
+
+            amostra(p);
+
+            getch();
+        }
+
+        gotoxy(8,23);
+        printf("Deseja Consultar Outra conta? (1-SIM/2-NAO):  ");
+        scanf("%d", &teste);
+
+    } while (teste == 1);
+
+    return 0;
+}
