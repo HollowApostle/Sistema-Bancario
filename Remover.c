@@ -9,7 +9,7 @@ int remover(tipolista *l, int opc)
     int pos;
     int qtd;
 
-    //verifica se ha valor pra remover
+    // verifica se ha valor pra remover
     if (l->primeiro == NULL)
     {
         gotoxy(8, 23);
@@ -23,14 +23,13 @@ int remover(tipolista *l, int opc)
         return 0;
     }
 
-    //remover no inicio
+    // remover no inicio
     if (opc == 2)
     {
 
         amostra(l->primeiro);
 
-
-        //verifica se realmente ira excluir
+        // verifica se realmente ira excluir
         gotoxy(8, 23);
         printf("                                        ");
         gotoxy(8, 23);
@@ -39,7 +38,7 @@ int remover(tipolista *l, int opc)
         gotoxy(8, 23);
         printf("                               ");
 
-        //verifica se o dado escolhido e o primeiro, pois o tratamento sera diferente
+        // verifica se o dado escolhido e o primeiro, pois o tratamento sera diferente
         if (teste == 1)
         {
 
@@ -63,7 +62,7 @@ int remover(tipolista *l, int opc)
             return 0;
         }
     }
-    else if (opc == 1)//exclui no final
+    else if (opc == 1) // exclui no final
     {
 
         if (l->primeiro->prox == NULL)
@@ -98,16 +97,17 @@ int remover(tipolista *l, int opc)
         if (teste == 1)
         {
 
-            free(p);
             aux->prox = NULL;
             l->ultimo = aux;
+
+            free(p);
         }
         else
         {
             return 0;
         }
     }
-    else if (opc == 3)//exclui na posicao desejada
+    else if (opc == 3) // exclui na posicao desejada
     {
         do
         {
@@ -148,31 +148,22 @@ int remover(tipolista *l, int opc)
 
             if (teste == 1)
             {
-                p = l->primeiro;
-                l->primeiro = l->primeiro->prox;
-                free(p);
-
-                if (l->primeiro == NULL)
-                {
-                    l->ultimo = NULL;
-                }
+                aux = l->primeiro;
+                p = aux;
             }
             else
             {
-                return 0;
-            }
-        }
-        else
-        {
-            aux = l->primeiro;
-            p = aux->prox;
-            cont = 0;
+                aux = l->primeiro;
+                p = aux->prox;
 
-            while (cont < pos - 1 && p != NULL)
+                cont = 1;
+            }
+
+            while (cont < pos - 1)
             {
-                cont++;
-                aux = p;
+                cont = cont + 1;
                 p = p->prox;
+                aux = aux->prox;
             }
 
             if (p != NULL)
@@ -189,12 +180,17 @@ int remover(tipolista *l, int opc)
 
                 if (teste == 1)
                 {
-                    aux->prox = p->prox;
-                    free(p);
-
-                    if (aux->prox == NULL)
+                    if (pos == 1)
                     {
-                        l->ultimo = aux;
+                        l->primeiro = p->prox;
+
+                        free(p);
+                    }
+                    else
+                    {
+                        aux->prox = p->prox;
+
+                        free(p);
                     }
                 }
                 else
