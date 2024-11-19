@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <conio.h>
+#include <ctype.h>
 
 typedef struct
 {
