@@ -2,7 +2,6 @@
 
 int remover(tipolista *l, int opc)
 {
-
     tipoapontador p;
     tipoapontador aux;
     int teste;
@@ -10,7 +9,7 @@ int remover(tipolista *l, int opc)
     int pos;
     int qtd;
 
-    // verifica se ha valor pra remover
+    //verifica se ha valor pra remover
     if (l->primeiro == NULL)
     {
         gotoxy(8, 23);
@@ -24,8 +23,47 @@ int remover(tipolista *l, int opc)
         return 0;
     }
 
-    // remover no final
-    if (opc == 1)
+    //remover no inicio
+    if (opc == 2)
+    {
+
+        amostra(l->primeiro);
+
+
+        //verifica se realmente ira excluir
+        gotoxy(8, 23);
+        printf("                                        ");
+        gotoxy(8, 23);
+        printf("Deseja realmente apagar os dados(Sim = 1/Nao = 0): ");
+        scanf("%d", &teste);
+        gotoxy(8, 23);
+        printf("                               ");
+
+        //verifica se o dado escolhido e o primeiro, pois o tratamento sera diferente
+        if (teste == 1)
+        {
+
+            if (l->primeiro->prox == NULL)
+            {
+
+                free(l->primeiro);
+                l->primeiro = NULL;
+                l->ultimo = NULL;
+            }
+            else
+            {
+                p = l->primeiro;
+                l->primeiro = p->prox;
+                free(p);
+            }
+        }
+        else
+        {
+
+            return 0;
+        }
+    }
+    else if (opc == 1)//exclui no final
     {
 
         if (l->primeiro->prox == NULL)
@@ -69,45 +107,7 @@ int remover(tipolista *l, int opc)
             return 0;
         }
     }
-    else if (opc == 2) // exclui no inicio
-    {
-
-        amostra(l->primeiro);
-
-        // verifica se realmente ira excluir
-        gotoxy(8, 23);
-        printf("                                        ");
-        gotoxy(8, 23);
-        printf("Deseja realmente apagar os dados(Sim = 1/Nao = 0): ");
-        scanf("%d", &teste);
-        gotoxy(8, 23);
-        printf("                               ");
-
-        // verifica se o dado escolhido e o primeiro, pois o tratamento sera diferente
-        if (teste == 1)
-        {
-
-            if (l->primeiro->prox == NULL)
-            {
-
-                free(l->primeiro);
-                l->primeiro = NULL;
-                l->ultimo = NULL;
-            }
-            else
-            {
-                p = l->primeiro;
-                l->primeiro = p->prox;
-                free(p);
-            }
-        }
-        else
-        {
-
-            return 0;
-        }
-    }
-    else if (opc == 4) // exclui na posicao desejada
+    else if (opc == 3)//exclui na posicao desejada
     {
         do
         {
@@ -166,7 +166,7 @@ int remover(tipolista *l, int opc)
         {
             aux = l->primeiro;
             p = aux->prox;
-            cont = 1;
+            cont = 0;
 
             while (cont < pos - 1 && p != NULL)
             {
