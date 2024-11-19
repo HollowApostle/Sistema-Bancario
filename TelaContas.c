@@ -1,7 +1,7 @@
 #include "Funcoes.h"
 
 
-void TelaContas(tipolista *l){
+void TelaContas(TipoLista_movim *m,tipolista *l){
 
     int opcao = 0;
     
@@ -55,7 +55,7 @@ void TelaContas(tipolista *l){
 
         case 2:
 
-            TelaRemover(l);
+            TelaRemover(m, l);
             break;
 
         case 4:

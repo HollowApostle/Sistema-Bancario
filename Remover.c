@@ -1,6 +1,6 @@
-#include "Funcoes.h"
+#include "Funcoes.h" //Funcao que realiza as remocoes
 
-int remover(tipolista *l, int opc)
+int remover(TipoLista_movim *m, tipolista *l, int opc)
 {
     tipoapontador p;
     tipoapontador aux;
@@ -24,7 +24,7 @@ int remover(tipolista *l, int opc)
     }
 
     // remover no inicio
-    if (opc == 2)
+    if (opc == 1)
     {
 
         amostra(l->primeiro);
@@ -38,6 +38,16 @@ int remover(tipolista *l, int opc)
         gotoxy(8, 23);
         printf("                               ");
 
+        if (pesquisaMovim(m, l->primeiro->conteudo.codigo) != NULL)
+        {
+            gotoxy(8, 23);
+            printf("Conta Bancaria com Movimentacoes Bancarias. Nao pode ser removida.");
+
+            getch();
+
+            return 0;
+        }
+
         // verifica se o dado escolhido e o primeiro, pois o tratamento sera diferente
         if (teste == 1)
         {
@@ -46,6 +56,7 @@ int remover(tipolista *l, int opc)
             {
 
                 free(l->primeiro);
+
                 l->primeiro = NULL;
                 l->ultimo = NULL;
             }
@@ -53,6 +64,7 @@ int remover(tipolista *l, int opc)
             {
                 p = l->primeiro;
                 l->primeiro = p->prox;
+
                 free(p);
             }
         }
@@ -62,29 +74,9 @@ int remover(tipolista *l, int opc)
             return 0;
         }
     }
-    else if (opc == 1) // exclui no final
+    else if (opc == 2) // exclui no final
     {
-
-        if (l->primeiro->prox == NULL)
-        {
-
-            free(l->primeiro);
-            l->primeiro = NULL;
-            l->ultimo = NULL;
-        }
-        else
-        {
-            aux = l->primeiro;
-            p = aux->prox;
-
-            while (p->prox != NULL)
-            {
-                p = p->prox;
-                aux = aux->prox;
-            }
-        }
-
-        amostra(p);
+        amostra(l->ultimo);
 
         gotoxy(8, 23);
         printf("                                        ");
@@ -94,13 +86,42 @@ int remover(tipolista *l, int opc)
         gotoxy(8, 23);
         printf("                               ");
 
+        if (pesquisaMovim(m, l->ultimo->conteudo.codigo) != NULL)
+        {
+            gotoxy(8, 23);
+            printf("Conta Bancaria com Movimentacoes Bancarias. Nao pode ser removida.");
+
+            getch();
+
+            return 0;
+        }
+
         if (teste == 1)
         {
 
-            aux->prox = NULL;
-            l->ultimo = aux;
+            if (l->primeiro->prox == NULL)
+            {
 
-            free(p);
+                free(l->primeiro);
+
+                l->primeiro = NULL;
+                l->ultimo = NULL;
+            }
+            else
+            {
+                aux = l->primeiro;
+                p = aux->prox;
+
+                while (p->prox != NULL)
+                {
+                    p = p->prox;
+                    aux = aux->prox;
+                }
+
+                free(p);
+                aux->prox = NULL;
+                l->ultimo = aux;
+            }
         }
         else
         {
@@ -146,24 +167,43 @@ int remover(tipolista *l, int opc)
             gotoxy(8, 23);
             printf("                               ");
 
+            if (pesquisaMovim(m, l->primeiro->conteudo.codigo) != NULL)
+            {
+                gotoxy(8, 23);
+                printf("Conta Bancaria com Movimentacoes Bancarias. Nao pode ser removida.");
+
+                getch();
+
+                return 0;
+            }
+
             if (teste == 1)
             {
-                aux = l->primeiro;
-                p = aux;
+                p = l->primeiro;
+                l->primeiro = l->primeiro->prox;
+                free(p);
+
+                if (l->primeiro == NULL)
+                {
+                    l->ultimo = NULL;
+                }
             }
             else
             {
-                aux = l->primeiro;
-                p = aux->prox;
-
-                cont = 1;
+                return 0;
             }
+        }
+        else
+        {
+            aux = l->primeiro;
+            p = aux->prox;
+            cont = 1;
 
-            while (cont < pos - 1)
+            while (cont < pos - 1 && p != NULL)
             {
-                cont = cont + 1;
+                cont++;
+                aux = p;
                 p = p->prox;
-                aux = aux->prox;
             }
 
             if (p != NULL)
@@ -178,19 +218,24 @@ int remover(tipolista *l, int opc)
                 gotoxy(8, 23);
                 printf("                               ");
 
+                if (pesquisaMovim(m, l->primeiro->conteudo.codigo) != NULL)
+                {
+                    gotoxy(8, 23);
+                    printf("Conta Bancaria com Movimentacoes Bancarias. Nao pode ser removida.");
+
+                    getch();
+
+                    return 0;
+                }
+
                 if (teste == 1)
                 {
-                    if (pos == 1)
-                    {
-                        l->primeiro = p->prox;
+                    aux->prox = p->prox;
+                    free(p);
 
-                        free(p);
-                    }
-                    else
+                    if (aux->prox == NULL)
                     {
-                        aux->prox = p->prox;
-
-                        free(p);
+                        l->ultimo = aux;
                     }
                 }
                 else
