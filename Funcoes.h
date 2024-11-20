@@ -117,7 +117,7 @@ double validarNumD(char *mensagem, int x, int y);
 
 void tela_transferencia();
 
-void TransConta(TipoLista_movim *m, tipolista *l);
+int TransConta(TipoLista_movim *m, tipolista *l);
 
 tipoapontador_movim pesquisaMovim(TipoLista_movim *l, int cod);
 

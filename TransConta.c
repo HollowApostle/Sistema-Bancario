@@ -1,6 +1,6 @@
 #include "Funcoes.h"
 
-void TransConta(TipoLista_movim *m, tipolista *l)
+int TransConta(TipoLista_movim *m, tipolista *l)
 {
     int codigo;
     int codigo2;
@@ -14,12 +14,22 @@ void TransConta(TipoLista_movim *m, tipolista *l)
     int resultado;
     int confirmacao;
 
+    if(l->primeiro == NULL){
+        gotoxy(8,23);
+        printf("Nenhuma conta encontrada para efetuar a tranferencia");
+        getch();
+
+        return 0;
+    }
+
     tela_transferencia();
 
     gotoxy(26, 7);
     scanf("%d", &codigo);
 
     cont.codigo_conta = codigo;
+
+    
 
     aux = pesquisa(l, codigo);
     do
