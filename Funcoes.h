@@ -127,5 +127,7 @@ int TransConta(TipoLista_movim *m, tipolista *l);
 
 tipoapontador_movim pesquisaMovim(TipoLista_movim *l, int cod);
 
+void TelaConsultaG();
+
 #endif
 

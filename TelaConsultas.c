@@ -53,12 +53,17 @@ void TelaConsulta(tipolista *l)
 
         case 2:
 
-           consultarCod(l);
+            consultarCod(l);
+
+            break;
+
+        case 3:
+
+           TelaConsultaG();
 
             break;
 
         case 4:
-
 
             break;
 

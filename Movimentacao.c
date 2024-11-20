@@ -46,7 +46,7 @@ void movimCreDeb(TipoLista_movim *m, tipolista *l)
             printf("                                                     ");
         }
 
-    } while (aux == NULL || aux->conteudo.status == "Desativada");
+    } while (aux == NULL || aux->conteudo.status == "Inativo");
 
     gotoxy(54, 8);
     printf("%s", aux->conteudo.agencia);

@@ -2,6 +2,8 @@
 
 void TelaConsultaG()
 {
+    system("cls");
+    
     int i;
 
     imprimir_ultm_linha(24);
@@ -45,5 +47,7 @@ void TelaConsultaG()
 
     gotoxy(76, 6);
     printf("St");
+
+    getch();
 
 }
