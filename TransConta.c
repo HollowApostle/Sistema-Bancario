@@ -45,7 +45,7 @@ void TransConta(TipoLista_movim *m, tipolista *l)
             gotoxy(8, 23);
             printf("                                                     ");
         }
-    } while (aux == NULL || aux->conteudo.status == "Desativada");
+    } while (aux == NULL || aux->conteudo.status == "Inativo");
 
     gotoxy(26, 8);
     printf("%s", aux->conteudo.banco);

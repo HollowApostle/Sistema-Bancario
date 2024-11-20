@@ -1,7 +1,7 @@
 #include "Funcoes.h"
 
 // Funcao pra mostrar os valores armazenados
-int consultar(tipolista *l)
+int consultarCod(tipolista *l)
 {
 
     int codigo;
@@ -19,7 +19,6 @@ int consultar(tipolista *l)
 
         return 0;
     }
-
     do
     {
         tipoapontador p;
