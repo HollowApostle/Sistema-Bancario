@@ -65,5 +65,5 @@ void tela_transferencia()
     gotoxy(27, 19);
     printf("Data da transferencia..: ");
 
-    getch();
+    
 }
