@@ -28,12 +28,12 @@ int TransConta(TipoLista_movim *m, tipolista *l) {
             gotoxy(8, 23);
             printf("Conta nao encontrada ou inexistente");
             getch();
-        } else if (strcmp(aux->conteudo.status, "Desativada") == 0) {
+        } else if (strcmp(aux->conteudo.status, "Inativa") == 0) {
             gotoxy(8, 23);
-            printf("Conta desativada");
+            printf("Conta inativa");
             getch();
         }
-    } while (aux == NULL || strcmp(aux->conteudo.status, "Desativada") == 0);
+    } while (aux == NULL || strcmp(aux->conteudo.status, "Inativa") == 0);
 
     
     gotoxy(26, 8);
@@ -44,24 +44,26 @@ int TransConta(TipoLista_movim *m, tipolista *l) {
     printf("%s", aux->conteudo.tipo_conta);
     gotoxy(26, 11);
     printf("%.2lf", aux->conteudo.vl_saldo);
+    gotoxy(26, 12);
+    printf("%.2lf", aux->conteudo.vl_limite);
+    gotoxy(26, 13);
+    printf("%.2lf", aux->conteudo.vl_saldo + aux->conteudo.vl_limite);
 
-    
     gotoxy(66, 7);
     scanf("%d", &codigo2);
     aux2 = pesquisa(l, codigo2);
 
-    
     do {
         if (aux2 == NULL) {
             gotoxy(8, 23);
             printf("Conta nao encontrada ou inexistente");
             getch();
-        } else if (strcmp(aux2->conteudo.status, "Desativada") == 0) {
+        } else if (strcmp(aux2->conteudo.status, "Inativa") == 0) {
             gotoxy(8, 23);
-            printf("Conta desativada");
+            printf("Conta inativa");
             getch();
         }
-    } while (aux2 == NULL || strcmp(aux2->conteudo.status, "Desativada") == 0);
+    } while (aux2 == NULL || strcmp(aux2->conteudo.status, "Inativa") == 0);
 
     
     gotoxy(66, 8);
@@ -72,7 +74,10 @@ int TransConta(TipoLista_movim *m, tipolista *l) {
     printf("%s", aux2->conteudo.tipo_conta);
     gotoxy(66, 11);
     printf("%.2lf", aux2->conteudo.vl_saldo);
-
+    gotoxy(66, 12);
+    printf("%.2lf", aux2->conteudo.vl_limite);
+    gotoxy(66, 13);
+    printf("%.2lf", aux2->conteudo.vl_saldo + aux->conteudo.vl_limite);
     
     gotoxy(52, 18);
     printf("");
@@ -102,7 +107,13 @@ int TransConta(TipoLista_movim *m, tipolista *l) {
     
     aux->conteudo.vl_saldo -= valorTransferencia;
     aux2->conteudo.vl_saldo += valorTransferencia;
+    
+    gotoxy(26, 14);
+    printf("%.2lf", aux->conteudo.vl_saldo);
 
+    gotoxy(66, 14);
+    printf("%.2lf", aux2->conteudo.vl_saldo);
+   
     
     gotoxy(8, 23);
     printf("Transferencia realizada com sucesso em %s", dataTransfe);
