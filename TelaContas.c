@@ -60,7 +60,7 @@ void TelaContas(TipoLista_movim *m,tipolista *l){
 
         case 4:
 
-            consultar(l);
+            TelaConsulta(l);
 
         case 5:
 

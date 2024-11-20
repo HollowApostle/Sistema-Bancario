@@ -71,6 +71,10 @@ void gotoxy(int x, int y);
 
 void tela();
 
+void imprimir_ultm_linha(int linha);
+
+void imprimir_prim_linha(int linha);
+
 void tela_fim();
 
 void imprimir_linha(int linha);
@@ -116,6 +120,8 @@ int validar_data(const char* data);
 double validarNumD(char *mensagem, int x, int y);
 
 void tela_transferencia();
+
+void TelaConsulta(tipolista *l);
 
 int TransConta(TipoLista_movim *m, tipolista *l);
 
