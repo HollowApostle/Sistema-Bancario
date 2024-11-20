@@ -34,7 +34,7 @@ int cadastro(tipolista *l, int opc)
             {
 
                 gotoxy(8, 23);
-                printf("Deseja realmente sair (Sim = 1/Nao = 0): ");
+                printf("Deseja realmente sair (Sim = 1/Nao = 2): ");
                 scanf("%d", &teste);
                 gotoxy(8, 23);
                 printf("                                            ");
@@ -95,7 +95,7 @@ int cadastro(tipolista *l, int opc)
         gotoxy(8, 23);
         printf("                                        ");
         gotoxy(8, 23);
-        printf("Deseja gravar (Sim = 1/Nao = 0): ");
+        printf("Deseja gravar (Sim = 1/Nao = 2): ");
         scanf("%d", &teste);
         gotoxy(8, 23);
         printf("                               ");
@@ -201,7 +201,7 @@ int cadastro(tipolista *l, int opc)
             gotoxy(8, 23);
             printf("                                                       ");
             gotoxy(8, 23);
-            printf("Deseja cadastrar outra conta? (Sim = 1/Nao = 0): ");
+            printf("Deseja cadastrar outra conta? (Sim = 1/Nao = 2): ");
             scanf("%d", &teste);
             gotoxy(8, 23);
             printf("                                                       ");
