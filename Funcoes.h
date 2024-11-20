@@ -95,6 +95,8 @@ void amostra(tipoapontador p);
 
 int consultar(tipolista *l);
 
+int consultarCod(tipolista *l);
+
 float validarNum(char *mensagem, int x, int y);
 
 void inserirMovim(TipoLista_movim *l, reg_movimentos cont);
