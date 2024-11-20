@@ -2,52 +2,35 @@
 
 void TelaConsultaG()
 {
-    system("cls");
-    
-    int i;
+    tela();
 
-    imprimir_ultm_linha(24);
+    imprimir_linha(6);
 
-    imprimir_prim_linha(1);
-
-    for (i = 2; i < 24; i++)
-    {
-        gotoxy(01, i);
-        printf("%c", 186); // Borda esquerda
-
-        gotoxy(80, i);
-        printf("%c", 186); // Borda direita
-    }
-
-    imprimir_linha(22);
-
-    gotoxy(02, 23);
-    printf("MSG.:");
-
-    gotoxy(2, 6);
+    gotoxy(2, 5);
     printf("Cd");
 
-    gotoxy(6, 6);
+    gotoxy(6, 5);
     printf("Banco");
 
-    gotoxy(18, 6);
+    gotoxy(18, 5);
     printf("Agencia");
 
-    gotoxy(26, 6);
+    gotoxy(26, 5);
     printf("Conta");
 
-    gotoxy(34, 6);
+    gotoxy(34, 5);
     printf("Tipo Conta");
 
-    gotoxy(50, 6);
+    gotoxy(50, 5);
     printf("Saldo");
 
-    gotoxy(65, 6);
+    gotoxy(65, 5);
     printf("Limite");
 
-    gotoxy(76, 6);
+    gotoxy(76, 5);
     printf("St");
 
-    getch();
+    
 
+    getch();
 }
