@@ -5,6 +5,7 @@ int cadastro(tipolista *l, int opc)
 {
 
     int teste;
+    int testeOPC;
     int pos;
     int qtd;
     reg_funcionario cont;
@@ -79,9 +80,18 @@ int cadastro(tipolista *l, int opc)
         fflush(stdin);
         fgets(cont.numero_conta, 20, stdin);
 
-        gotoxy(51, 15);
-        fflush(stdin);
-        fgets(cont.tipo_conta, 11, stdin);
+        do
+        {
+
+            gotoxy(8, 23);
+            printf("Utilizar.: 1=Corrente / 2=Poupanca / 3=Cartao Credito ");
+            scanf("%d", &testeOPC);
+
+            gotoxy(51, 15);
+            fflush(stdin);
+            fgets(cont.tipo_conta, 11, stdin);
+
+        } while (testeOPC < 1 || testeOPC > 3);
 
         gotoxy(51, 17);
         fflush(stdin);
