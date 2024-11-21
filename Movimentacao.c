@@ -6,6 +6,7 @@ void movimCreDeb(TipoLista_movim *m, tipolista *l)
     tipoapontador aux;
     reg_movimentos cont;
     int tp_movim;
+    int teste;
     double saldo;
     double restante;
     int resultado;
@@ -20,6 +21,29 @@ void movimCreDeb(TipoLista_movim *m, tipolista *l)
         scanf("%d", &codigo);
 
         cont.codigo_conta = codigo;
+
+        gotoxy(8, 23);
+        printf("Digite \"0\" para sair");
+        gotoxy(51, 7);
+        printf("                 ");
+        gotoxy(51, 7);
+        scanf("%d", &cont.codigo_conta);
+
+        if (cont.codigo_conta == 0)
+        {
+
+            gotoxy(8, 23);
+            printf("Deseja realmente sair (Sim = 1/Nao = 2): ");
+            scanf("%d", &teste);
+            gotoxy(8, 23);
+            printf("                                            ");
+            gotoxy(8, 23);
+
+            if (teste == 1)
+            {
+                return 0;
+            }
+        }
 
         aux = pesquisa(l, codigo);
 

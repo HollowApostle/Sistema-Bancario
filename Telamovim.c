@@ -56,7 +56,7 @@ void TelaMovim(TipoLista_movim *m, tipolista *l){
             
             break;
 
-        case 4:
+        case 3:
 
             break;
 
