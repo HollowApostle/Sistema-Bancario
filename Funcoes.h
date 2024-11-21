@@ -113,7 +113,7 @@ void TelaContas(TipoLista_movim *m,tipolista *l);
 
 void TelaMovim(TipoLista_movim *m, tipolista *l);
 
-void movimCreDeb(TipoLista_movim *m, tipolista *l);
+int movimCreDeb(TipoLista_movim *m, tipolista *l);
 
 int validar_data(const char* data);
 

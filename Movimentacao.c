@@ -1,6 +1,6 @@
 #include "Funcoes.h"
 
-void movimCreDeb(TipoLista_movim *m, tipolista *l)
+int movimCreDeb(TipoLista_movim *m, tipolista *l)
 {
     int codigo;
     tipoapontador aux;
@@ -14,7 +14,10 @@ void movimCreDeb(TipoLista_movim *m, tipolista *l)
 
     TelaCadMovim(m);
     do
-    {
+    { 
+        
+        gotoxy(8, 23);
+        printf("Digite \"0\" para sair");
         gotoxy(54, 7);
         printf("              ");
         gotoxy(54, 7);
@@ -22,12 +25,8 @@ void movimCreDeb(TipoLista_movim *m, tipolista *l)
 
         cont.codigo_conta = codigo;
 
-        gotoxy(8, 23);
-        printf("Digite \"0\" para sair");
-        gotoxy(51, 7);
-        printf("                 ");
-        gotoxy(51, 7);
-        scanf("%d", &cont.codigo_conta);
+       
+        
 
         if (cont.codigo_conta == 0)
         {
