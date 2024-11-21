@@ -82,15 +82,40 @@ int cadastro(tipolista *l, int opc)
 
         do
         {
-
             gotoxy(8, 23);
-            printf("Utilizar.: 1=Corrente / 2=Poupanca / 3=Cartao Credito ");
+            printf("Utilizar: 1=Corrente / 2=Poupanca / 3=Cartao Credito: ");
             scanf("%d", &testeOPC);
 
-            gotoxy(51, 15);
-            fflush(stdin);
-            fgets(cont.tipo_conta, 11, stdin);
+            
+            if (testeOPC < 1 || testeOPC > 3)
+            {
+                gotoxy(8, 23);
+                printf("Opcao invalida. Escolha entre 1, 2 ou 3.               ");
+                getch(); 
+                gotoxy(8, 23);
+                printf("                                                       "); 
+            }
+            else
+            {
+                
+                switch (testeOPC)
+                {
+                case 1: 
+                    strcpy(cont.tipo_conta, "Corrente");
+                    gravarArquivo(l);
+                    break;
 
+                case 2: 
+                    strcpy(cont.tipo_conta, "Poupanca");
+                    gravarArquivo(l);
+                    break;
+
+                case 3: 
+                    strcpy(cont.tipo_conta, "Cartao Credito"); 
+                    gravarArquivo(l);
+                    break;
+                }
+            }
         } while (testeOPC < 1 || testeOPC > 3);
 
         gotoxy(51, 17);
