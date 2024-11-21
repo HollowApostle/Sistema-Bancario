@@ -86,6 +86,8 @@ int cadastro(tipolista *l, int opc)
             gotoxy(8, 23);
             printf("Utilizar.: 1=Corrente / 2=Poupanca / 3=Cartao Credito ");
             scanf("%d", &testeOPC);
+            gotoxy(8,23);
+            printf("                                        ");
 
             gotoxy(51, 15);
             fflush(stdin);
