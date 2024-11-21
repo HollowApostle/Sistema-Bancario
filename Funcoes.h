@@ -115,7 +115,7 @@ void TelaMovim(TipoLista_movim *m, tipolista *l);
 
 int movimCreDeb(TipoLista_movim *m, tipolista *l);
 
-int validar_data(const char* data);
+int validar_data(const char* data, TipoLista_movim *m);
 
 double validarNumD(char *mensagem, int x, int y);
 
