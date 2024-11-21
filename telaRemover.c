@@ -1,11 +1,9 @@
 #include "Funcoes.h"
 
-void TelaRemover(tipolista *l)
+void TelaRemover(TipoLista_movim *m, tipolista *l)
 {
 
     int opcao;
-
-    lerArquivo(l);
 
     do
     {
@@ -16,10 +14,10 @@ void TelaRemover(tipolista *l)
         printf("REMOVER CONTAS");
 
         gotoxy(29, 8);
-        printf("1 - Remover do final da lista ");
+        printf("1 - Remover do inicio da lista ");
 
         gotoxy(29, 10);
-        printf("2 - Remover do inicio da lista ");
+        printf("2 - Remover do final da lista ");
 
         gotoxy(29, 12);
         printf("3 - Remover de alguma posicao da lista ");
@@ -44,20 +42,23 @@ void TelaRemover(tipolista *l)
         switch (opcao)
         {
         case 1:
-            remover(l, opcao);
-            gravarArquivo(l);
+            remover(m, l, opcao);
+
+            
 
             break;
 
         case 2:
-            remover(l, opcao);
-            gravarArquivo(l);
+            remover(m, l, opcao);
+
+            
 
             break;
 
         case 3:
-            remover(l, opcao);
-            gravarArquivo(l);
+            remover(m, l, opcao);
+
+            
 
             break;
 

@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <conio.h>
+#include <ctype.h>
 
 typedef struct
 {
@@ -50,6 +51,15 @@ typedef struct
 
 typedef struct Tipoitem_movim *tipoapontador_movim;
 
+typedef struct Tipoitem_movim
+{
+
+    reg_movimentos conteudo;
+    tipoapontador_movim prox;
+    tipoapontador_movim ant;
+
+} Tipoitem_movim;
+
 typedef struct
 {
     tipoapontador_movim primeiro;
@@ -61,11 +71,17 @@ void gotoxy(int x, int y);
 
 void tela();
 
+void imprimir_ultm_linha(int linha);
+
+void imprimir_prim_linha(int linha);
+
 void tela_fim();
+
+void imprimir_linha(int linha);
 
 void tela_conta();
 
-void telaCadastro();
+void telaCadastro(tipolista *l);
 
 void gravarArquivo(tipolista *l);
 
@@ -73,9 +89,9 @@ void lerArquivo(tipolista *l);
 
 int cadastro(tipolista *l, int opc);
 
-int remover(tipolista *l, int opc);
+int remover(TipoLista_movim *m, tipolista *l, int opc);
 
-void TelaRemover(tipolista *l);
+void TelaRemover(TipoLista_movim *m, tipolista *l);
 
 int contador(tipolista *l);
 
@@ -83,7 +99,35 @@ void amostra(tipoapontador p);
 
 int consultar(tipolista *l);
 
+int consultarCod(tipolista *l);
+
+float validarNum(char *mensagem, int x, int y);
+
+void inserirMovim(TipoLista_movim *l, reg_movimentos cont);
+
 tipoapontador pesquisa(tipolista *l, int cod);
+
+void TelaCadMovim(TipoLista_movim *l);
+
+void TelaContas(TipoLista_movim *m,tipolista *l);
+
+void TelaMovim(TipoLista_movim *m, tipolista *l);
+
+void movimCreDeb(TipoLista_movim *m, tipolista *l);
+
+int validar_data(const char* data);
+
+double validarNumD(char *mensagem, int x, int y);
+
+void tela_transferencia();
+
+void TelaConsulta(tipolista *l);
+
+int TransConta(TipoLista_movim *m, tipolista *l);
+
+tipoapontador_movim pesquisaMovim(TipoLista_movim *l, int cod);
+
+void TelaConsultaG();
 
 #endif
 
