@@ -139,7 +139,7 @@ int TransConta(TipoLista_movim *m, tipolista *l)
     aux->conteudo.vl_saldo -= valorTransferencia;
     aux2->conteudo.vl_saldo += valorTransferencia;
 
-    gotoxy(26, 14);,
+    gotoxy(26, 14);
     printf("%.2lf", aux->conteudo.vl_saldo);
 
     gotoxy(66, 14);
