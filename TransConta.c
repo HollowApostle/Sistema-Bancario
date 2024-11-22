@@ -20,10 +20,14 @@ int TransConta(TipoLista_movim *m, tipolista *l)
 
     tela_transferencia();
 
+    gotoxy(26, 7);
+    scanf("%d", &codigo);
+
     gotoxy(8, 23);
     printf("Digite \"0\" para sair");
-
-    gotoxy(26, 7);
+    gotoxy(51, 7);
+    printf("                 ");
+    gotoxy(51, 7);
     scanf("%d", &codigo);
 
     if (codigo == 0)
@@ -124,18 +128,18 @@ int TransConta(TipoLista_movim *m, tipolista *l)
         printf("");
         scanf("%s", dataTransfe);
 
-        if (!validar_data(dataTransfe, m))
+        if (!validar_data(dataTransfe))
         {
             gotoxy(8, 23);
             printf("Data invalida. Tente novamente.");
             getch();
         }
-    } while (!validar_data(dataTransfe, m));
+    } while (!validar_data(dataTransfe));
 
     aux->conteudo.vl_saldo -= valorTransferencia;
     aux2->conteudo.vl_saldo += valorTransferencia;
 
-    gotoxy(26, 14);
+    gotoxy(26, 14);,
     printf("%.2lf", aux->conteudo.vl_saldo);
 
     gotoxy(66, 14);
