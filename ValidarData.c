@@ -55,6 +55,11 @@ int validar_data(const char* data, TipoLista_movim *m) {
     char data_invertida[9];
     sprintf(data_invertida, "%04d%02d%02d", ano, mes, dia);
 
+    // Verificar se a lista de movimentações está vazia (última movimentação é NULL)
+    if (m->ultimo == NULL || m->ultimo->conteudo.dt_movimento == NULL) {
+        return 1; // Lista vazia ou não há movimentações, então qualquer data é válida
+    }
+
     // Obter a data da última movimentação no formato dd/mm/yyyy e transformá-la
     char ultima_data[9];
     int ult_dia, ult_mes, ult_ano;

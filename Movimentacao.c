@@ -110,7 +110,7 @@ int movimCreDeb(TipoLista_movim *m, tipolista *l)
             printf("                                                     ");
 
             gotoxy(8, 23);
-            printf("Data da Movimentacao Invalida. Formato: DD/MM/YYYY");
+            printf("Data da Movimentacao Invalida. Formato: DD/MM/YYYY %d",resultado);
             getch();
             gotoxy(8, 23);
             printf("                                                               ");
