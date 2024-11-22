@@ -68,15 +68,15 @@ int cadastro(tipolista *l, int opc)
         gotoxy(8, 23);
         printf("                                                   ");
 
-        gotoxy(51, 9);
+        gotoxy(52, 9);
         fflush(stdin);
         fgets(cont.banco, 50, stdin);
 
-        gotoxy(51, 11);
+        gotoxy(52, 11);
         fflush(stdin);
         fgets(cont.agencia, 10, stdin);
 
-        gotoxy(51, 13);
+        gotoxy(52, 13);
         fflush(stdin);
         fgets(cont.numero_conta, 20, stdin);
 
@@ -103,26 +103,38 @@ int cadastro(tipolista *l, int opc)
                 case 1: 
                     strcpy(cont.tipo_conta, "Corrente");
                     gravarArquivo(l);
+                    gotoxy(52, 15);
+                    printf("Corrente");
+                    gotoxy(8, 23);
+                    printf("                                                       ");
                     break;
 
                 case 2: 
                     strcpy(cont.tipo_conta, "Poupanca");
                     gravarArquivo(l);
+                    gotoxy(52, 15);
+                    printf("Poupanca");
+                    gotoxy(8, 23);
+                    printf("                                                       ");
                     break;
 
                 case 3: 
                     strcpy(cont.tipo_conta, "Cartao Credito"); 
                     gravarArquivo(l);
+                    gotoxy(52, 15);
+                    printf("Cartao de credito");
+                    gotoxy(8, 23);
+                    printf("                                                       ");
                     break;
                 }
             }
         } while (testeOPC < 1 || testeOPC > 3);
 
-        gotoxy(51, 17);
+        gotoxy(52, 17);
         fflush(stdin);
         scanf("%lf", &cont.vl_saldo);
 
-        gotoxy(51, 19);
+        gotoxy(52, 19);
         scanf("%lf", &cont.vl_limite);
 
         strcpy(cont.status, "Ativo");
