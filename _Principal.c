@@ -16,6 +16,7 @@ int main()
     l.ultimo = NULL;
 
     lerArquivo(&l);
+    lerArquivoMov(&m);
 
     do
     {
@@ -66,6 +67,7 @@ int main()
         case 2:
 
             TelaMovim(&m, &l);
+            gravarArquivoMov(&m);
             break;
 
         case 3:

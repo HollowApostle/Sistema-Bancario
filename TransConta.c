@@ -110,7 +110,7 @@ int TransConta(TipoLista_movim *m, tipolista *l)
     printf("");
     scanf("%f", &cont.vl_movimento);
 
-    if (cont.vl_movimento <= 0 || cont.vl_movimento >= (aux->conteudo.vl_saldo + aux->conteudo.vl_limite))
+    if (cont.vl_movimento <= 0 || cont.vl_movimento > (aux->conteudo.vl_saldo + aux->conteudo.vl_limite))
     {
         gotoxy(8, 23);
         printf("Saldo insuficiente para realizar a transferencia");
@@ -121,11 +121,13 @@ int TransConta(TipoLista_movim *m, tipolista *l)
     do
     {
         gotoxy(52, 19);
-        printf("");
+        printf("                  ");
+        gotoxy(52, 19);
+        getchar();
         fflush(stdin);
         fgets(cont.dt_movimento, 11, stdin);
 
-        if (validarECompararComLista(cont.dt_movimento, m))
+        if (!validarECompararComLista(cont.dt_movimento, m))
         {
             gotoxy(8, 23);
             printf("Data invalida. Tente novamente.");

@@ -130,5 +130,10 @@ tipoapontador_movim pesquisaMovim(TipoLista_movim *l, int cod);
 
 void TelaConsultaG();
 
+void lerArquivoMov(TipoLista_movim *l);
+
+void gravarArquivoMov(TipoLista_movim *l);
+
+
 #endif
 

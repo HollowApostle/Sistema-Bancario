@@ -1,12 +1,12 @@
 #include "Funcoes.h"
 
-void lerArquivo(tipolista *l)
+void lerArquivoMov(TipoLista_movim *l)
 {
-    FILE *arquivo = fopen("Contas.dat", "rb"); // Tenta abrir o arquivo para leitura binária
+    FILE *arquivo = fopen("Movimentacoes.dat", "rb"); // Tenta abrir o arquivo para leitura binária
     if (arquivo == NULL)
     {
         // Se o arquivo não existir, cria um novo arquivo vazio
-        arquivo = fopen("Contas.dat", "wb");
+        arquivo = fopen("Movimentacoes.dat", "wb");
         if (arquivo == NULL)
         {
             gotoxy(8, 23);
@@ -17,7 +17,7 @@ void lerArquivo(tipolista *l)
         fclose(arquivo); // Fecha o arquivo criado
 
         // Reabre o arquivo agora no modo de leitura
-        arquivo = fopen("Contas.dat", "rb");
+        arquivo = fopen("Movimentacoes.dat", "rb");
         if (arquivo == NULL)
         {
             gotoxy(8, 23);
@@ -27,10 +27,10 @@ void lerArquivo(tipolista *l)
         }
     }
 
-    reg_funcionario cont;
-    while (fread(&cont, sizeof(reg_funcionario), 1, arquivo))
+    reg_movimentos cont;
+    while (fread(&cont, sizeof(reg_movimentos), 1, arquivo))
     {
-        tipoapontador novo = (tipoapontador)malloc(sizeof(Tipoitem));
+        tipoapontador_movim novo = (tipoapontador_movim)malloc(sizeof(Tipoitem_movim));
         novo->conteudo = cont;
         novo->prox = NULL;
 
