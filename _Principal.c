@@ -76,7 +76,7 @@ int main()
             break;
         }
 
-    } while (opcao != 5);
+    } while (opcao != 3);
 
     gotoxy(37, 25);
 

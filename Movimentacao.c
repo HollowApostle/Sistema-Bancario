@@ -1,11 +1,12 @@
 #include "Funcoes.h"
 
-void movimCreDeb(TipoLista_movim *m, tipolista *l)
+int movimCreDeb(TipoLista_movim *m, tipolista *l)
 {
     int codigo;
     tipoapontador aux;
     reg_movimentos cont;
     int tp_movim;
+    int teste;
     double saldo;
     double restante;
     int resultado;
@@ -13,13 +14,35 @@ void movimCreDeb(TipoLista_movim *m, tipolista *l)
 
     TelaCadMovim(m);
     do
-    {
+    { 
+        
+        gotoxy(8, 23);
+        printf("Digite \"0\" para sair");
         gotoxy(54, 7);
         printf("              ");
         gotoxy(54, 7);
         scanf("%d", &codigo);
 
         cont.codigo_conta = codigo;
+
+       
+        
+
+        if (cont.codigo_conta == 0)
+        {
+
+            gotoxy(8, 23);
+            printf("Deseja realmente sair (Sim = 1/Nao = 2): ");
+            scanf("%d", &teste);
+            gotoxy(8, 23);
+            printf("                                            ");
+            gotoxy(8, 23);
+
+            if (teste == 1)
+            {
+                return 0;
+            }
+        }
 
         aux = pesquisa(l, codigo);
 
@@ -78,7 +101,7 @@ void movimCreDeb(TipoLista_movim *m, tipolista *l)
         fflush(stdin);
         fgets(cont.dt_movimento, 11, stdin);
 
-        resultado = validar_data(cont.dt_movimento);
+        resultado = validar_data(cont.dt_movimento, m);
 
         if (resultado != 1)
         {
@@ -87,7 +110,7 @@ void movimCreDeb(TipoLista_movim *m, tipolista *l)
             printf("                                                     ");
 
             gotoxy(8, 23);
-            printf("Data da Movimentacao Invalida. Formato: DD/MM/YYYY");
+            printf("Data da Movimentacao Invalida. Formato: DD/MM/YYYY %d",resultado);
             getch();
             gotoxy(8, 23);
             printf("                                                               ");
