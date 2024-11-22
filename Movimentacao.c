@@ -101,7 +101,7 @@ int movimCreDeb(TipoLista_movim *m, tipolista *l)
         fflush(stdin);
         fgets(cont.dt_movimento, 11, stdin);
 
-        resultado = validar_data(cont.dt_movimento, m);
+        resultado = validarECompararComLista(cont.dt_movimento, m);
 
         if (resultado != 1)
         {

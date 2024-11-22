@@ -6,6 +6,7 @@
 #include <windows.h>
 #include <conio.h>
 #include <ctype.h>
+#include <string.h>
 
 typedef struct
 {
@@ -115,7 +116,7 @@ void TelaMovim(TipoLista_movim *m, tipolista *l);
 
 int movimCreDeb(TipoLista_movim *m, tipolista *l);
 
-int validar_data(const char* data, TipoLista_movim *m);
+int validarECompararComLista(const char *novaDataStr, TipoLista_movim *m);
 
 double validarNumD(char *mensagem, int x, int y);
 
