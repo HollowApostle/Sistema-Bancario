@@ -134,6 +134,8 @@ void lerArquivoMov(TipoLista_movim *l);
 
 void gravarArquivoMov(TipoLista_movim *l);
 
+int consultar_mov(tipolista *l, TipoLista_movim *m);
+
 
 #endif
 

@@ -1,40 +1,35 @@
 #include "Funcoes.h"
 
-void TelaConsultaG(tipolista *l)
+void TelaConsultaG()
 {
-    int i;
     
     tela();
 
     imprimir_linha(6);
 
-
-    gotoxy(20, 3);
+    gotoxy(24, 3);
     printf("LISTA DE MOVIMENTACOES BANCARIAS");
 
-    gotoxy(2, 6);
+    gotoxy(2, 5);
     printf("Codigo:");
 
-    gotoxy(1, 7);
-    printf("+-----------------------------------------------------------------------------+");
+    gotoxy(2, 7);
+    printf("Dt.Movim   Favorecido                    TpMovim       Vl.Movim    Saldo      ");
+   
+   imprimir_linha(8);
 
-    gotoxy(2, 8);
-    printf("Dt.Movim");
+    gotoxy(12, 8);
+    printf(" ");
 
-    gotoxy(13, 8);
-    printf("Favorecido");
+    gotoxy(42, 8);
+    printf(" ");
 
-    gotoxy(40, 8);
-    printf("TpMovim");
+    gotoxy(56, 8);
+    printf(" ");
 
-    gotoxy(55, 8);
-    printf("Vl.Movim");
 
-    gotoxy(70, 8);
-    printf("Saldo");
+    gotoxy(68, 8);
+    printf(" ");
 
-    gotoxy(1, 9);
-    printf("+-----------------------------------------------------------------------------+");
 
-    getch();
 }

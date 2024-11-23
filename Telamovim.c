@@ -1,12 +1,12 @@
 #include "Funcoes.h"
 
-
-void TelaMovim(TipoLista_movim *m, tipolista *l){
+void TelaMovim(TipoLista_movim *m, tipolista *l)
+{
 
     int opcao = 0;
-    
-    do{       
-        
+
+    do
+    {
 
         tela();
 
@@ -24,7 +24,6 @@ void TelaMovim(TipoLista_movim *m, tipolista *l){
 
         gotoxy(29, 15);
         printf("4-Retornar ao menu anterior");
-
 
         // Leitura de dados
         opcao = validarNum("Digite o numero da opcao desejada: ", 8, 23);
@@ -46,17 +45,23 @@ void TelaMovim(TipoLista_movim *m, tipolista *l){
         {
         case 1:
             movimCreDeb(m, l);
- 
 
             break;
 
         case 2:
 
-            TransConta(m,l);
-            
+            TransConta(m, l);
+
             break;
 
         case 3:
+
+            consultar_mov(l,m);
+
+            break;
+
+        case 4:
+
 
             break;
 
@@ -67,5 +72,4 @@ void TelaMovim(TipoLista_movim *m, tipolista *l){
     } while (opcao != 5);
 
     gotoxy(37, 25);
-
 }

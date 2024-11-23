@@ -147,6 +147,14 @@ int cadastro(tipolista *l, int opc)
         gotoxy(8, 23);
         printf("                               ");
 
+
+        cont.banco[strcspn(cont.banco, "\n")] = '\0';
+
+        cont.agencia[strcspn(cont.agencia, "\n")] = '\0';
+
+        cont.numero_conta[strcspn(cont.numero_conta, "\n")] = '\0';
+        
+
         // verifica se deseja cadastrar outro funcionario
         if (teste == 1)
         {

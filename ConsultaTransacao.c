@@ -1,77 +1,134 @@
-#include "funcoes.h"
+#include "Funcoes.h"
 
-void consultar_mov(tipolista *l)
+int consultar_mov(tipolista *l, TipoLista_movim *m)
 {
     tipoapontador aux;
+    tipoapontador_movim auxm;
     reg_movimentos cont;
-    int test;
+    int conta = 0;
+    int codigo;
+    int teste;
+
+    TelaConsultaG();
 
     do
     {
         do
         {
-            tela();
-            tela_consultar_mov();
+            gotoxy(10, 5);
+            printf("                                                                     ");
+            gotoxy(8, 23);
+            printf("Digite \"0\" para sair");
+            gotoxy(8, 23);
+            printf("                        ");
+            gotoxy(10, 5);
+            scanf("%d", &codigo);
 
-            gotoxy(14, 3);
-            printf("Consulta de movimentacao");
-
-            gotoxy(7, 24);
-            printf("Digite 0 para sair");
-
-            gotoxy(9, 6);
-            scanf("%d", &cont.codigo_conta);
-
-            aux = pesquisa(l, cont.codigo_conta);
-
-            if (aux == NULL && cont.codigo_conta != 0)
+            if (codigo == 0)
             {
-                gotoxy(7, 24);
-                printf("Cadastro nao existe");
+
+                gotoxy(8, 23);
+                printf("Deseja realmente sair (Sim = 1/Nao = 2): ");
+                scanf("%d", &teste);
+                gotoxy(8, 23);
+                printf("                                            ");
+                gotoxy(8, 23);
+
+                if (teste == 1)
+                {
+                    return 0;
+                }
+            }
+
+            aux = pesquisa(l, codigo);
+
+            if (aux == NULL && codigo != 0)
+            {
+                gotoxy(8, 23);
+                printf("Conta nao escontrada ou inexistente");
                 getch();
-            }
-        } while (aux == NULL && cont.codigo_conta != 0);
+                gotoxy(8, 23);
+                printf("                                            ");
+                gotoxy(8, 23);
+                printf("Deseja tentar novamente? (Sim = 1/Nao = 2): ");
+                scanf("%d", &teste);
+                gotoxy(8, 23);
+                printf("                                              ");
+                gotoxy(8, 23);
 
-        if (cont.codigo_conta != 0)
+                if (teste == 2)
+                {
+                    return 0;
+                }
+            }
+
+        } while (aux == NULL);
+
+        gotoxy(2, 5);
+        printf("Codigo: %d - %s   Agencia: %s Cta: %s    Tp: %s", aux->conteudo.codigo, aux->conteudo.banco, aux->conteudo.agencia, aux->conteudo.numero_conta, aux->conteudo.tipo_conta);
+
+        auxm = m->primeiro;
+
+        // percorre a lista contando
+        while (auxm != NULL)
         {
-            cont = aux->conteudo;
 
-            gotoxy(13, 6);
-            printf("%s", aux->conteudo.banco);
-
-            gotoxy(30, 6);
-            printf("Agencia:");
-            gotoxy(38, 6);
-            printf("%s", aux->conteudo.agencia);
-
-            gotoxy(47, 6);
-            printf("Cta:");
-            gotoxy(51, 6);
-            printf("%s", aux->conteudo.numero_conta);
-
-            gotoxy(60, 6);
-            printf("Conta:");
-            gotoxy(67, 6);
-
-            if (strlen(aux->conteudo.tipo_conta) > 0)
+            if (auxm->conteudo.codigo_conta == codigo)
             {
-                if (aux->conteudo.tipo_conta[0] == '1')
-                    printf("Corrente");
-                else if (aux->conteudo.tipo_conta[0] == '2')
-                    printf("Poupanca");
-                else if (aux->conteudo.tipo_conta[0] == '3')
-                    printf("Cartao credito");
-                else
-                    printf("Tipo desconhecido");
+                gotoxy(2, conta + 9);
+                printf("%-10s %-29s %-13s R$%9.2f R$%8.2f", auxm->conteudo.dt_movimento, auxm->conteudo.ds_favorecido, auxm->conteudo.tp_movimento, auxm->conteudo.vl_saldo);
+
+                conta++;
             }
 
-            do
+            if (conta == 13)
             {
-                gotoxy(7, 24);
-                printf("Deseja consultar outro Cadastro? (1-SIM/2-NAO): ");
-                scanf("%d", &test);
-            } while (test != 1 && test != 2);
+                gotoxy(8, 23);
+                printf("Pressione alguma tecla para continuar...");
+                getch();
+                gotoxy(8, 23);
+                printf("                                           ");
+
+                for (int j = 0; j < 13; j++)
+                {
+                    gotoxy(2, j +  9);
+                    printf("                                                                             ");
+                }
+
+                conta = 0;
+            }
+
+            auxm = auxm->prox;
         }
 
-    } while (test == 1);
+        if (conta == 0)
+        {
+            printf("                                            ");
+            gotoxy(8, 23);
+            printf("A conta nao possui movimentacoes");
+            getch();
+            printf("                                            ");
+            gotoxy(8, 23);
+            printf("Deseja tentar novamente? (Sim = 1/Nao = 2): ");
+            scanf("%d", &teste);
+
+            gotoxy(8, 23);
+            printf("                                             ");
+
+            if (teste == 2)
+            {
+                return 0;
+            }
+        }
+
+        printf("                                            ");
+        gotoxy(8, 23);
+        printf("Deseja consultar novamente? (Sim = 1/Nao = 2): ");
+        scanf("%d", &teste);
+        gotoxy(8, 23);
+        printf("                                                  ");
+
+    } while (teste == 1);
+
+
 }
