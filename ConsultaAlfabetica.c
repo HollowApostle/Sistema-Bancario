@@ -17,7 +17,7 @@ void ordenarPorCodigo(tipolista *l)
             if (atual->conteudo.codigo > atual->prox->conteudo.codigo)
             {
                 // Trocar os conteúdos entre os nós
-                tipoapontador temp = atual->prox;
+                temp.conteudo = atual->conteudo;
                 atual->conteudo = atual->prox->conteudo;
                 atual->prox->conteudo = temp.conteudo;
                 trocou = 1;
