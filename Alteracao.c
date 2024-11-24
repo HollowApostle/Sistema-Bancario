@@ -1,4 +1,4 @@
-#include "Funcoes.h"
+#include "Funcoes.h" 
 
 int alterar(tipolista *l)
 {
