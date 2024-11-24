@@ -1,6 +1,6 @@
 /*
-Autor: Artur Ribeiro Bérgamo
-Data:20/11/2024
+Autor.: Artur Ribeiro Bérgamo
+Data..:20/11/2024
 Equipe: RA:169479-2024
         RA:171270-2024
 Objetivo: Logica utilizada para movimentação de dados das contas, caso seja credito ou debito.
