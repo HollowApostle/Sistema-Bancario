@@ -1,3 +1,11 @@
+/*
+Autor: Artur Ribeiro Bérgamo
+Data:20/11/2024
+Equipe: RA:169479-2024
+        RA:171270-2024
+Objetivo: Logica da parte de movimentação que é implementada em funções e codigos.
+*/
+
 #include "Funcoes.h"
 
 tipoapontador_movim pesquisaMovim(TipoLista_movim *l, int cod)

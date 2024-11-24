@@ -1,3 +1,11 @@
+/*
+Autor: Artur Ribeiro Bérgamo
+Data:20/11/2024
+Equipe: RA:169479-2024
+        RA:171270-2024
+Objetivo: Tela que será utilizada para demonstrar os codigos na hora da transação entre contas bancarias.
+*/
+
 #include "Funcoes.h"
 
 void tela_transferencia()

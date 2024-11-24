@@ -1,4 +1,12 @@
-#include "Funcoes.h" //Funcao que realiza as remocoes
+/*
+Autor: Artur Ribeiro Bérgamo
+Data:20/11/2024
+Equipe: RA:169479-2024
+        RA:171270-2024
+Objetivo: Logica que será utilizada nas opções de remoção de contas.
+*/
+
+#include "Funcoes.h" 
 
 int remover(TipoLista_movim *m, tipolista *l, int opc)
 {

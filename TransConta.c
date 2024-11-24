@@ -1,3 +1,11 @@
+/*
+Autor: Artur Ribeiro Bérgamo
+Data:20/11/2024
+Equipe: RA:169479-2024
+        RA:171270-2024
+Objetivo: Logica que será utilizada na tela de transferencias de contas bancarias.
+*/
+
 #include "Funcoes.h"
 
 int TransConta(TipoLista_movim *m, tipolista *l)
