@@ -12,8 +12,8 @@ void telaCadastro(tipolista *l)
 
         tela();
 
-        gotoxy(29, 3);
-        printf("CADASTRO DE CLIENTES");
+        gotoxy(31, 3);
+        printf("CADASTRO DE CONTAS");
 
         gotoxy(29, 11);
         printf("1-Cadastrar no final da lista ");

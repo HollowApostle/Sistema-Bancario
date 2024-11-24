@@ -136,6 +136,12 @@ void gravarArquivoMov(TipoLista_movim *l);
 
 int consultar_mov(tipolista *l, TipoLista_movim *m);
 
+void TelaConsultaConta();
+
+int consultarAlfa(tipolista *l, int opc);
+
+int alterar(tipolista *l);
+
 
 #endif
 

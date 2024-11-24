@@ -93,6 +93,8 @@ void tela() {
 
     gotoxy(73, 02);
     printf("Renato");
+    gotoxy(73, 03);
+    printf("Artur");
 
     // Desenha as bordas verticais da tela (caractere '186') entre as linhas 2 e 23
     for (i = 2; i < 24; i++) {

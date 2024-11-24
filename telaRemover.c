@@ -25,8 +25,7 @@ void TelaRemover(TipoLista_movim *m, tipolista *l)
         gotoxy(29, 14);
         printf("4 - Sair ");
 
-        gotoxy(43, 23);
-        scanf("%d", &opcao);
+        opcao = validarNum("Digite o numero da opcao desejada: ", 8, 23);
 
         if (opcao > 4 || opcao <= 0)
         {
@@ -44,21 +43,15 @@ void TelaRemover(TipoLista_movim *m, tipolista *l)
         case 1:
             remover(m, l, opcao);
 
-            
-
             break;
 
         case 2:
             remover(m, l, opcao);
 
-            
-
             break;
 
         case 3:
             remover(m, l, opcao);
-
-            
 
             break;
 

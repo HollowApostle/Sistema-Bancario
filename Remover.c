@@ -42,8 +42,17 @@ int remover(TipoLista_movim *m, tipolista *l, int opc)
         {
             gotoxy(8, 23);
             printf("Conta Bancaria com Movimentacoes Bancarias. Nao pode ser removida.");
-
             getch();
+            gotoxy(8, 23);
+            printf("                                                                    ");
+            gotoxy(8, 23);
+            printf("Deseja somente inativar a conta?(Sim = 1/Nao = 0)");
+            scanf("%d", &teste);
+
+            if (teste == 1)
+            {
+                strcpy(l->primeiro->conteudo.status, "Inativo");
+            }
 
             return 0;
         }
@@ -79,19 +88,22 @@ int remover(TipoLista_movim *m, tipolista *l, int opc)
         amostra(l->ultimo);
 
         gotoxy(8, 23);
-        printf("                                        ");
-        gotoxy(8, 23);
-        printf("Deseja realmente apagar os dados(Sim = 1/Nao = 0): ");
-        scanf("%d", &teste);
-        gotoxy(8, 23);
-        printf("                               ");
+        printf("                                              ");
+        teste = validarNum("Deseja realmente apagar os dados(Sim = 1/Nao = 0): ", 8, 23);
 
         if (pesquisaMovim(m, l->ultimo->conteudo.codigo) != NULL)
         {
             gotoxy(8, 23);
             printf("Conta Bancaria com Movimentacoes Bancarias. Nao pode ser removida.");
-
             getch();
+            gotoxy(8, 23);
+            printf("                                                                    ");
+            teste = validarNum("Deseja somente inativar a conta?(Sim = 1/Nao = 0)", 8, 23);
+
+            if (teste == 1)
+            {
+                strcpy(l->ultimo->conteudo.status, "Inativo");
+            }
 
             return 0;
         }
@@ -160,19 +172,22 @@ int remover(TipoLista_movim *m, tipolista *l, int opc)
             amostra(l->primeiro);
 
             gotoxy(8, 23);
-            printf("                                        ");
-            gotoxy(8, 23);
-            printf("Deseja realmente apagar os dados(Sim = 1/Nao = 0): ");
-            scanf("%d", &teste);
-            gotoxy(8, 23);
-            printf("                               ");
+            printf("                                               ");
+            teste = validarNum("Deseja realmente apagar os dados(Sim = 1/Nao = 0): ", 8, 23);
 
             if (pesquisaMovim(m, l->primeiro->conteudo.codigo) != NULL)
             {
                 gotoxy(8, 23);
                 printf("Conta Bancaria com Movimentacoes Bancarias. Nao pode ser removida.");
-
                 getch();
+                gotoxy(8, 23);
+                printf("                                                                    ");
+                teste = validarNum("Deseja somente inativar a conta?(Sim = 1/Nao = 0)", 8, 23);
+
+                if (teste == 1)
+                {
+                    strcpy(l->primeiro->conteudo.status, "Inativo");
+                }
 
                 return 0;
             }
@@ -211,19 +226,25 @@ int remover(TipoLista_movim *m, tipolista *l, int opc)
                 amostra(p);
 
                 gotoxy(8, 23);
-                printf("                                        ");
+                printf("                                             ");
                 gotoxy(8, 23);
-                printf("Deseja realmente apagar os dados(Sim = 1/Nao = 0): ");
-                scanf("%d", &teste);
-                gotoxy(8, 23);
-                printf("                               ");
+                teste = validarNum("Deseja realmente apagar os dados(Sim = 1/Nao = 0): ", 8, 23);
 
                 if (pesquisaMovim(m, l->primeiro->conteudo.codigo) != NULL)
                 {
                     gotoxy(8, 23);
                     printf("Conta Bancaria com Movimentacoes Bancarias. Nao pode ser removida.");
-
                     getch();
+                    gotoxy(8, 23);
+                    printf("                                                                    ");
+                    gotoxy(8, 23);
+                    printf("Deseja somente inativar a conta?(Sim = 1/Nao = 0)");
+                    scanf("%d", &teste);
+
+                    if (teste == 1)
+                    {
+                        strcpy(p->conteudo.status, "Inativo");
+                    }
 
                     return 0;
                 }

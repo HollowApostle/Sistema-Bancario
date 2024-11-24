@@ -26,20 +26,15 @@ int cadastro(tipolista *l, int opc)
 
             gotoxy(8, 23);
             printf("Digite \"0\" para sair");
-            gotoxy(51, 7);
+            gotoxy(52, 7);
             printf("                 ");
-            gotoxy(51, 7);
+            gotoxy(52, 7);
             scanf("%d", &cont.codigo);
 
             if (cont.codigo == 0)
             {
 
-                gotoxy(8, 23);
-                printf("Deseja realmente sair (Sim = 1/Nao = 2): ");
-                scanf("%d", &teste);
-                gotoxy(8, 23);
-                printf("                                            ");
-                gotoxy(8, 23);
+                teste = validarNum("Deseja realmente sair (Sim = 1/Nao = 2): ", 8,23);
 
                 if (teste == 1)
                 {
@@ -139,14 +134,7 @@ int cadastro(tipolista *l, int opc)
 
         strcpy(cont.status, "Ativo");
 
-        gotoxy(8, 23);
-        printf("                                        ");
-        gotoxy(8, 23);
-        printf("Deseja gravar (Sim = 1/Nao = 2): ");
-        scanf("%d", &teste);
-        gotoxy(8, 23);
-        printf("                               ");
-
+        teste = validarNum("Deseja gravar (Sim = 1/Nao = 2): ", 8,23);
 
         cont.banco[strcspn(cont.banco, "\n")] = '\0';
 
@@ -253,13 +241,8 @@ int cadastro(tipolista *l, int opc)
                 }
             }
 
-            gotoxy(8, 23);
-            printf("                                                       ");
-            gotoxy(8, 23);
-            printf("Deseja cadastrar outra conta? (Sim = 1/Nao = 2): ");
-            scanf("%d", &teste);
-            gotoxy(8, 23);
-            printf("                                                       ");
+            teste = validarNum("Deseja cadastrar outra conta? (Sim = 1/Nao = 2): ", 8,23);
+
         }
     } while (teste == 1);
 

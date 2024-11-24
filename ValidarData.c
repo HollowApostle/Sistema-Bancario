@@ -49,5 +49,5 @@ int validarECompararComLista(const char *novaDataStr, TipoLista_movim *m) {
     int novaDataNum = converterParaNumero(diaNova, mesNova, anoNova);
     int ultimaDataNum = converterParaNumero(diaUltima, mesUltima, anoUltima);
 
-    return novaDataNum > ultimaDataNum; // Retorna 1 se nova data for maior, 0 caso contrário
+    return novaDataNum >= ultimaDataNum; // Retorna 1 se nova data for maior, 0 caso contrário
 }

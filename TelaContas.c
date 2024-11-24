@@ -1,12 +1,12 @@
 #include "Funcoes.h"
 
-
-void TelaContas(TipoLista_movim *m,tipolista *l){
+void TelaContas(TipoLista_movim *m, tipolista *l)
+{
 
     int opcao = 0;
-    
-    do{       
-        
+
+    do
+    {
 
         tela();
 
@@ -27,7 +27,6 @@ void TelaContas(TipoLista_movim *m,tipolista *l){
 
         gotoxy(29, 17);
         printf("5-Retornar ao menu anterior");
-
 
         // Leitura de dados
         opcao = validarNum("Digite o numero da opcao desejada: ", 8, 23);
@@ -58,6 +57,11 @@ void TelaContas(TipoLista_movim *m,tipolista *l){
             TelaRemover(m, l);
             break;
 
+        case 3:
+
+            alterar(l);
+            break;
+
         case 4:
 
             TelaConsulta(l);
@@ -73,5 +77,4 @@ void TelaContas(TipoLista_movim *m,tipolista *l){
     } while (opcao != 5);
 
     gotoxy(37, 25);
-
 }

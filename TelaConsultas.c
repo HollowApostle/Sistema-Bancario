@@ -22,10 +22,10 @@ void TelaConsulta(tipolista *l)
         gotoxy(29, 13);
         printf("3-Consulta por ordem de codigo");
 
-        gotoxy(29, 13);
+        gotoxy(29, 15);
         printf("4-Consulta por ordem alfabetica");
 
-        gotoxy(29, 15);
+        gotoxy(29, 17);
         printf("5-Retornar ao menu anterior");
 
         // Leitura de dados
@@ -59,11 +59,17 @@ void TelaConsulta(tipolista *l)
 
         case 3:
 
-           TelaConsultaG();
+            consultarAlfa(l, opcao);
 
             break;
 
         case 4:
+
+            consultarAlfa(l, opcao);
+
+            break;
+
+        case 5:
 
             break;
 
