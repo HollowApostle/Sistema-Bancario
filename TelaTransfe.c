@@ -14,6 +14,7 @@ void tela_transferencia()
 
     tela();
 
+    // Desenha uma linha vertical no meio da tela, da posição 5 à posição 16
     for (i = 5; i < 16; i++)
     {
         gotoxy(40, i);
@@ -34,6 +35,8 @@ void tela_transferencia()
     gotoxy(51, 5);
     printf("Conta Destino");
 
+
+    // Informações relacionadas à conta de origem
     gotoxy(10, 7);
     printf("Numero da conta: ");
     gotoxy(10, 8);
@@ -51,6 +54,8 @@ void tela_transferencia()
     gotoxy(10, 14);
     printf("Novo Saldo.....: ");
 
+
+    // Informações relacionadas à conta de destino
     gotoxy(50, 7);
     printf("Numero da conta: ");
     gotoxy(50, 8);
@@ -68,6 +73,8 @@ void tela_transferencia()
     gotoxy(50, 14);
     printf("Novo Saldo.....: ");
 
+
+    // Campos para o valor e a data da transferência
     gotoxy(27, 18);
     printf("Valor a ser transferido: ");
     gotoxy(27, 19);
