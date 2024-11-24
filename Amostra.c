@@ -3,6 +3,8 @@
 void amostra(tipoapontador p)
 {
     tela_conta();
+    // Chama a função `tela_conta()` para exibir uma interface ou layout no terminal, relacionada às informações de conta.
+    
     gotoxy(51, 7);
     printf("%d", p->conteudo.codigo);
 

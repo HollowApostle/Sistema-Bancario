@@ -85,10 +85,10 @@ int cadastro(tipolista *l, int opc)
             if (testeOPC < 1 || testeOPC > 3)
             {
                 gotoxy(8, 23);
-                printf("Opcao invalida. Escolha entre 1, 2 ou 3.               ");
+                printf("Opcao invalida. Escolha entre 1, 2 ou 3.                    ");
                 getch(); 
                 gotoxy(8, 23);
-                printf("                                                       "); 
+                printf("                                                            "); 
             }
             else
             {
