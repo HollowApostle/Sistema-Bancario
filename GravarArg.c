@@ -3,7 +3,7 @@
 
 void gravarArquivo(tipolista *l)
 {
-    FILE *arquivo = fopen("folha.dat", "wb"); // Abre o arquivo para escrita binária
+    FILE *arquivo = fopen("Contas.dat", "wb"); // Abre o arquivo para escrita binária
     if (arquivo == NULL)
     {
         gotoxy(8, 23);

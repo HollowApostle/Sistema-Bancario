@@ -6,6 +6,7 @@
 #include <windows.h>
 #include <conio.h>
 #include <ctype.h>
+#include <string.h>
 
 typedef struct
 {
@@ -71,6 +72,10 @@ void gotoxy(int x, int y);
 
 void tela();
 
+void imprimir_ultm_linha(int linha);
+
+void imprimir_prim_linha(int linha);
+
 void tela_fim();
 
 void imprimir_linha(int linha);
@@ -95,6 +100,8 @@ void amostra(tipoapontador p);
 
 int consultar(tipolista *l);
 
+int consultarCod(tipolista *l);
+
 float validarNum(char *mensagem, int x, int y);
 
 void inserirMovim(TipoLista_movim *l, reg_movimentos cont);
@@ -107,17 +114,28 @@ void TelaContas(TipoLista_movim *m,tipolista *l);
 
 void TelaMovim(TipoLista_movim *m, tipolista *l);
 
-void movimCreDeb(TipoLista_movim *m, tipolista *l);
+int movimCreDeb(TipoLista_movim *m, tipolista *l);
 
-int validar_data(const char* data);
+int validarECompararComLista(const char *novaDataStr, TipoLista_movim *m);
 
 double validarNumD(char *mensagem, int x, int y);
 
 void tela_transferencia();
 
-void TransConta(TipoLista_movim *m, tipolista *l);
+void TelaConsulta(tipolista *l);
+
+int TransConta(TipoLista_movim *m, tipolista *l);
 
 tipoapontador_movim pesquisaMovim(TipoLista_movim *l, int cod);
+
+void TelaConsultaG();
+
+void lerArquivoMov(TipoLista_movim *l);
+
+void gravarArquivoMov(TipoLista_movim *l);
+
+int consultar_mov(tipolista *l, TipoLista_movim *m);
+
 
 #endif
 

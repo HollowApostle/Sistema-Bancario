@@ -16,6 +16,7 @@ int main()
     l.ultimo = NULL;
 
     lerArquivo(&l);
+    lerArquivoMov(&m);
 
     do
     {
@@ -66,6 +67,7 @@ int main()
         case 2:
 
             TelaMovim(&m, &l);
+            gravarArquivoMov(&m);
             break;
 
         case 3:
@@ -76,7 +78,7 @@ int main()
             break;
         }
 
-    } while (opcao != 5);
+    } while (opcao != 3);
 
     gotoxy(37, 25);
 

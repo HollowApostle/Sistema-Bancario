@@ -1,50 +1,53 @@
 #include "Funcoes.h"
 
-int bissexto(int ano){
-
-    if (ano % 4 == 0) {
-        if (ano % 100 != 0 || ano % 400 == 0) {
-            return 1; // Ano é bissexto
-        }
-    }
-    return 0; // Ano não é bissexto
-
+int extrairData(const char *dataStr, int *dia, int *mes, int *ano) {
+    return sscanf(dataStr, "%d/%d/%d", dia, mes, ano) == 3;
 }
 
-int validar_data(const char* data) {
-    int dia, mes, ano;
-    int dias_no_mes[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int validarData(int dia, int mes, int ano) {
+    if (ano < 1900 || ano > 2100) return 0; // Ano válido
+    if (mes < 1 || mes > 12) return 0;     // Mês válido
 
-    // Separar a string em dia, mês e ano
-    int partes_lidas = sscanf(data, "%2d/%2d/%2d", &dia, &mes, &ano);
-    if (partes_lidas != 3) {
-        return 0; // Formato inválido
+    // Dias máximos por mês
+    int diasPorMes[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    if (mes == 2 && ((ano % 4 == 0 && ano % 100 != 0) || (ano % 400 == 0))) {
+        diasPorMes[1] = 29; // Ano bissexto
     }
 
-    // Ajustar o ano para considerar século 20 ou 21
-    if (ano < 50) {
-        ano += 2000;
-    } else {
-        ano += 1900;
+    return dia >= 1 && dia <= diasPorMes[mes - 1];
+}
+
+int converterParaNumero(int dia, int mes, int ano) {
+    return ano * 10000 + mes * 100 + dia;
+}
+
+int validarECompararComLista(const char *novaDataStr, TipoLista_movim *m) {
+    int diaNova, mesNova, anoNova;
+    int diaUltima, mesUltima, anoUltima;
+
+    // Verificar se a nova data é válida
+    if (!extrairData(novaDataStr, &diaNova, &mesNova, &anoNova) || 
+        !validarData(diaNova, mesNova, anoNova)) {
+        return 0; // Nova data inválida
     }
 
-    // Verificar se o mês é válido
-    if (mes < 1 || mes > 12) {
-        return 0; // Mês inválido
+    // Verificar se a lista está vazia (sem movimentações)
+    if (m->ultimo == NULL) {
+        return 1; // Aceitar a nova data como válida, pois não há movimentações anteriores
     }
 
-    // Ajustar os dias de fevereiro para anos bissextos
-    if (mes == 2 && bissexto(ano)) {
-        dias_no_mes[1] = 29;
+    // Obter a última data da lista
+    const char *ultimaDataStr = m->ultimo->conteudo.dt_movimento;
+
+    // Verificar se a última data é válida
+    if (!extrairData(ultimaDataStr, &diaUltima, &mesUltima, &anoUltima) || 
+        !validarData(diaUltima, mesUltima, anoUltima)) {
+        return 0; // Última data inválida
     }
 
-    // Verificar se o dia é válido para o mês
-    if (dia < 1) {
-        return 0; // Dia inválido (menor que 1)
-    }
-    if (dia > dias_no_mes[mes - 1]) {
-        return 0; // Dia inválido (maior que o permitido no mês)
-    }
+    // Comparar as datas
+    int novaDataNum = converterParaNumero(diaNova, mesNova, anoNova);
+    int ultimaDataNum = converterParaNumero(diaUltima, mesUltima, anoUltima);
 
-    return 1; // Data válida
+    return novaDataNum > ultimaDataNum; // Retorna 1 se nova data for maior, 0 caso contrário
 }

@@ -1,12 +1,12 @@
 #include "Funcoes.h"
 
-
-void TelaContas(TipoLista_movim *m,tipolista *l){
+void TelaConsulta(tipolista *l)
+{
 
     int opcao = 0;
-    
-    do{       
-        
+
+    do
+    {
 
         tela();
 
@@ -14,20 +14,19 @@ void TelaContas(TipoLista_movim *m,tipolista *l){
         printf("SISTEMA BANCARIO");
 
         gotoxy(29, 9);
-        printf("1-Cadastrar conta");
+        printf("1-Consuta geral");
 
         gotoxy(29, 11);
-        printf("2-Remover conta");
+        printf("2-Consulta por codigo");
 
         gotoxy(29, 13);
-        printf("3-Alteracao do Cadastro de conta");
+        printf("3-Consulta por ordem de codigo");
+
+        gotoxy(29, 13);
+        printf("4-Consulta por ordem alfabetica");
 
         gotoxy(29, 15);
-        printf("4-Consultar contas");
-
-        gotoxy(29, 17);
         printf("5-Retornar ao menu anterior");
-
 
         // Leitura de dados
         opcao = validarNum("Digite o numero da opcao desejada: ", 8, 23);
@@ -48,21 +47,23 @@ void TelaContas(TipoLista_movim *m,tipolista *l){
         switch (opcao)
         {
         case 1:
-            telaCadastro(l);
-            gravarArquivo(l);
+            consultar(l);
 
             break;
 
         case 2:
 
-            TelaRemover(m, l);
+            consultarCod(l);
+
+            break;
+
+        case 3:
+
+           TelaConsultaG();
+
             break;
 
         case 4:
-
-            TelaConsulta(l);
-
-        case 5:
 
             break;
 
@@ -73,5 +74,4 @@ void TelaContas(TipoLista_movim *m,tipolista *l){
     } while (opcao != 5);
 
     gotoxy(37, 25);
-
 }
