@@ -2,12 +2,12 @@
 
 int consultar_mov(tipolista *l, TipoLista_movim *m)
 {
-    tipoapontador aux;
-    tipoapontador_movim auxm;
-    reg_movimentos cont;
-    int conta = 0;
-    int codigo;
-    int teste;
+    tipoapontador aux; // Ponteiro auxiliar para contas
+    tipoapontador_movim auxm; // Ponteiro auxiliar para movimentações
+    reg_movimentos cont; // Estrutura para armazenar os dados das movimentações
+    int conta = 0; // Contador para controlar o número de movimentações exibidas
+    int codigo; // Código da conta a ser consultada
+    int teste; // Variável auxiliar para controle de fluxo
 
     TelaConsultaG();
 
