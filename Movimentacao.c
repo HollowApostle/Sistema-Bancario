@@ -20,6 +20,9 @@ int movimCreDeb(TipoLista_movim *m, tipolista *l)
     int resultado;       // Resultado da validação de data
     int confirmacao;     // Variável para confirmação de saída
 
+    gotoxy(34,2);
+    printf("MOVIMENTACAO");
+
     TelaCadMovim(m);
     do
     {
@@ -119,7 +122,7 @@ int movimCreDeb(TipoLista_movim *m, tipolista *l)
             printf("                                                     ");
 
             gotoxy(8, 23);
-            printf("Data da Movimentacao Invalida. Formato: DD/MM/YYYY %d", resultado);
+            printf("Data da Movimentacao Invalida. Formato: DD/MM/YYYY");
             getch();
             gotoxy(8, 23);
             printf("                                                               ");

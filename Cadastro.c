@@ -1,4 +1,13 @@
 
+/*
+Autor.: Renato Garcia Lopes
+Data..:20/11/2024
+Equipe: RA:169479-2024
+        RA:171270-2024
+Objetivo: responsavel por realizar o cadastro das contas
+*/
+
+
 #include "Funcoes.h"
 
 int cadastro(tipolista *l, int opc)

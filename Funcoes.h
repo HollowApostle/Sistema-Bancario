@@ -1,3 +1,11 @@
+/*
+Autor.: Renato Garcia Lopes
+Data..:20/11/2024
+Equipe: RA:169479-2024
+        RA:171270-2024
+Objetivo: cabeçalho que contem as funçoes e as listas
+*/
+
 #ifndef FUNCOES_H
 #define FUNCOES_H
 
@@ -117,8 +125,6 @@ void TelaMovim(TipoLista_movim *m, tipolista *l);
 int movimCreDeb(TipoLista_movim *m, tipolista *l);
 
 int validarECompararComLista(const char *novaDataStr, TipoLista_movim *m);
-
-double validarNumD(char *mensagem, int x, int y);
 
 void tela_transferencia();
 

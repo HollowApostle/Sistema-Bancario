@@ -10,13 +10,13 @@ Objetivo: Logica que será utilizada na tela de transferencias de contas bancari
 
 int TransConta(TipoLista_movim *m, tipolista *l)
 {
-    int codigo;             // Código da conta de origem
-    int codigo2;            // Código da conta de destino
+    int codigo;  // Código da conta de origem
+    int codigo2; // Código da conta de destino
     int teste;
-    tipoapontador aux;      // Apontador auxiliar para conta de origem
-    tipoapontador aux2;     // Apontador auxiliar para conta de destino
-    reg_movimentos cont;    // Registro de movimentação para conta de origem
-    reg_movimentos cont2;   // Registro de movimentação para conta de destino
+    tipoapontador aux;    // Apontador auxiliar para conta de origem
+    tipoapontador aux2;   // Apontador auxiliar para conta de destino
+    reg_movimentos cont;  // Registro de movimentação para conta de origem
+    reg_movimentos cont2; // Registro de movimentação para conta de destino
 
     if (l->primeiro == NULL)
     {
@@ -83,9 +83,22 @@ int TransConta(TipoLista_movim *m, tipolista *l)
     gotoxy(26, 13);
     printf("%.2lf", aux->conteudo.vl_saldo + aux->conteudo.vl_limite);
 
-    gotoxy(66, 7);
-    scanf("%d", &codigo2);
-    aux2 = pesquisa(l, codigo2);
+    do
+    {
+
+        gotoxy(66, 7);
+        scanf("%d", &codigo2);
+        aux2 = pesquisa(l, codigo2);
+        if (codigo2 == codigo)
+        {
+            gotoxy(8, 23);
+            printf("Coloque uma conta diferente da conta de origem");
+            getch();
+            gotoxy(8, 23);
+            printf("                                                ");
+        }
+        
+    } while (codigo2 == codigo);
 
     do
     {
@@ -139,7 +152,7 @@ int TransConta(TipoLista_movim *m, tipolista *l)
         fflush(stdin);
         fgets(cont.dt_movimento, 11, stdin);
 
-        if (!validarECompararComLista(cont.dt_movimento, m))    // Valida a data
+        if (!validarECompararComLista(cont.dt_movimento, m)) // Valida a data
         {
             gotoxy(8, 23);
             printf("Data invalida. Tente novamente.");
