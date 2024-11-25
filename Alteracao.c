@@ -1,8 +1,8 @@
 /*
 Autor.: Renato Garcia Lopes
 Data..:20/11/2024
-Equipe: RA:169479-2024
-        RA:171270-2024
+Equipe: RA:169479-2024 - Artur Bergamo
+        RA:171270-2024 - Renato Lopes
 Objetivo: responsavel por alterar os cadastros
 */
 
@@ -119,9 +119,9 @@ int alterar(tipolista *l)
 
         case 4:
             getchar();
-            gotoxy(51, 17);
+            gotoxy(51, 15);
             printf("                            ");
-            gotoxy(51, 17);
+            gotoxy(51, 15);
             do
             {
                 gotoxy(8, 23);

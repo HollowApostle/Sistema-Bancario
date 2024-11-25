@@ -2,8 +2,8 @@
 /*
 Autor.: Renato Garcia Lopes
 Data..:20/11/2024
-Equipe: RA:169479-2024
-        RA:171270-2024
+Equipe: RA:169479-2024 - Artur Bergamo
+        RA:171270-2024 - Renato Lopes
 Objetivo: responsavel por consultar por ordem alfabetica
 */
 
@@ -22,8 +22,6 @@ double SomaLimite (tipolista *l){
 
        p = p->prox;
     }
-
-    soma = soma /2;
     
     return soma;
 

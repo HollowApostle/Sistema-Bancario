@@ -1,8 +1,8 @@
 /*
 Autor.: Artur Ribeiro Bérgamo
 Data..:20/11/2024
-Equipe: RA:169479-2024
-        RA:171270-2024
+Equipe: RA:169479-2024 - Artur Bergamo
+        RA:171270-2024 - Renato Lopes
 Objetivo: Logica que será utilizada na tela de transferencias de contas bancarias.
 */
 
@@ -97,7 +97,7 @@ int TransConta(TipoLista_movim *m, tipolista *l)
             gotoxy(8, 23);
             printf("                                                ");
         }
-        
+
     } while (codigo2 == codigo);
 
     do
@@ -154,9 +154,23 @@ int TransConta(TipoLista_movim *m, tipolista *l)
 
         if (!validarECompararComLista(cont.dt_movimento, m)) // Valida a data
         {
-            gotoxy(8, 23);
-            printf("Data invalida. Tente novamente.");
-            getch();
+
+            if (m->primeiro == NULL)
+            {
+                gotoxy(8, 23);
+                printf("Data invalida. Tente novamente. ");
+                getch();
+                gotoxy(8, 23);
+                printf("                                                     ");
+            }
+            else
+            {
+                gotoxy(8, 23);
+                printf("Data da Movimentacao Invalida, ultima data: %s ", m->ultimo->conteudo.dt_movimento);
+                getch();
+                gotoxy(8, 23);
+                printf("                                                        ");
+            }
         }
     } while (!validarECompararComLista(cont.dt_movimento, m));
 
