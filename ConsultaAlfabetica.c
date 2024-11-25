@@ -22,6 +22,8 @@ double SomaLimite (tipolista *l){
 
        p = p->prox;
     }
+
+    soma = soma /2;
     
     return soma;
 

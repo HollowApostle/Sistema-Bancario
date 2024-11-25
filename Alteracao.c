@@ -16,6 +16,7 @@ int alterar(tipolista *l)
     reg_funcionario cont;
     tipoapontador p;
     tipoapontador aux;
+    int testeOPC;
 
     // verifica se tem algum valor
     if (l->primeiro == NULL)
@@ -121,8 +122,51 @@ int alterar(tipolista *l)
             gotoxy(51, 17);
             printf("                            ");
             gotoxy(51, 17);
-            fflush(stdin);
-            fgets(cont.tipo_conta, 20, stdin);
+            do
+            {
+                gotoxy(8, 23);
+                printf("Utilizar: 1=Corrente / 2=Poupanca / 3=Cartao Credito: ");
+                scanf("%d", &testeOPC);
+
+                if (testeOPC < 1 || testeOPC > 3)
+                {
+                    gotoxy(8, 23);
+                    printf("Opcao invalida. Escolha entre 1, 2 ou 3.                    ");
+                    getch();
+                    gotoxy(8, 23);
+                    printf("                                                            ");
+                }
+                else
+                {
+
+                    switch (testeOPC)
+                    {
+                    case 1:
+                        strcpy(cont.tipo_conta, "Corrente");
+                        gotoxy(52, 15);
+                        printf("Corrente");
+                        gotoxy(8, 23);
+                        printf("                                                       ");
+                        break;
+
+                    case 2:
+                        strcpy(cont.tipo_conta, "Poupanca");
+                        gotoxy(52, 15);
+                        printf("Poupanca");
+                        gotoxy(8, 23);
+                        printf("                                                       ");
+                        break;
+
+                    case 3:
+                        strcpy(cont.tipo_conta, "Cartao Credito");
+                        gotoxy(52, 15);
+                        printf("Cartao de credito");
+                        gotoxy(8, 23);
+                        printf("                                                       ");
+                        break;
+                    }
+                }
+            } while (testeOPC < 1 || testeOPC > 3);
 
             break;
         case 5:
@@ -163,7 +207,7 @@ int alterar(tipolista *l)
         printf("                                    ");
         gotoxy(8, 23);
 
-        teste = validarNum("Deseja salvar alteracao? (Sim = 1/Nao = 2)", 8,23);
+        teste = validarNum("Deseja salvar alteracao? (Sim = 1/Nao = 2)", 8, 23);
 
         if (teste == 1)
         {
