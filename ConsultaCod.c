@@ -1,3 +1,12 @@
+/*
+Autor.: Renato Garcia Lopes
+Data..:20/11/2024
+Equipe: RA:169479-2024
+        RA:171270-2024
+Objetivo: responsavel por consultar por ordem de codigo
+*/
+
+
 #include "Funcoes.h"
 
 // Funcao pra mostrar os valores armazenados
@@ -7,6 +16,7 @@ int consultarCod(tipolista *l)
     int codigo;
     int teste;
 
+    // Verifica se a lista está vazia (não há contas para consultar)
     if (l->primeiro == NULL)
     {
         gotoxy(8, 23);
@@ -33,6 +43,7 @@ int consultarCod(tipolista *l)
 
         p = pesquisa(l, codigo);
 
+        // Verifica se a conta foi encontrada
         if (p == NULL)
         {
             gotoxy(8, 23);

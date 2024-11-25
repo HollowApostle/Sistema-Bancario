@@ -1,3 +1,11 @@
+/*
+Autor.: Renato Garcia Lopes
+Data..: 20/11/2024
+Equipe: RA:169479-2024
+        RA:171270-2024
+Objetivo.: responsavel por validar os caracteres nas entradas de numeros
+*/
+
 #include "Funcoes.h"
 
 float validarNum(char *mensagem, int x, int y)
@@ -13,9 +21,7 @@ float validarNum(char *mensagem, int x, int y)
         gotoxy(x, y);
         printf("%s", mensagem);
 
-        fflush(stdin);
-
-        fgets(buffer, sizeof(buffer), stdin);
+        scanf(" %s", buffer);
 
         resultado = sscanf(buffer, "%f", &valor); // Converte a string para float
 
@@ -35,7 +41,6 @@ float validarNum(char *mensagem, int x, int y)
             gotoxy(8, 23);
             printf("                                                               ");
         }
-
 
     } while (resultado != 1 || valor <= 0); // Verifica se a entrada foi válida
 

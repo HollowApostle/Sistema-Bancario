@@ -1,3 +1,11 @@
+/*
+Autor.: Renato Garcia Lopes
+Data..: 20/11/2024
+Equipe: RA:169479-2024
+        RA:171270-2024
+Objetivo.: tela de seleçao das opcoes relacionadas a remoçao de contas
+*/
+
 #include "Funcoes.h"
 
 void TelaContas(TipoLista_movim *m, tipolista *l)

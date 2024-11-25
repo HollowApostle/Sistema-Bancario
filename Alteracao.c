@@ -1,3 +1,11 @@
+/*
+Autor.: Renato Garcia Lopes
+Data..:20/11/2024
+Equipe: RA:169479-2024
+        RA:171270-2024
+Objetivo: responsavel por alterar os cadastros
+*/
+
 #include "Funcoes.h"
 
 int alterar(tipolista *l)
@@ -82,9 +90,9 @@ int alterar(tipolista *l)
         {
         case 1:
             getchar();
-            gotoxy(52, 9);
+            gotoxy(51, 9);
             printf("                            ");
-            gotoxy(52, 9);
+            gotoxy(51, 9);
             fflush(stdin);
             fgets(cont.banco, 50, stdin);
 
@@ -92,54 +100,54 @@ int alterar(tipolista *l)
 
         case 2:
             getchar();
-            gotoxy(52, 11);
+            gotoxy(51, 11);
             printf("                            ");
-            gotoxy(52, 11);
+            gotoxy(51, 11);
             fflush(stdin);
             fgets(cont.agencia, 10, stdin);
 
             break;
         case 3:
             getchar();
-            gotoxy(52, 13);
+            gotoxy(51, 13);
             printf("                            ");
-            gotoxy(52, 13);
+            gotoxy(51, 13);
             fflush(stdin);
             fgets(cont.numero_conta, 20, stdin);
             break;
 
         case 4:
             getchar();
-            gotoxy(52, 17);
+            gotoxy(51, 17);
             printf("                            ");
-            gotoxy(52, 17);
+            gotoxy(51, 17);
             fflush(stdin);
             fgets(cont.tipo_conta, 20, stdin);
 
             break;
         case 5:
             getchar();
-            gotoxy(50, 19);
+            gotoxy(51, 19);
             printf("                            ");
-            gotoxy(50, 19);
+            gotoxy(51, 19);
             scanf("%lf", &cont.vl_saldo);
 
             break;
 
         case 6:
             getchar();
-            gotoxy(50, 19);
+            gotoxy(51, 19);
             printf("                            ");
-            gotoxy(50, 19);
+            gotoxy(51, 19);
             scanf("%lf", &cont.vl_limite);
 
             break;
 
         case 7:
             getchar();
-            gotoxy(50, 19);
+            gotoxy(51, 19);
             printf("                            ");
-            gotoxy(50, 19);
+            gotoxy(51, 19);
             fflush(stdin);
             fgets(cont.tipo_conta, 10, stdin);
 
@@ -155,7 +163,7 @@ int alterar(tipolista *l)
         printf("                                    ");
         gotoxy(8, 23);
 
-        teste = validarNum("Deseja salvar alteracao?", 8,23);
+        teste = validarNum("Deseja salvar alteracao? (Sim = 1/Nao = 2)", 8,23);
 
         if (teste == 1)
         {

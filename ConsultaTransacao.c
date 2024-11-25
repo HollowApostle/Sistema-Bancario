@@ -1,13 +1,21 @@
+/*
+Autor.: Renato Garcia Lopes
+Data..:20/11/2024
+Equipe: RA:169479-2024
+        RA:171270-2024
+Objetivo: responsavel por consultar as movimentações
+*/
+
 #include "Funcoes.h"
 
 int consultar_mov(tipolista *l, TipoLista_movim *m)
 {
-    tipoapontador aux;
-    tipoapontador_movim auxm;
-    reg_movimentos cont;
-    int conta = 0;
-    int codigo;
-    int teste;
+    tipoapontador aux; // Ponteiro auxiliar para contas
+    tipoapontador_movim auxm; // Ponteiro auxiliar para movimentações
+    reg_movimentos cont; // Estrutura para armazenar os dados das movimentações
+    int conta = 0; // Contador para controlar o número de movimentações exibidas
+    int codigo; // Código da conta a ser consultada
+    int teste; // Variável auxiliar para controle de fluxo
 
     TelaConsultaG();
 
@@ -76,8 +84,8 @@ int consultar_mov(tipolista *l, TipoLista_movim *m)
             if (auxm->conteudo.codigo_conta == codigo)
             {
                 gotoxy(2, conta + 9);
-                printf("%-10s %-29s %-13s R$%9.2f R$%8.2f", auxm->conteudo.dt_movimento, auxm->conteudo.ds_favorecido, auxm->conteudo.tp_movimento, auxm->conteudo.vl_saldo);
-
+                printf("%-10s %-29s %-13s R$%9.2f R$%9.2f", auxm->conteudo.dt_movimento, auxm->conteudo.ds_favorecido, auxm->conteudo.tp_movimento, auxm->conteudo.vl_saldo);
+                gotoxy(2, conta + 10);
                 conta++;
             }
 

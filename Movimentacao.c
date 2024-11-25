@@ -1,21 +1,32 @@
+/*
+Autor.: Artur Ribeiro Bérgamo
+Data..:20/11/2024
+Equipe: RA:169479-2024
+        RA:171270-2024
+Objetivo: Logica utilizada para movimentação de dados das contas, caso seja credito ou debito.
+*/
+
 #include "Funcoes.h"
 
 int movimCreDeb(TipoLista_movim *m, tipolista *l)
 {
-    int codigo;
-    tipoapontador aux;
-    reg_movimentos cont;
-    int tp_movim;
-    int teste;
-    double saldo;
-    double restante;
-    int resultado;
-    int confirmacao;
+    int codigo;          // Código da conta para movimentação
+    tipoapontador aux;   // Apontador auxiliar para localizar a conta
+    reg_movimentos cont; // Estrutura que armazena dados da movimentação
+    int tp_movim;        // Tipo de movimentação: 1 = Débito, 2 = Crédito
+    int teste;           // Variável de controle para validações
+    double saldo;        // Saldo disponível (saldo + limite)
+    double restante;     // Valor restante em caso de débito superior ao saldo
+    int resultado;       // Resultado da validação de data
+    int confirmacao;     // Variável para confirmação de saída
+
+    gotoxy(34,2);
+    printf("MOVIMENTACAO");
 
     TelaCadMovim(m);
     do
-    { 
-        
+    {
+
         gotoxy(8, 23);
         printf("Digite \"0\" para sair");
         gotoxy(54, 7);
@@ -24,9 +35,6 @@ int movimCreDeb(TipoLista_movim *m, tipolista *l)
         scanf("%d", &codigo);
 
         cont.codigo_conta = codigo;
-
-       
-        
 
         if (cont.codigo_conta == 0)
         {
@@ -44,6 +52,7 @@ int movimCreDeb(TipoLista_movim *m, tipolista *l)
             }
         }
 
+        // Pesquisa pela conta na lista
         aux = pesquisa(l, codigo);
 
         if (aux == NULL)
@@ -71,6 +80,8 @@ int movimCreDeb(TipoLista_movim *m, tipolista *l)
 
     } while (aux == NULL || aux->conteudo.status == "Inativo");
 
+
+    // Exibe os dados da conta encontrada
     gotoxy(54, 8);
     printf("%s", aux->conteudo.agencia);
 
@@ -89,6 +100,7 @@ int movimCreDeb(TipoLista_movim *m, tipolista *l)
     gotoxy(54, 13);
     printf("%.2lf", aux->conteudo.vl_limite + aux->conteudo.vl_saldo);
 
+    // Valida a data da movimentação
     do
     {
 
@@ -110,13 +122,15 @@ int movimCreDeb(TipoLista_movim *m, tipolista *l)
             printf("                                                     ");
 
             gotoxy(8, 23);
-            printf("Data da Movimentacao Invalida. Formato: DD/MM/YYYY %d",resultado);
+            printf("Data da Movimentacao Invalida. Formato: DD/MM/YYYY");
             getch();
             gotoxy(8, 23);
             printf("                                                               ");
         }
 
     } while (resultado != 1);
+
+    // Determina o tipo de movimentação
     do
     {
         gotoxy(8, 23);
@@ -168,6 +182,7 @@ int movimCreDeb(TipoLista_movim *m, tipolista *l)
 
     saldo = aux->conteudo.vl_limite + aux->conteudo.vl_saldo;
 
+    // Valida o valor da movimentação
     do
     {
         cont.vl_movimento = validarNum("4-Valor movimentacao...: ", 29, 18);
@@ -223,5 +238,6 @@ int movimCreDeb(TipoLista_movim *m, tipolista *l)
         cont.sequencial = m->ultimo->conteudo.sequencial + 1;
     }
 
+    // Insere a movimentação na lista de movimentações
     inserirMovim(m, cont);
 }

@@ -1,14 +1,22 @@
+/*
+Autor.: Artur Ribeiro Bérgamo
+Data..:20/11/2024
+Equipe: RA:169479-2024
+        RA:171270-2024
+Objetivo: Logica que será utilizada na tela de transferencias de contas bancarias.
+*/
+
 #include "Funcoes.h"
 
 int TransConta(TipoLista_movim *m, tipolista *l)
 {
-    int codigo;
-    int codigo2;
+    int codigo;  // Código da conta de origem
+    int codigo2; // Código da conta de destino
     int teste;
-    tipoapontador aux;
-    tipoapontador aux2;
-    reg_movimentos cont;
-    reg_movimentos cont2;
+    tipoapontador aux;    // Apontador auxiliar para conta de origem
+    tipoapontador aux2;   // Apontador auxiliar para conta de destino
+    reg_movimentos cont;  // Registro de movimentação para conta de origem
+    reg_movimentos cont2; // Registro de movimentação para conta de destino
 
     if (l->primeiro == NULL)
     {
@@ -44,6 +52,7 @@ int TransConta(TipoLista_movim *m, tipolista *l)
 
     aux = pesquisa(l, codigo);
 
+    // Validação da conta de origem
     do
     {
         if (aux == NULL)
@@ -60,6 +69,7 @@ int TransConta(TipoLista_movim *m, tipolista *l)
         }
     } while (aux == NULL || strcmp(aux->conteudo.status, "Inativa") == 0);
 
+    // Exibe os dados da conta de origem
     gotoxy(26, 8);
     printf("%s", aux->conteudo.banco);
     gotoxy(26, 9);
@@ -73,9 +83,22 @@ int TransConta(TipoLista_movim *m, tipolista *l)
     gotoxy(26, 13);
     printf("%.2lf", aux->conteudo.vl_saldo + aux->conteudo.vl_limite);
 
-    gotoxy(66, 7);
-    scanf("%d", &codigo2);
-    aux2 = pesquisa(l, codigo2);
+    do
+    {
+
+        gotoxy(66, 7);
+        scanf("%d", &codigo2);
+        aux2 = pesquisa(l, codigo2);
+        if (codigo2 == codigo)
+        {
+            gotoxy(8, 23);
+            printf("Coloque uma conta diferente da conta de origem");
+            getch();
+            gotoxy(8, 23);
+            printf("                                                ");
+        }
+        
+    } while (codigo2 == codigo);
 
     do
     {
@@ -93,6 +116,7 @@ int TransConta(TipoLista_movim *m, tipolista *l)
         }
     } while (aux2 == NULL || strcmp(aux2->conteudo.status, "Inativa") == 0);
 
+    // Exibe os dados da conta de destino
     gotoxy(66, 8);
     printf("%s", aux2->conteudo.banco);
     gotoxy(66, 9);
@@ -118,6 +142,7 @@ int TransConta(TipoLista_movim *m, tipolista *l)
         return 0;
     }
 
+    // Solicita e valida a data da transferência
     do
     {
         gotoxy(52, 19);
@@ -127,7 +152,7 @@ int TransConta(TipoLista_movim *m, tipolista *l)
         fflush(stdin);
         fgets(cont.dt_movimento, 11, stdin);
 
-        if (!validarECompararComLista(cont.dt_movimento, m))
+        if (!validarECompararComLista(cont.dt_movimento, m)) // Valida a data
         {
             gotoxy(8, 23);
             printf("Data invalida. Tente novamente.");
@@ -135,6 +160,7 @@ int TransConta(TipoLista_movim *m, tipolista *l)
         }
     } while (!validarECompararComLista(cont.dt_movimento, m));
 
+    // Atualiza os saldos das contas
     aux->conteudo.vl_saldo -= cont.vl_movimento;
     aux2->conteudo.vl_saldo += cont.vl_movimento;
 
@@ -148,6 +174,7 @@ int TransConta(TipoLista_movim *m, tipolista *l)
     printf("Transferencia realizada com sucesso em %s", cont.dt_movimento);
     getch();
 
+    // Atualiza os registros de movimentação
     cont.codigo_conta = codigo;
     strcpy(cont.ds_favorecido, "Transferencia Entre Contas");
 
@@ -186,6 +213,7 @@ int TransConta(TipoLista_movim *m, tipolista *l)
 
     cont2.vl_movimento = cont.vl_movimento;
 
+    // Insere o movimento de crédito
     inserirMovim(m, cont2);
 
     return 1;

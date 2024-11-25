@@ -1,3 +1,11 @@
+/*
+Autor.: Renato Garcia Lopes
+Data..: 20/11/2024
+Equipe: RA:169479-2024
+        RA:171270-2024
+Objetivo.: tela de seleçao das opcoes relacionadas a movimentaçoes
+*/
+
 #include "Funcoes.h"
 
 void TelaMovim(TipoLista_movim *m, tipolista *l)
@@ -26,15 +34,22 @@ void TelaMovim(TipoLista_movim *m, tipolista *l)
         printf("4-Retornar ao menu anterior");
 
         // Leitura de dados
-        opcao = validarNum("Digite o numero da opcao desejada: ", 8, 23);
+
+        gotoxy(8, 23);
+        printf("                                        ");
+        gotoxy(8, 23);
+        printf("Digite o numero da opcao desejada: ");
+        scanf("%d", &opcao);
+        gotoxy(8, 23);
+        printf("                               ");
 
         // Verificando se a opcao escolhida eh valida
-        if (opcao > 5 || opcao <= 0)
+        if (opcao > 4 || opcao <= 0)
         {
             gotoxy(8, 23);
             printf("                                        ");
             gotoxy(8, 23);
-            printf("Digite um valor valido (1 a 5)");
+            printf("Digite um valor valido (1 a 4)");
             getch();
             gotoxy(8, 23);
             printf("                               ");
@@ -56,12 +71,11 @@ void TelaMovim(TipoLista_movim *m, tipolista *l)
 
         case 3:
 
-            consultar_mov(l,m);
+            consultar_mov(l, m);
 
             break;
 
         case 4:
-
 
             break;
 
@@ -69,7 +83,7 @@ void TelaMovim(TipoLista_movim *m, tipolista *l)
             break;
         }
 
-    } while (opcao != 5);
+    } while (opcao != 4);
 
     gotoxy(37, 25);
 }

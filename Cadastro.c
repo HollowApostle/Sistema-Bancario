@@ -1,4 +1,13 @@
 
+/*
+Autor.: Renato Garcia Lopes
+Data..:20/11/2024
+Equipe: RA:169479-2024
+        RA:171270-2024
+Objetivo: responsavel por realizar o cadastro das contas
+*/
+
+
 #include "Funcoes.h"
 
 int cadastro(tipolista *l, int opc)
@@ -85,10 +94,10 @@ int cadastro(tipolista *l, int opc)
             if (testeOPC < 1 || testeOPC > 3)
             {
                 gotoxy(8, 23);
-                printf("Opcao invalida. Escolha entre 1, 2 ou 3.               ");
+                printf("Opcao invalida. Escolha entre 1, 2 ou 3.                    ");
                 getch(); 
                 gotoxy(8, 23);
-                printf("                                                       "); 
+                printf("                                                            "); 
             }
             else
             {
