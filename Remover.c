@@ -17,7 +17,21 @@ int remover(TipoLista_movim *m, tipolista *l, int opc)
     int pos;
     int qtd;
 
-    
+     if (opc == 1)
+        {
+            gotoxy(32, 4);
+            printf("REMOVER NO INICIO");
+        }
+        else if (opc == 2)
+        {
+            gotoxy(32, 4);
+            printf("REMOVER NO FINAL");
+        }
+        else if (opc == 3)
+        {
+            gotoxy(31, 4);
+            printf("REMOVER NA POSICAO");
+        }
 
     // verifica se ha valor pra remover
     if (l->primeiro == NULL)
