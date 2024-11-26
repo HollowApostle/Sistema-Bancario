@@ -30,17 +30,17 @@ int cadastro(tipolista *l, int opc)
 
         if (opc == 1)
         {
-            gotoxy(32, 4);
+            gotoxy(32, 3);
             printf("COLOCAR NO FINAL");
         }
         else if (opc == 2)
         {
-            gotoxy(32, 4);
+            gotoxy(32, 3);
             printf("COLOCAR NO INICIO");
         }
         else if (opc == 3)
         {
-            gotoxy(31, 4);
+            gotoxy(31, 3);
             printf("COLOCAR NA POSICAO");
         }
 

@@ -64,7 +64,6 @@ void TelaRemover(TipoLista_movim *m, tipolista *l)
             break;
 
         case 4:
-            gravarArquivo(l);
 
             break;
 

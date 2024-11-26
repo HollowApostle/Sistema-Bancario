@@ -54,24 +54,24 @@ void telaCadastro(tipolista *l)
         {
         case 1:
             cadastro(l, opcao);
-            gravarArquivo(l);
+            
 
             break;
 
         case 2:
             cadastro(l, opcao);
-            gravarArquivo(l);
+            
 
             break;
 
         case 3:
             cadastro(l, opcao);
-            gravarArquivo(l);
+            
 
             break;
 
         case 4:
-            gravarArquivo(l);
+            
 
             break;
 

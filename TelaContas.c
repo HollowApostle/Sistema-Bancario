@@ -56,7 +56,7 @@ void TelaContas(TipoLista_movim *m, tipolista *l)
         {
         case 1:
             telaCadastro(l);
-            gravarArquivo(l);
+           
 
             break;
 

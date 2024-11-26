@@ -9,46 +9,7 @@ Objetivo: responsavel por consultar por ordem alfabetica
 
 #include "Funcoes.h"
 
-double SomaLimite (tipolista *l){
 
-    tipoapontador p;
-    double soma;
-
-    p = l->primeiro;
-
-    while (p != NULL)
-    {
-       soma = p->conteudo.vl_limite + soma;
-
-       p = p->prox;
-    }
-    
-    return soma;
-
-
-}
-
-
-double SomaSaldo (tipolista *l){
-
-    tipoapontador p;
-    double soma;
-
-    p = l->primeiro;
-
-    while (p != NULL)
-    {
-       soma = p->conteudo.vl_saldo + soma;
-
-       p = p->prox;
-    }
-
-    soma = soma /2;
-    
-    return soma;
-
-
-}
 
 void ordenarPorBanco(tipolista *l)
 {
@@ -88,7 +49,6 @@ void ordenarPorBanco(tipolista *l)
     } while (trocou);
 }
 
-
 void ordenarPorCodigo(tipolista *l)
 {
     tipoapontador atual, prox;
@@ -126,17 +86,15 @@ void ordenarPorCodigo(tipolista *l)
     } while (trocou);
 }
 
-// Funcao pra mostrar os valores armazenados
 int consultarAlfa(tipolista *l, int opc)
 {
-
     tipoapontador aux;
-    int conta;
+    int conta = 0; // Inicializar o contador de linhas
     int status;
+    double saldoTotal = 0.0, limiteTotal = 0.0; // Para somar saldos e limites
 
     if (l->primeiro == NULL)
     {
-
         gotoxy(8, 23);
         printf("                                                       ");
         gotoxy(8, 23);
@@ -144,11 +102,12 @@ int consultarAlfa(tipolista *l, int opc)
         getch();
         gotoxy(8, 23);
         printf("                                                       ");
-
         return 0;
     }
 
-    TelaConsultaConta();
+    TelaConsultaConta(); // Chamar a função de exibição da tela
+
+    // Ordenar a lista conforme a opção (3 = por código, outro = por banco)
     if (opc == 3)
     {
         ordenarPorCodigo(l);
@@ -162,7 +121,7 @@ int consultarAlfa(tipolista *l, int opc)
 
     while (aux != NULL)
     {
-
+        // Determinar o status (1 = Ativo, 0 = Inativo)
         if (strcmp(aux->conteudo.status, "Ativo") == 0)
         {
             status = 1;
@@ -172,41 +131,44 @@ int consultarAlfa(tipolista *l, int opc)
             status = 0;
         }
 
+        // Exibir o registro formatado
         gotoxy(2, conta + 7);
         printf("%-2d %-19s %-5s %-8s %-14s R$%9.2lf R$%8.2lf %-2d", aux->conteudo.codigo, aux->conteudo.banco, aux->conteudo.agencia, aux->conteudo.numero_conta, aux->conteudo.tipo_conta, aux->conteudo.vl_saldo, aux->conteudo.vl_limite, status);
 
+        // Acumular saldos e limites
+        saldoTotal += aux->conteudo.vl_saldo;
+        limiteTotal += aux->conteudo.vl_limite;
+
         conta++;
 
+        // Controle de paginação (15 linhas por página)
         if (conta == 15)
         {
             gotoxy(8, 23);
             printf("Pressione alguma tecla para continuar...");
-            getch();
+            getch(); // Esperar o usuário pressionar uma tecla
             gotoxy(8, 23);
             printf("                                           ");
 
+            // Limpar as linhas da tabela exibida
             for (int j = 0; j < 15; j++)
             {
-                gotoxy(2, j + 9);
+                gotoxy(2, j + 7);
                 printf("                                                                             ");
             }
 
-            conta = 0;
+            conta = 0; // Reiniciar o contador de linhas
         }
 
         aux = aux->prox;
-
-        if (aux == NULL)
-        {
-            gotoxy(42, conta + 7);
-            printf("%c%c%c%c%c%c%c%c%c%c%c%c %c%c%c%c%c%c%c%c%c%c%c%c %c%c%c%c%c%c%c%c%c%c",205,205,205,205,205,205,205,205,205,205,205,205, 205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205);
-            gotoxy(42, conta + 8);
-            printf("Saldo Total: R$%10.2lf R$%8.2lf",SomaSaldo (l), SomaLimite (l));
-        }
-        
     }
 
-    getch();
+    // Exibir o saldo total e o limite total no final
+    gotoxy(42, conta + 7);
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c %c%c%c%c%c%c%c%c%c%c%c%c %c%c%c%c%c%c%c%c%c%c", 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205);
+    gotoxy(42, conta + 8);
+    printf("Saldo Total: R$%10.2lf R$%8.2lf", saldoTotal, limiteTotal);
 
-    
+    getch(); // Esperar o usuário pressionar uma tecla antes de retornar
+    return 0;
 }
