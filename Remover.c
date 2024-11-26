@@ -17,6 +17,8 @@ int remover(TipoLista_movim *m, tipolista *l, int opc)
     int pos;
     int qtd;
 
+    
+
     // verifica se ha valor pra remover
     if (l->primeiro == NULL)
     {
