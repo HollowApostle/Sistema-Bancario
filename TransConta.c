@@ -205,7 +205,7 @@ int TransConta(TipoLista_movim *m, tipolista *l)
 
     cont.vl_saldo = aux->conteudo.vl_saldo;
 
-    inserirMovim(m, cont);
+    
 
     cont2.codigo_conta = codigo2;
     strcpy(cont2.ds_favorecido, "Transferencia Entre Contas");
@@ -228,7 +228,13 @@ int TransConta(TipoLista_movim *m, tipolista *l)
     cont2.vl_movimento = cont.vl_movimento;
 
     // Insere o movimento de crédito
-    inserirMovim(m, cont2);
+    teste = validarNum("Deseja gravar (Sim = 1/Nao = 2): ", 8,23);
+
+    if (teste == 1)
+    {
+        inserirMovim(m, cont2);
+        inserirMovim(m, cont);
+    }
 
     return 1;
 }

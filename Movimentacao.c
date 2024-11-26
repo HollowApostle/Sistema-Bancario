@@ -247,5 +247,13 @@ int movimCreDeb(TipoLista_movim *m, tipolista *l)
     }
 
     // Insere a movimentação na lista de movimentações
-    inserirMovim(m, cont);
+
+        teste = validarNum("Deseja gravar (Sim = 1/Nao = 2): ", 8,23);
+
+    if (teste == 1)
+    {
+        inserirMovim(m, cont);
+    }
+
+    return 0;
 }

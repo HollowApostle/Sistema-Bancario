@@ -42,74 +42,87 @@ double SomaSaldo (tipolista *l){
 
        p = p->prox;
     }
+
+    soma = soma /2;
     
     return soma;
 
 
 }
 
-void ordenarPorCodigo(tipolista *l)
+void ordenarPorBanco(tipolista *l)
 {
-    Tipoitem temp;
-
+    tipoapontador atual, prox;
+    reg_funcionario temp; // `temp` armazena apenas o conteúdo do nó
     int trocou;
-    tipoapontador atual, anterior = NULL;
+
+    if (l->primeiro == NULL || l->primeiro->prox == NULL)
+    {
+        // Lista vazia ou com apenas um elemento; não é necessário ordenar
+        return;
+    }
 
     do
     {
         trocou = 0;
         atual = l->primeiro;
 
-        while (atual->prox != anterior)
+        while (atual->prox != NULL)
         {
-            if (atual->conteudo.codigo > atual->prox->conteudo.codigo)
+            prox = atual->prox;
+
+            // Comparar os nomes dos bancos
+            if (strcmp(atual->conteudo.banco, prox->conteudo.banco) > 0)
             {
-                // Trocar os conteúdos entre os nós
-                temp.conteudo = atual->conteudo;
-                atual->conteudo = atual->prox->conteudo;
-                atual->prox->conteudo = temp.conteudo;
-                trocou = 1;
+                // Trocar apenas os conteúdos
+                temp = atual->conteudo;
+                atual->conteudo = prox->conteudo;
+                prox->conteudo = temp;
+
+                trocou = 1; // Marcar que houve troca
             }
-            atual = atual->prox;
+
+            atual = atual->prox; // Avançar para o próximo nó
         }
-        anterior = atual; // Último elemento já está na posição correta
 
     } while (trocou);
 }
 
-void ordenarPorBanco(tipolista *l)
-{
 
-    Tipoitem temp;
+void ordenarPorCodigo(tipolista *l)
+{
+    tipoapontador atual, prox;
+    reg_funcionario temp; // `temp` armazena apenas o conteúdo do nó
+    int trocou;
 
     if (l->primeiro == NULL || l->primeiro->prox == NULL)
     {
-        // Lista vazia ou com apenas um elemento não precisa ser ordenada
+        // Lista está vazia ou contém apenas um elemento; não é necessário ordenar
         return;
     }
-
-    int trocou;
-    tipoapontador atual, anterior = NULL;
 
     do
     {
         trocou = 0;
         atual = l->primeiro;
 
-        while (atual->prox != anterior)
+        while (atual->prox != NULL)
         {
-            // Comparar os nomes dos bancos
-            if (strcmp(atual->conteudo.banco, atual->prox->conteudo.banco) > 0)
+            prox = atual->prox;
+
+            if (atual->conteudo.codigo > prox->conteudo.codigo)
             {
-                // Trocar os conteúdos entre os nós
-                temp.conteudo = atual->conteudo;
-                atual->conteudo = atual->prox->conteudo;
-                atual->prox->conteudo = temp.conteudo;
-                trocou = 1;
+                // Trocar apenas os conteúdos
+                temp = atual->conteudo;
+                atual->conteudo = prox->conteudo;
+                prox->conteudo = temp;
+
+                trocou = 1; // Marcar que houve troca
             }
-            atual = atual->prox;
+
+            atual = atual->prox; // Avançar para o próximo nó
         }
-        anterior = atual; // Último elemento já está na posição correta
+
     } while (trocou);
 }
 
