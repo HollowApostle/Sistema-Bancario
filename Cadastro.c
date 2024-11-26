@@ -7,7 +7,6 @@ Equipe: RA:169479-2024 - Artur Bergamo
 Objetivo: responsavel por realizar o cadastro das contas
 */
 
-
 #include "Funcoes.h"
 
 int cadastro(tipolista *l, int opc)
@@ -29,6 +28,22 @@ int cadastro(tipolista *l, int opc)
         tela();
         tela_conta();
 
+        if (opc == 1)
+        {
+            gotoxy(32, 4);
+            printf("COLOCAR NO FINAL");
+        }
+        else if (opc == 2)
+        {
+            gotoxy(32, 4);
+            printf("COLOCAR NO INICIO");
+        }
+        else if (opc == 3)
+        {
+            gotoxy(31, 4);
+            printf("COLOCAR NA POSICAO");
+        }
+
         // validacao para sair com o 0
         do
         {
@@ -43,7 +58,7 @@ int cadastro(tipolista *l, int opc)
             if (cont.codigo == 0)
             {
 
-                teste = validarNum("Deseja realmente sair (Sim = 1/Nao = 2): ", 8,23);
+                teste = validarNum("Deseja realmente sair (Sim = 1/Nao = 2): ", 8, 23);
 
                 if (teste == 1)
                 {
@@ -90,21 +105,20 @@ int cadastro(tipolista *l, int opc)
             printf("Utilizar: 1=Corrente / 2=Poupanca / 3=Cartao Credito: ");
             scanf("%d", &testeOPC);
 
-            
             if (testeOPC < 1 || testeOPC > 3)
             {
                 gotoxy(8, 23);
                 printf("Opcao invalida. Escolha entre 1, 2 ou 3.                    ");
-                getch(); 
+                getch();
                 gotoxy(8, 23);
-                printf("                                                            "); 
+                printf("                                                            ");
             }
             else
             {
-                
+
                 switch (testeOPC)
                 {
-                case 1: 
+                case 1:
                     strcpy(cont.tipo_conta, "Corrente");
                     gotoxy(52, 15);
                     printf("Corrente");
@@ -112,7 +126,7 @@ int cadastro(tipolista *l, int opc)
                     printf("                                                       ");
                     break;
 
-                case 2: 
+                case 2:
                     strcpy(cont.tipo_conta, "Poupanca");
                     gotoxy(52, 15);
                     printf("Poupanca");
@@ -120,8 +134,8 @@ int cadastro(tipolista *l, int opc)
                     printf("                                                       ");
                     break;
 
-                case 3: 
-                    strcpy(cont.tipo_conta, "Cartao Credito"); 
+                case 3:
+                    strcpy(cont.tipo_conta, "Cartao Credito");
                     gotoxy(52, 15);
                     printf("Cartao de credito");
                     gotoxy(8, 23);
@@ -140,14 +154,13 @@ int cadastro(tipolista *l, int opc)
 
         strcpy(cont.status, "Ativo");
 
-        teste = validarNum("Deseja gravar (Sim = 1/Nao = 2): ", 8,23);
+        teste = validarNum("Deseja gravar (Sim = 1/Nao = 2): ", 8, 23);
 
         cont.banco[strcspn(cont.banco, "\n")] = '\0';
 
         cont.agencia[strcspn(cont.agencia, "\n")] = '\0';
 
         cont.numero_conta[strcspn(cont.numero_conta, "\n")] = '\0';
-        
 
         // verifica se deseja cadastrar outro funcionario
         if (teste == 1)
@@ -247,8 +260,7 @@ int cadastro(tipolista *l, int opc)
                 }
             }
 
-            teste = validarNum("Deseja cadastrar outra conta? (Sim = 1/Nao = 2): ", 8,23);
-
+            teste = validarNum("Deseja cadastrar outra conta? (Sim = 1/Nao = 2): ", 8, 23);
         }
     } while (teste == 1);
 
