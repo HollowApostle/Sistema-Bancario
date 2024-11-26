@@ -2,12 +2,51 @@
 /*
 Autor.: Renato Garcia Lopes
 Data..:20/11/2024
-Equipe: RA:169479-2024
-        RA:171270-2024
+Equipe: RA:169479-2024 - Artur Bergamo
+        RA:171270-2024 - Renato Lopes
 Objetivo: responsavel por consultar por ordem alfabetica
 */
 
 #include "Funcoes.h"
+
+double SomaLimite (tipolista *l){
+
+    tipoapontador p;
+    double soma;
+
+    p = l->primeiro;
+
+    while (p != NULL)
+    {
+       soma = p->conteudo.vl_limite + soma;
+
+       p = p->prox;
+    }
+    
+    return soma;
+
+
+}
+
+
+double SomaSaldo (tipolista *l){
+
+    tipoapontador p;
+    double soma;
+
+    p = l->primeiro;
+
+    while (p != NULL)
+    {
+       soma = p->conteudo.vl_saldo + soma;
+
+       p = p->prox;
+    }
+    
+    return soma;
+
+
+}
 
 void ordenarPorCodigo(tipolista *l)
 {
@@ -121,7 +160,7 @@ int consultarAlfa(tipolista *l, int opc)
         }
 
         gotoxy(2, conta + 7);
-        printf("%-2d %-19s %-5s %-8s %-14s R$%9.2f R$%8.2f %-2d", aux->conteudo.codigo, aux->conteudo.banco, aux->conteudo.agencia, aux->conteudo.numero_conta, aux->conteudo.tipo_conta, aux->conteudo.vl_saldo, aux->conteudo.vl_limite, status);
+        printf("%-2d %-19s %-5s %-8s %-14s R$%9.2lf R$%8.2lf %-2d", aux->conteudo.codigo, aux->conteudo.banco, aux->conteudo.agencia, aux->conteudo.numero_conta, aux->conteudo.tipo_conta, aux->conteudo.vl_saldo, aux->conteudo.vl_limite, status);
 
         conta++;
 
@@ -143,7 +182,18 @@ int consultarAlfa(tipolista *l, int opc)
         }
 
         aux = aux->prox;
+
+        if (aux == NULL)
+        {
+            gotoxy(42, conta + 7);
+            printf("%c%c%c%c%c%c%c%c%c%c%c%c %c%c%c%c%c%c%c%c%c%c%c%c %c%c%c%c%c%c%c%c%c%c",205,205,205,205,205,205,205,205,205,205,205,205, 205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205);
+            gotoxy(42, conta + 8);
+            printf("Saldo Total: R$%10.2lf R$%8.2lf",SomaSaldo (l), SomaLimite (l));
+        }
+        
     }
 
     getch();
+
+    
 }

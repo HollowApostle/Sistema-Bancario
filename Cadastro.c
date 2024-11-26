@@ -2,8 +2,8 @@
 /*
 Autor.: Renato Garcia Lopes
 Data..:20/11/2024
-Equipe: RA:169479-2024
-        RA:171270-2024
+Equipe: RA:169479-2024 - Artur Bergamo
+        RA:171270-2024 - Renato Lopes
 Objetivo: responsavel por realizar o cadastro das contas
 */
 
@@ -106,7 +106,6 @@ int cadastro(tipolista *l, int opc)
                 {
                 case 1: 
                     strcpy(cont.tipo_conta, "Corrente");
-                    gravarArquivo(l);
                     gotoxy(52, 15);
                     printf("Corrente");
                     gotoxy(8, 23);
@@ -115,7 +114,6 @@ int cadastro(tipolista *l, int opc)
 
                 case 2: 
                     strcpy(cont.tipo_conta, "Poupanca");
-                    gravarArquivo(l);
                     gotoxy(52, 15);
                     printf("Poupanca");
                     gotoxy(8, 23);
@@ -124,7 +122,6 @@ int cadastro(tipolista *l, int opc)
 
                 case 3: 
                     strcpy(cont.tipo_conta, "Cartao Credito"); 
-                    gravarArquivo(l);
                     gotoxy(52, 15);
                     printf("Cartao de credito");
                     gotoxy(8, 23);

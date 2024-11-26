@@ -1,8 +1,8 @@
 /*
 Autor.: Artur Ribeiro Bérgamo
 Data..:20/11/2024
-Equipe: RA:169479-2024
-        RA:171270-2024
+Equipe: RA:169479-2024 - Artur Bergamo
+        RA:171270-2024 - Renato Lopes
 Objetivo: Logica utilizada para movimentação de dados das contas, caso seja credito ou debito.
 */
 
@@ -20,7 +20,7 @@ int movimCreDeb(TipoLista_movim *m, tipolista *l)
     int resultado;       // Resultado da validação de data
     int confirmacao;     // Variável para confirmação de saída
 
-    gotoxy(34,2);
+    gotoxy(34, 2);
     printf("MOVIMENTACAO");
 
     TelaCadMovim(m);
@@ -80,7 +80,6 @@ int movimCreDeb(TipoLista_movim *m, tipolista *l)
 
     } while (aux == NULL || aux->conteudo.status == "Inativo");
 
-
     // Exibe os dados da conta encontrada
     gotoxy(54, 8);
     printf("%s", aux->conteudo.agencia);
@@ -121,11 +120,20 @@ int movimCreDeb(TipoLista_movim *m, tipolista *l)
             gotoxy(8, 23);
             printf("                                                     ");
 
-            gotoxy(8, 23);
-            printf("Data da Movimentacao Invalida. Formato: DD/MM/YYYY");
-            getch();
-            gotoxy(8, 23);
-            printf("                                                               ");
+            if (m->primeiro == NULL)
+            {
+                gotoxy(8, 23);
+                printf("Data invalida. Tente novamente. ");
+                getch();
+            }
+            else
+            {
+                gotoxy(8, 23);
+                printf("Data da Movimentacao Invalida, ultima data: %s ", m->ultimo->conteudo.dt_movimento);
+                getch();
+                gotoxy(8, 23);
+                printf("                                                     ");
+            }
         }
 
     } while (resultado != 1);
